@@ -1,55 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>web</title>
-    <link rel="stylesheet" href="css/base.css"/>
-    <link rel="stylesheet" href="css/animate.css"/>
-    <link rel="stylesheet" href="css/index.css"/>
-    <link rel="stylesheet" href="font/iconfont.css"/>
-</head>
-<body>
-    <div id="wrap">
-        <!-- ç¬¬ä¸€å±-->
-        <div class="section current first">
-            <div class="wrap">
-                <!-- å¤´åƒ-->
-                <div class="avatar">
-                    <div class="large"></div>
-                    <img class="small" src="images/tx.png" width="300"/>
-                </div>
-
-                <!-- æµè§ˆæ¡†-->
-                <div class="search">
-                    <div class="username">é«˜çº§WEBå‰ç«¯æ”»åŸç‹®</div>
-                    <div class="search-btn"></div>
-                    <!-- é¼ æ ‡æ‰‹-->
-                    <em class="icon-mouse-pointer iconfont"></em>
-                </div>
-
-                <!-- æ£€ç´¢ç»“æœ -->
-                <div class="result icon-shalou iconfont">
-
-                </div>
-
-
-            </div>
-        </div>
-
-
-
-
-
-        <div class="section">ç¬¬äºŒå±</div>
-        <div class="section">
-                ç¬¬ä¸‰å±
-            <!--<div class="slide">ç¬¬ä¸‰å±çš„ç¬¬ä¸€å±</div>-->
-        </div>
-        <div class="section">ç¬¬å››å±</div>
-    </div>
-
-    <script src="js/jquery-1.12.4.min.js"></script>
-    <script src="js/jquery.fullPage.min.js"></script>
-    <script src="js/index.js"></script>
-</body>
-</html>
+---
+¡¡¡¡layout: default
+¡¡¡¡title: ÎÒµÄBlog
+¡¡¡¡---
+¡¡¡¡<h2>{{ page.title }}</h2>
+¡¡¡¡<p>×îĞÂÎÄÕÂ1111</p>
+¡¡¡¡<ul>
+¡¡¡¡¡¡¡¡{% for post in site.posts %}
+¡¡¡¡¡¡¡¡¡¡¡¡<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+¡¡¡¡¡¡¡¡{% endfor %}
+¡¡¡¡</ul>
