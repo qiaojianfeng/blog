@@ -1,10 +1,10 @@
 ---
 layout: page
-title: Link
+title: 友情链接
 permalink: /link/
 icon: octicon-link-external
 ---
 
-### [东方星痕](http://www.lxy520.net/)
+### [晋汇网](http://www.jhw518.com/)
 
-### [Cass](http://cassite.net/)
+### [菜鸟建材](http://www.cainiaoboon.com)
