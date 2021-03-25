@@ -1,0 +1,492 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>开发Linux运维人员最常用166个命令汇总 | QIAO@博客</title><meta name="keywords" content="Linux"><meta name="author" content="QiaoJianFeng"><meta name="copyright" content="QiaoJianFeng"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Linux运维人员最常用166个命令汇总命令 功能说明 线上查询、帮助命令（2个） man 查看命令帮助，命令词典，更复杂还有info，但不常用。 help 查看Linux内置命令的帮助，比如cd等命令。 文件、目录操作命令（18个） ls 全拼为list，功能是列出目录的内容及其内容属性信息。 cd 全拼为change directory，功能是从当前工作目录切换到指定的工作目录。 cp 全拼为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开发Linux运维人员最常用166个命令汇总">
+<meta property="og:url" content="https://q-jf.cn/2019/08/30/e5-bc-80-e5-8f-91linux-e8-bf-90-e7-bb-b4-e4-ba-ba-e5-91-98-e6-9c-80-e5-b8-b8-e7-94-a8166-e4-b8-aa-e5-91-bd-e4-bb-a4-e6-b1-87-e6-80-bb/index.html">
+<meta property="og:site_name" content="QIAO@博客">
+<meta property="og:description" content="Linux运维人员最常用166个命令汇总命令 功能说明 线上查询、帮助命令（2个） man 查看命令帮助，命令词典，更复杂还有info，但不常用。 help 查看Linux内置命令的帮助，比如cd等命令。 文件、目录操作命令（18个） ls 全拼为list，功能是列出目录的内容及其内容属性信息。 cd 全拼为change directory，功能是从当前工作目录切换到指定的工作目录。 cp 全拼为">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2019-08-30T11:41:29.000Z">
+<meta property="article:modified_time" content="2019-09-10T07:46:08.741Z">
+<meta property="article:author" content="QiaoJianFeng">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://q-jf.cn/2019/08/30/e5-bc-80-e5-8f-91linux-e8-bf-90-e7-bb-b4-e4-ba-ba-e5-91-98-e6-9c-80-e5-b8-b8-e7-94-a8166-e4-b8-aa-e5-91-bd-e4-bb-a4-e6-b1-87-e6-80-bb/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2019-09-10 15:46:08'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">QIAO@博客</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">开发Linux运维人员最常用166个命令汇总</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-08-30T11:41:29.000Z" title="发表于 2019-08-30 19:41:29">2019-08-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2019-09-10T07:46:08.741Z" title="更新于 2019-09-10 15:46:08">2019-09-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/">服务端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="开发Linux运维人员最常用166个命令汇总"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Linux运维人员最常用166个命令汇总"><a href="#Linux运维人员最常用166个命令汇总" class="headerlink" title="Linux运维人员最常用166个命令汇总"></a>Linux运维人员最常用166个命令汇总</h1><p>命令</p>
+<p>功能说明</p>
+<p>线上查询、帮助命令（2个）</p>
+<p>man</p>
+<p>查看命令帮助，命令词典，更复杂还有info，但不常用。</p>
+<p>help</p>
+<p>查看Linux内置命令的帮助，比如cd等命令。</p>
+<p>文件、目录操作命令（18个）</p>
+<p>ls</p>
+<p>全拼为list，功能是列出目录的内容及其内容属性信息。</p>
+<p>cd</p>
+<p>全拼为change directory，功能是从当前工作目录切换到指定的工作目录。</p>
+<p>cp</p>
+<p>全拼为copy，功能为复制文件或目录。</p>
+<p>find</p>
+<p>查找，用于查找目录及目录下文件。</p>
+<p>mkdir</p>
+<p>全拼为make directories，其功能是创建目录。</p>
+<p>mv</p>
+<p>全拼为move，其功能是移动或重命名文件。</p>
+<p>pwd</p>
+<p>全拼为print working directory，功能是显示当前工作目录的绝对路径。</p>
+<p>rename</p>
+<p>用于重新命名文件。</p>
+<p>rm</p>
+<p>全拼为remove，其功能是删除一个或多个文件或目录。</p>
+<p>rmdir</p>
+<p>全拼为remove empty directories，功能是删除空目录。</p>
+<p>touch</p>
+<p>创建个空文件，改变已有文件的时间戳属性。</p>
+<p>tree</p>
+<p>功能是以树形结构显示目录下的内容。</p>
+<p>basename</p>
+<p>显示文件名或着目录名。</p>
+<p>dirname</p>
+<p>显示文件或着目录路径。</p>
+<p>chattr</p>
+<p>改变文件扩展属性。</p>
+<p>lsattr</p>
+<p>查看文件扩展属性。</p>
+<p>file</p>
+<p>显示文件类型。</p>
+<p>md5sum</p>
+<p>计算和校验文件的MD5值。</p>
+<p>查看文件、内容处理命令（21个）</p>
+<p>cat</p>
+<p>全拼为concatenate，功能是用于连接多个文件并且打印到屏幕输出或重定向到指定文件中。</p>
+<p>tac</p>
+<p>tac是cat的反向拼写，因此命令的功能为反向显示文件内容。</p>
+<p>more</p>
+<p>分页显示文件内容。</p>
+<p>less</p>
+<p>分页显示文件内容，more命令的相反用法。</p>
+<p>head</p>
+<p>显示文件内容头部。</p>
+<p>tail</p>
+<p>显示文件内容尾部。</p>
+<p>cut</p>
+<p>将文件的每一行按指定分隔符分割并输出。</p>
+<p>split</p>
+<p>分割文件为不同的片段。</p>
+<p>paste</p>
+<p>按行合并文件内容。</p>
+<p>sort</p>
+<p>对文件的文本内容排序。</p>
+<p>uniq</p>
+<p>去除掉重复行。</p>
+<p>wc</p>
+<p>统计文件行数、单词数或是字节数。</p>
+<p>iconv</p>
+<p>转换文件编码格式。</p>
+<p>dos2unix</p>
+<p>将DOS格式文件转换成UNIX格式。</p>
+<p>diff</p>
+<p>全拼为difference，比较文件差异，用于文本文件。</p>
+<p>vimdiff</p>
+<p>命令行可视化文件比较工具，用于文本文件。</p>
+<p>rev</p>
+<p>反向输出文件内容。</p>
+<p>grep/egrep</p>
+<p>常用于过滤字符串。</p>
+<p>join</p>
+<p>按两个文件的相同字段合并。</p>
+<p>tr</p>
+<p>替换、删除字符。</p>
+<p>vi/vim</p>
+<p>命令行文本编辑器。</p>
+<p>文件压缩及解压缩命令（4个）</p>
+<p>tar</p>
+<p>打包压缩。</p>
+<p>unzip</p>
+<p>解压文件。</p>
+<p>gzip</p>
+<p>压缩工具。</p>
+<p>zip</p>
+<p>压缩工具。</p>
+<p>信息显示命令（11个）</p>
+<p>uname</p>
+<p>显示操作系统相关信息。</p>
+<p>hostname</p>
+<p>显示或者设置当前系统的主机名。</p>
+<p>dmesg</p>
+<p>显示开机信息，用于诊断系统故障。</p>
+<p>uptime</p>
+<p>显示系统运行时间以及负载。</p>
+<p>stat</p>
+<p>显示文件或文件系统的状态。</p>
+<p>du</p>
+<p>计算磁盘空间使用情况。</p>
+<p>df</p>
+<p>报告文件系统磁盘空间使用情况。</p>
+<p>top</p>
+<p>实时显示系统资源使用情况。</p>
+<p>free</p>
+<p>查看系统内存。</p>
+<p>date</p>
+<p>显示、设置系统时间。</p>
+<p>cal</p>
+<p>查看日历、时间信息。</p>
+<p>搜索文件命令（4个）</p>
+<p>which</p>
+<p>查找二进制文件的命令，按环境变量PATH路径查找。</p>
+<p>find</p>
+<p>从磁盘遍历查找文件或目录。</p>
+<p>whereis</p>
+<p>查找二进制文件的命令，按环境变量PATH路径查找。</p>
+<p>locate</p>
+<p>从数据库/var/lib/mlocate/mlocate.db中查找命令，使用updatedb更新库。</p>
+<p>用户管理命令（10个）</p>
+<p>useradd</p>
+<p>添加用户。</p>
+<p>usermod</p>
+<p>修改系统已经存在用户属性。</p>
+<p>userdel</p>
+<p>删除用户。</p>
+<p>groupadd</p>
+<p>添加用户群组。</p>
+<p>passwd</p>
+<p>修改用户密码。</p>
+<p>chage</p>
+<p>修改用户密码有效期限。</p>
+<p>id</p>
+<p>查看用户的uid/gid及归属的用户群组。</p>
+<p>su</p>
+<p>切换用户身份。</p>
+<p>visudo</p>
+<p>编辑/etc/sudoers文件的专属命令。</p>
+<p>sudo</p>
+<p>以另外一用户身份（默认为root用户）执行事先在sudoers文件中允许的命令。</p>
+<p>基础网络操作命令（11个）</p>
+<p>telnet</p>
+<p>用TELNET协议远程登录。</p>
+<p>ssh</p>
+<p>用SSH加密协议远程登录。</p>
+<p>scp</p>
+<p>全拼为secure copy，用于不同主机之间复制文件。</p>
+<p>wget</p>
+<p>用命令行下载文件。</p>
+<p>ping</p>
+<p>测试主机之间网络的连通性。</p>
+<p>route</p>
+<p>显示和设置linux系统的路由表。</p>
+<p>ifconfig</p>
+<p>查看、配置、启用或禁用网络接口的命令。</p>
+<p>ifup</p>
+<p>启动网卡。</p>
+<p>ifdown</p>
+<p>关闭网卡。</p>
+<p>netstat</p>
+<p>查看网络状态。</p>
+<p>ss</p>
+<p>查看网络状态。</p>
+<p>深入网络操作命令（9个）</p>
+<p>nmap</p>
+<p>网络扫描命令。</p>
+<p>lsof</p>
+<p>全名为list open files，也就是列举系统中已经被打开的文件。</p>
+<p>mail</p>
+<p>发送、接收邮件。</p>
+<p>mutt</p>
+<p>邮件管理命令。</p>
+<p>nslookup</p>
+<p>查询互联网DNS服务器的命令。</p>
+<p>dig</p>
+<p>查找DNS的解析过程。</p>
+<p>host</p>
+<p>查询DNS的命令。</p>
+<p>traceroute</p>
+<p>追踪数据传输路由状况。</p>
+<p>tcpdump</p>
+<p>命令行的抓包工具。</p>
+<p>有关磁盘与文件系统的命令（16个）</p>
+<p>mount</p>
+<p>挂载文件系统。</p>
+<p>umount</p>
+<p>卸载文件系统。</p>
+<p>fsck</p>
+<p>检查并修复Linux文件系统。</p>
+<p>dd</p>
+<p>转换、复制文件。</p>
+<p>dumpe2fs</p>
+<p>导出ext2/ext3/ext4等文件系统信息。</p>
+<p>dump</p>
+<p>ext2/3/4等文件系统备份工具。</p>
+<p>fdisk</p>
+<p>磁盘分区命令，适用于2TB以下磁盘分区。</p>
+<p>parted</p>
+<p>磁盘分区命令，没有磁盘大小限制，常用于2TB以下磁盘分区。</p>
+<p>mkfs</p>
+<p>格式化创建Linux文件系统。</p>
+<p>partprobe</p>
+<p>更新内核的硬盘分区表信息。</p>
+<p>e2fsck</p>
+<p>检查ext2/ext3/ext4等类型文件系统。</p>
+<p>mkswap</p>
+<p>创建Linux的交换分区。</p>
+<p>swapon</p>
+<p>启用交换分区。</p>
+<p>swapoff</p>
+<p>关闭交换分区。</p>
+<p>sync</p>
+<p>将内存缓冲区内的数据写入磁盘。</p>
+<p>resize2fs</p>
+<p>调整ext2/ext3/ext4等文件系统大小。</p>
+<p>系统权限、用户授权相关命令（4个）</p>
+<p>chmod</p>
+<p>改变文件、目录权限。</p>
+<p>chown</p>
+<p>改变文件、目录的属主和属组。</p>
+<p>chgrp</p>
+<p>更改文件用户群组。</p>
+<p>umask</p>
+<p>显示、设置权限掩码。</p>
+<p>查看系统用户登陆信息命令（7个）</p>
+<p>whoami</p>
+<p>显示当前有效用户名称，相当于执行id -un命令。</p>
+<p>who</p>
+<p>显示目前已登录系统的用户信息。</p>
+<p>w</p>
+<p>显示已登陆系统的用户列表，并显示用户正在执行的指令。</p>
+<p>last</p>
+<p>显示已登入系统的用户。</p>
+<p>lastlog</p>
+<p>显示系统中所有用户最近一次的登录信息。</p>
+<p>users</p>
+<p>显示当前登录系统的所有用户的用户列表。</p>
+<p>finger</p>
+<p>查找、显示用户信息。</p>
+<p>内置命令、其它（19个）</p>
+<p>echo</p>
+<p>打印变量，直接输出指定的字符串</p>
+<p>printf</p>
+<p>将结果格式化输出到标准输出中。</p>
+<p>rpm</p>
+<p>管理rpm包命令。</p>
+<p>yum</p>
+<p>自动化简单化地管理rpm包的命令。</p>
+<p>watch</p>
+<p>周期的执行给定的命令，并将命令的输出以全屏方式显示。</p>
+<p>alias</p>
+<p>设置系统别名。</p>
+<p>unalias</p>
+<p>取消系统别名。</p>
+<p>date</p>
+<p>查看、设置系统时间。</p>
+<p>clear</p>
+<p>清除屏幕，简称清屏。</p>
+<p>history</p>
+<p>查看命令执行的历史纪录。</p>
+<p>eject</p>
+<p>弹出光驱。</p>
+<p>time</p>
+<p>计算命令执行时间。</p>
+<p>nc</p>
+<p>功能强大网络工具。</p>
+<p>xargs</p>
+<p>将标准输入转换成命令行的参数。</p>
+<p>exec</p>
+<p>调用并执行指令的命令。</p>
+<p>export</p>
+<p>设置或者显示环境变量。</p>
+<p>unset</p>
+<p>删除变量、函数。</p>
+<p>type</p>
+<p>用于判断另外一个命令是否为内置的命令。</p>
+<p>bc</p>
+<p>命令行科学计算器</p>
+<p>系统管理、性能监视命令（9个）</p>
+<p>chkconfig</p>
+<p>管理Linux系统开机启动项。</p>
+<p>vmstat</p>
+<p>虚拟内存统计。</p>
+<p>mpstat</p>
+<p>显示各个可用CPU的状态统计。</p>
+<p>iostat</p>
+<p>统计系统的IO。</p>
+<p>sar</p>
+<p>全面地获取系统CPU、运行队列、磁盘读写、分页、内存、 CPU中断和网络性能数据。</p>
+<p>ipcs</p>
+<p>用于报告Linux中进程间通信设施的状态，显示信息包括消息列表、共享内存和信号量信息。</p>
+<p>ipcrm</p>
+<p>用来删除一个或更多的消息队列、信号量集或者共享内存标识。</p>
+<p>strace</p>
+<p>用于诊断、调试Linux用户空间跟踪器。我们用它来监控用户空间进程和内核交互，比如系统调用、信号传递、进程状态变更。</p>
+<p>ltrace</p>
+<p>命令会跟踪进程库函数调用，它会显现哪个库函数被调用。</p>
+<p>关机/重启/注销和查看系统信息的命令（6个）</p>
+<p>shutdown</p>
+<p>关机。</p>
+<p>halt</p>
+<p>关机。</p>
+<p>poweroff</p>
+<p>关闭电源。</p>
+<p>logout</p>
+<p>退出当前登录的Shell。</p>
+<p>exit</p>
+<p>退出当前登录的Shell。</p>
+<p>Ctrl+d</p>
+<p>退出当前登录的Shell的快捷键。</p>
+<p>进程管理相关命令（15个）</p>
+<p>bg</p>
+<p>将一个后台暂停的命令，变成继续执行。</p>
+<p>fg</p>
+<p>将后台的命令调至前台继续运行。</p>
+<p>jobs</p>
+<p>查看当前有多少后台运行的命令。</p>
+<p>kill</p>
+<p>终止进程。</p>
+<p>killall</p>
+<p>通过进程名来终止进程。</p>
+<p>pkill</p>
+<p>通过进程名来终止进程。</p>
+<p>crontab</p>
+<p>定时任务命令。</p>
+<p>ps</p>
+<p>显示进程快照。</p>
+<p>pstree</p>
+<p>树形显示进程。</p>
+<p>nice/renice</p>
+<p>调整程序运行的优先级。</p>
+<p>nohup</p>
+<p>忽略挂起信号运行指定。</p>
+<p>pgrep</p>
+<p>查找匹配条件进程。</p>
+<p>runlevel</p>
+<p>查看系统当前运行级别。</p>
+<p>init</p>
+<p>切换运行级别。</p>
+<p>service</p>
+<p>启动、停止、重新启动、关闭系统服务，还可以显示所有系统服务的当前状态。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">QiaoJianFeng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://q-jf.cn/2019/08/30/e5-bc-80-e5-8f-91linux-e8-bf-90-e7-bb-b4-e4-ba-ba-e5-91-98-e6-9c-80-e5-b8-b8-e7-94-a8166-e4-b8-aa-e5-91-bd-e4-bb-a4-e6-b1-87-e6-80-bb/">https://q-jf.cn/2019/08/30/e5-bc-80-e5-8f-91linux-e8-bf-90-e7-bb-b4-e4-ba-ba-e5-91-98-e6-9c-80-e5-b8-b8-e7-94-a8166-e4-b8-aa-e5-91-bd-e4-bb-a4-e6-b1-87-e6-80-bb/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://q-jf.cn" target="_blank">QIAO@博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/09/02/e5-88-86-e4-ba-ab-e7-bd-91-e7-bb-9c-e5-b0-8f-e6-b8-b8-e6-88-8f-e5-90-88-e9-9b-86-e6-98-9f-e7-9b-8a-e6-89-8b-e6-9c-ba-e7-94-b5-e8-84-91-e5-b0-8f-e6-b8-b8-e6-88-8f-e5-b9-b3-e5-8f-b0-e7-bd-91-e9-a1-b5/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">分享网络小游戏合集-星益手机电脑小游戏平台网页源码</div></div></a></div><div class="next-post pull-right"><a href="/2019/08/30/e4-b8-80-e6-96-87-e6-90-9e-e5-ae-9a-e5-89-8d-e7-ab-af-jenkins-e8-87-aa-e5-8a-a8-e5-8c-96-e9-83-a8-e7-bd-b2/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">一文搞定前端 Jenkins 自动化部署</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">QiaoJianFeng</div><div class="author-info__description">QIAO是一个以Web前端开发为主的学习,进阶,交流,分享资源的博客。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E8%BF%90%E7%BB%B4%E4%BA%BA%E5%91%98%E6%9C%80%E5%B8%B8%E7%94%A8166%E4%B8%AA%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB"><span class="toc-number">1.</span> <span class="toc-text">Linux运维人员最常用166个命令汇总</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/01/14/vue-router%E6%BA%90%E7%A0%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B/" title="vue-router源码了解一下"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue-router源码了解一下"/></a><div class="content"><a class="title" href="/2020/01/14/vue-router%E6%BA%90%E7%A0%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B/" title="vue-router源码了解一下">vue-router源码了解一下</a><time datetime="2020-01-14T10:02:34.000Z" title="发表于 2020-01-14 18:02:34">2020-01-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/01/13/git%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C/" title="git日常操作"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="git日常操作"/></a><div class="content"><a class="title" href="/2020/01/13/git%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C/" title="git日常操作">git日常操作</a><time datetime="2020-01-13T03:24:51.000Z" title="发表于 2020-01-13 11:24:51">2020-01-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/01/08/%E9%AB%98%E6%B8%85%E5%9C%A8%E7%BA%BF%E7%9B%B4%E6%92%AD-1/" title="敢死队2-HDTC中英字在线观看"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="敢死队2-HDTC中英字在线观看"/></a><div class="content"><a class="title" href="/2020/01/08/%E9%AB%98%E6%B8%85%E5%9C%A8%E7%BA%BF%E7%9B%B4%E6%92%AD-1/" title="敢死队2-HDTC中英字在线观看">敢死队2-HDTC中英字在线观看</a><time datetime="2020-01-08T03:48:19.000Z" title="发表于 2020-01-08 11:48:19">2020-01-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/12/30/%E4%BA%86%E8%A7%A3%E4%B8%80%E4%BA%9BHTTP%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" title="了解一些HTTP协议相关知识"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="了解一些HTTP协议相关知识"/></a><div class="content"><a class="title" href="/2019/12/30/%E4%BA%86%E8%A7%A3%E4%B8%80%E4%BA%9BHTTP%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" title="了解一些HTTP协议相关知识">了解一些HTTP协议相关知识</a><time datetime="2019-12-30T08:49:42.000Z" title="发表于 2019-12-30 16:49:42">2019-12-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/11/22/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E6%9B%B4%E6%96%B0%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%8E%B0/" title="你能简单谈谈什么是 vue 的响应式更新？"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="你能简单谈谈什么是 vue 的响应式更新？"/></a><div class="content"><a class="title" href="/2019/11/22/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E6%9B%B4%E6%96%B0%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%8E%B0/" title="你能简单谈谈什么是 vue 的响应式更新？">你能简单谈谈什么是 vue 的响应式更新？</a><time datetime="2019-11-22T06:42:57.000Z" title="发表于 2019-11-22 14:42:57">2019-11-22</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By QiaoJianFeng</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

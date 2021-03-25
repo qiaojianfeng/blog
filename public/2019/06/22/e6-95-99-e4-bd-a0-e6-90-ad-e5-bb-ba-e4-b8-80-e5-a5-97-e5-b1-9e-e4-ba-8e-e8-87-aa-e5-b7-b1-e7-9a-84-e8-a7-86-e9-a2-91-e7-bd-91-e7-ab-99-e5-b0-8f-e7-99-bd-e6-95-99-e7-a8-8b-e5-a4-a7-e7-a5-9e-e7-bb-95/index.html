@@ -1,0 +1,149 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>教你搭建一套属于自己的视频网站-小白教程大神绕道 | QIAO@博客</title><meta name="keywords" content="前端,全栈,Web,自学编程,学习分享,javascript,电影分享,模板资源"><meta name="author" content="QiaoJianFeng"><meta name="copyright" content="QiaoJianFeng"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言对于大部分基础前端开发者同学来说对PHP，mysql，Linux这些都不太熟悉，想要搭建一套属于自己的完整网站程序比较吃力，那么希望这篇文章可以帮到你。 我们需要先了解一个概念** CMS ，** CMS是”Content Management System”的缩写，意为”内容管理系统”。简单理解就是一种位于WEB前端（Web 服务器）和后端办公系统或流程（内容创作、编辑）整合的一套软件系统。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="教你搭建一套属于自己的视频网站-小白教程大神绕道">
+<meta property="og:url" content="https://q-jf.cn/2019/06/22/e6-95-99-e4-bd-a0-e6-90-ad-e5-bb-ba-e4-b8-80-e5-a5-97-e5-b1-9e-e4-ba-8e-e8-87-aa-e5-b7-b1-e7-9a-84-e8-a7-86-e9-a2-91-e7-bd-91-e7-ab-99-e5-b0-8f-e7-99-bd-e6-95-99-e7-a8-8b-e5-a4-a7-e7-a5-9e-e7-bb-95/index.html">
+<meta property="og:site_name" content="QIAO@博客">
+<meta property="og:description" content="前言对于大部分基础前端开发者同学来说对PHP，mysql，Linux这些都不太熟悉，想要搭建一套属于自己的完整网站程序比较吃力，那么希望这篇文章可以帮到你。 我们需要先了解一个概念** CMS ，** CMS是”Content Management System”的缩写，意为”内容管理系统”。简单理解就是一种位于WEB前端（Web 服务器）和后端办公系统或流程（内容创作、编辑）整合的一套软件系统。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2019-06-22T09:10:12.000Z">
+<meta property="article:modified_time" content="2019-09-10T07:46:08.739Z">
+<meta property="article:author" content="QiaoJianFeng">
+<meta property="article:tag" content="前端,全栈,Web,自学编程,学习分享,javascript,电影分享,模板资源">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://q-jf.cn/2019/06/22/e6-95-99-e4-bd-a0-e6-90-ad-e5-bb-ba-e4-b8-80-e5-a5-97-e5-b1-9e-e4-ba-8e-e8-87-aa-e5-b7-b1-e7-9a-84-e8-a7-86-e9-a2-91-e7-bd-91-e7-ab-99-e5-b0-8f-e7-99-bd-e6-95-99-e7-a8-8b-e5-a4-a7-e7-a5-9e-e7-bb-95/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2019-09-10 15:46:08'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">QIAO@博客</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">教你搭建一套属于自己的视频网站-小白教程大神绕道</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-06-22T09:10:12.000Z" title="发表于 2019-06-22 17:10:12">2019-06-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2019-09-10T07:46:08.739Z" title="更新于 2019-09-10 15:46:08">2019-09-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="教你搭建一套属于自己的视频网站-小白教程大神绕道"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于大部分基础前端开发者同学来说对PHP，mysql，Linux这些都不太熟悉，想要搭建一套属于自己的完整网站程序比较吃力，那么希望这篇文章可以帮到你。 我们需要先了解一个概念** CMS ，** CMS是”Content Management System”的缩写，意为”内容管理系统”。简单理解就是一种位于WEB前端（Web 服务器）和后端办公系统或流程（内容创作、编辑）整合的一套软件系统。cms有很多种类资讯新闻类，政府类，B2B,B2C电子商务类，博客类，视频类等等… 不说废话了今天我们就弄一个视频类的玩着也有趣很多，我搭建的名字叫【<a target="_blank" rel="noopener" href="http://mv.v5ant.com/">蚂蚁影院</a>】是不是很听起来很不错????。</p>
+<h2 id="一-基础工作准备"><a href="#一-基础工作准备" class="headerlink" title="一.基础工作准备"></a>一.基础工作准备</h2><p>网站三要素：<strong>空间，域名，程序</strong></p>
+<h3 id="准备空间"><a href="#准备空间" class="headerlink" title="准备空间"></a>准备空间</h3><p>空间去哪买？ 目前国内主流的也就是亚马逊,阿里云，腾讯云，百度云，景安网络，西部数码.. 机器类目繁多怎么买？ 一般也就虚拟**空间，vps，云主机 ** <strong>虚拟空间</strong>，也称虚拟主机（Virtual Host Virtual Server）是使用特殊的软硬件技术，把一台计算机主机     分成一台台”虚    拟”的主机，每一台虚拟主机都具有独立的域名和IP地址（或共享的IP地址），具有        完   整的Internet服务器能。 <strong>VPS</strong>是服务器划分的一块，但是有独立的操作系统，可以理解为是一个小电脑； <strong>云主机</strong>和其他普通主机基本概念相同，就是云主机是新一代的主机租用服务 价格大概是这样的 **虚拟空间 &lt; VPS &lt; 云主机 , ** 我们就是简单弄一个玩其实虚拟空间就能跑起来关键便宜，应该虚拟空间是只能放一个站而且有一些其他限制比如PHP版本什么都，有的还不支持Linux反正看清楚再买了。主机就爽了????可以放N个网站系统也可以随便装的看你们需求了。</p>
+<h3 id="准备域名"><a href="#准备域名" class="headerlink" title="准备域名"></a>准备域名</h3><p>域名一般就去万网，新网注册就可以，主机运营商一般都可以买域名。需要注意的是大陆空间需要备案，而有的特殊后缀的域名是不支持备案的所以就安安稳稳买.com就好了????</p>
+<h3 id="准备程序"><a href="#准备程序" class="headerlink" title="准备程序"></a>准备程序</h3><p>今天我们教程使用的程序是苹果cms，苹果CMS程序是一套采用PHP+MYSQL环境下运行的快速建站系统。地址：<a target="_blank" rel="noopener" href="http://www.maccms.com/">http://www.maccms.com</a> ，下载最新版v10就可以。</p>
+<h2 id="二-服务器部署"><a href="#二-服务器部署" class="headerlink" title="二.服务器部署"></a>二.服务器部署</h2><p>本教程是以ubuntu系统为例写的，因此建议在申请VPS时，操作系统选择ubuntu18.04. 在安装苹果CMS之前，要先要在你的VPS上搭建LAMP环境。所谓的LAMP指的Linux+Apache+Mysql+PHP. 其中，你的操作系统ubuntu就是Linux。Apache是http服务器，浏览器通过服务器（也就是你的VPS）上的apache提供的服务才能获取到网页资源，从而显示在你的电脑屏幕上。Mysql是数据库，你的网站（这里即是苹果CMS）动态运行时所存取的数据都是由数据库来管理的。PHP与Apache相互配合为用户提供动态的网页，我们要安装的苹果CMS就是php语言编写的，他的运行必须依赖于PHP环境。 关于LAMP环境的搭建方法，网上有太多的教程，这里不介绍具体的安装方法，请自行在百度中搜索，其安装很简单，在ubuntu下使用apt-get命令即可安装。</p>
+<h2 id="三-安装苹果CMS"><a href="#三-安装苹果CMS" class="headerlink" title="三.安装苹果CMS"></a>三.安装苹果CMS</h2><p>首先，到苹果CMS官网上下载安装包，然后使用scp命令将安装包拷贝到你的VPS的 /var/www/html目录下并解压（当然你也可以直接在vps上使用wget命令下载安装包），解压成功后，先在vps上执行命令 chmod -R 777 /var/www/html 修改文件权限。然后在你的浏览器中访问 http://你的vps的ip地址或域名/install.php 即可进入安装界面，如下所示： <img src="http://cdn.v5ant.com/ueditor/images/1118806560458543104.png" alt="image.png"> 然后，点击“同意协议并安装系统”，此时进入下面的环境监测界面。安装程序会检查一下你的vps上所安装的插件是否符合苹果CMS的要求，只有符合要求时，苹果CMS才能正常运行，因此这一步的检测是必要的。 <img src="http://cdn.v5ant.com/ueditor/images/1118806754055032832.png" alt="image.png"> 当然，既然是检测环境，当然会有某些检查项不符合要求的情况，如果哪一项不符合要求，这里会用红色高亮的色带将其标识出来。一般检测不通过都是因为系统中缺少某些插件，使用apt-get命令将这些插件安装好后，重新开始安装即可。例如，当zip这一项检测失败时，在vps上执行 apt-get install php-zip 命令；若xml这一项检测失败，则在vps上执行 apt-get install php-xml 命令，其它模块检测失败都可以用这种方式来安装。当这一步检测全部成功后，即可点击“进行下一步”按钮，此时进入如下界面： <img src="http://cdn.v5ant.com/ueditor/images/1118806876012810240.png" alt="image.png"> 这里有关数据库的信息，按照你的MySQL中的实际配置填写就好，目的是让苹果CMS通过这些参数能够登录到你的MySQL上，只有这样，苹果CMS才能使用数据库读写所需的数据。 下面的管理员账号密码是你日后用来登录苹果CMS后台时所需的用户名和密码，请设置一个足够长，并且足够安全，不易被破解的密码并牢记它。 最后，点击“立即执行安装”按钮，稍等片刻即安装成功。此时，在浏览器中输入 http://你的vps的ip地址或域名/index.php 即可看到苹果CMS的主页（即前台界面）。这个页面就是外界访问你的站点时看到的首页。 在浏览器中输入 http://你的vps的ip地址或域名/admin.php 即可登录苹果CMS后台管理界面。在后台管理页面，你可以做与你的站点相关的一切设置，包括采集视频、设置播放器、更换模板、设置SEO优化等等。这部分内容十分繁杂，只有成功采集到视频数据后，你的网站上才有内容，别人才能够在你的网站上观看视频，否则你的网站就是空的，没什么实质性内容。 这里只简单介绍一下如何采集系统自带的资源站的数据，如下如所示的步骤操作即可： 采集时可能会报错“分类未绑定”，这是因为你的站点的电影分类与资源站上的电影分类没有建立一一对应关系，因此，苹果CMS并不知道资源站上的A分类对应到你的站点上是哪一个分类。此时只需绑定分类即可，这些操作都不难，稍加摸索即可上手。 网站设置好后的效果，可以参看我的站点：蚂蚁影院（<a target="_blank" rel="noopener" href="http://mv.v5ant.com/">点击前往</a>） 本教程主要讲解苹果CMS的安装和配置，至于（自定义）采集视频、站点的高级设置、网站SEO优化等高阶话题，可以参看其它资料，或者登陆苹果CMS官方论坛寻求帮助。总之，网上关于这方面的文章有很多，再此不再赘述。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">QiaoJianFeng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://q-jf.cn/2019/06/22/e6-95-99-e4-bd-a0-e6-90-ad-e5-bb-ba-e4-b8-80-e5-a5-97-e5-b1-9e-e4-ba-8e-e8-87-aa-e5-b7-b1-e7-9a-84-e8-a7-86-e9-a2-91-e7-bd-91-e7-ab-99-e5-b0-8f-e7-99-bd-e6-95-99-e7-a8-8b-e5-a4-a7-e7-a5-9e-e7-bb-95/">https://q-jf.cn/2019/06/22/e6-95-99-e4-bd-a0-e6-90-ad-e5-bb-ba-e4-b8-80-e5-a5-97-e5-b1-9e-e4-ba-8e-e8-87-aa-e5-b7-b1-e7-9a-84-e8-a7-86-e9-a2-91-e7-bd-91-e7-ab-99-e5-b0-8f-e7-99-bd-e6-95-99-e7-a8-8b-e5-a4-a7-e7-a5-9e-e7-bb-95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://q-jf.cn" target="_blank">QIAO@博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/06/22/mongo-e5-85-a5-e9-97-a8-1-e5-8e-9f-e7-90-86/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Mongo入门-1-原理</div></div></a></div><div class="next-post pull-right"><a href="/2019/06/22/e3-80-90-e8-8b-b9-e6-9e-9ccms-v10-e3-80-91-e4-bb-bf-e4-bc-98-e9-85-b7-e6-a8-a1-e6-9d-bfpc-e5-ae-8c-e7-be-8e-e4-bf-ae-e5-a4-8d-e7-89-88/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【苹果cms v10】仿优酷模板pc完美修复版</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">QiaoJianFeng</div><div class="author-info__description">QIAO是一个以Web前端开发为主的学习,进阶,交流,分享资源的博客。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E5%B7%A5%E4%BD%9C%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">一.基础工作准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E7%A9%BA%E9%97%B4"><span class="toc-number">2.1.</span> <span class="toc-text">准备空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%9F%9F%E5%90%8D"><span class="toc-number">2.2.</span> <span class="toc-text">准备域名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.3.</span> <span class="toc-text">准备程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2"><span class="toc-number">3.</span> <span class="toc-text">二.服务器部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%AE%89%E8%A3%85%E8%8B%B9%E6%9E%9CCMS"><span class="toc-number">4.</span> <span class="toc-text">三.安装苹果CMS</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/01/14/vue-router%E6%BA%90%E7%A0%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B/" title="vue-router源码了解一下"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue-router源码了解一下"/></a><div class="content"><a class="title" href="/2020/01/14/vue-router%E6%BA%90%E7%A0%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B/" title="vue-router源码了解一下">vue-router源码了解一下</a><time datetime="2020-01-14T10:02:34.000Z" title="发表于 2020-01-14 18:02:34">2020-01-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/01/13/git%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C/" title="git日常操作"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="git日常操作"/></a><div class="content"><a class="title" href="/2020/01/13/git%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C/" title="git日常操作">git日常操作</a><time datetime="2020-01-13T03:24:51.000Z" title="发表于 2020-01-13 11:24:51">2020-01-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/01/08/%E9%AB%98%E6%B8%85%E5%9C%A8%E7%BA%BF%E7%9B%B4%E6%92%AD-1/" title="敢死队2-HDTC中英字在线观看"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="敢死队2-HDTC中英字在线观看"/></a><div class="content"><a class="title" href="/2020/01/08/%E9%AB%98%E6%B8%85%E5%9C%A8%E7%BA%BF%E7%9B%B4%E6%92%AD-1/" title="敢死队2-HDTC中英字在线观看">敢死队2-HDTC中英字在线观看</a><time datetime="2020-01-08T03:48:19.000Z" title="发表于 2020-01-08 11:48:19">2020-01-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/12/30/%E4%BA%86%E8%A7%A3%E4%B8%80%E4%BA%9BHTTP%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" title="了解一些HTTP协议相关知识"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="了解一些HTTP协议相关知识"/></a><div class="content"><a class="title" href="/2019/12/30/%E4%BA%86%E8%A7%A3%E4%B8%80%E4%BA%9BHTTP%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" title="了解一些HTTP协议相关知识">了解一些HTTP协议相关知识</a><time datetime="2019-12-30T08:49:42.000Z" title="发表于 2019-12-30 16:49:42">2019-12-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/11/22/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E6%9B%B4%E6%96%B0%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%8E%B0/" title="你能简单谈谈什么是 vue 的响应式更新？"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="你能简单谈谈什么是 vue 的响应式更新？"/></a><div class="content"><a class="title" href="/2019/11/22/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E6%9B%B4%E6%96%B0%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%8E%B0/" title="你能简单谈谈什么是 vue 的响应式更新？">你能简单谈谈什么是 vue 的响应式更新？</a><time datetime="2019-11-22T06:42:57.000Z" title="发表于 2019-11-22 14:42:57">2019-11-22</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By QiaoJianFeng</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

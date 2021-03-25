@@ -1,0 +1,143 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>国外CloudFlare免费CDN加速及防护注册使用教程 | QIAO@博客</title><meta name="keywords" content="CDN"><meta name="author" content="QiaoJianFeng"><meta name="copyright" content="QiaoJianFeng"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="国内也有很多免费 CDN 工具，都是需要网站备案后才能使用。网站没有备案的站长可以选择使用国外 CDN 工具，操作起来也没有我们想象的那么麻烦。 cloudflare 是一款免费的 CDN 工具，CloudFlare 可以帮助受保护站点抵御包括拒绝服务攻击(DenialofService)在内的大多数网络攻击，确保该网站长期在线，同时提升网站的性能、访问速度以改善访客体验。 这个教程教大家怎么简单">
+<meta property="og:type" content="article">
+<meta property="og:title" content="国外CloudFlare免费CDN加速及防护注册使用教程">
+<meta property="og:url" content="https://q-jf.cn/2019/08/14/e5-9b-bd-e5-a4-96cloudflare-e5-85-8d-e8-b4-b9cdn-e5-8a-a0-e9-80-9f-e5-8f-8a-e9-98-b2-e6-8a-a4-e6-b3-a8-e5-86-8c-e4-bd-bf-e7-94-a8-e6-95-99-e7-a8-8b/index.html">
+<meta property="og:site_name" content="QIAO@博客">
+<meta property="og:description" content="国内也有很多免费 CDN 工具，都是需要网站备案后才能使用。网站没有备案的站长可以选择使用国外 CDN 工具，操作起来也没有我们想象的那么麻烦。 cloudflare 是一款免费的 CDN 工具，CloudFlare 可以帮助受保护站点抵御包括拒绝服务攻击(DenialofService)在内的大多数网络攻击，确保该网站长期在线，同时提升网站的性能、访问速度以改善访客体验。 这个教程教大家怎么简单">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2019-08-14T07:59:18.000Z">
+<meta property="article:modified_time" content="2019-09-11T03:06:08.389Z">
+<meta property="article:author" content="QiaoJianFeng">
+<meta property="article:tag" content="CDN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://q-jf.cn/2019/08/14/e5-9b-bd-e5-a4-96cloudflare-e5-85-8d-e8-b4-b9cdn-e5-8a-a0-e9-80-9f-e5-8f-8a-e9-98-b2-e6-8a-a4-e6-b3-a8-e5-86-8c-e4-bd-bf-e7-94-a8-e6-95-99-e7-a8-8b/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2019-09-11 11:06:08'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">QIAO@博客</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">国外CloudFlare免费CDN加速及防护注册使用教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-08-14T07:59:18.000Z" title="发表于 2019-08-14 15:59:18">2019-08-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2019-09-11T03:06:08.389Z" title="更新于 2019-09-11 11:06:08">2019-09-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/">服务端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="国外CloudFlare免费CDN加速及防护注册使用教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>国内也有很多免费 CDN 工具，都是需要网站备案后才能使用。网站没有备案的站长可以选择使用国外 CDN 工具，操作起来也没有我们想象的那么麻烦。 cloudflare 是一款免费的 CDN 工具，CloudFlare 可以帮助受保护站点抵御包括拒绝服务攻击(DenialofService)在内的大多数网络攻击，确保该网站长期在线，同时提升网站的性能、访问速度以改善访客体验。 这个教程教大家怎么简单注册和使用 cloudflare。 <strong>1，注册登录 cloudflare 这里都是英文界面，但是不难读懂</strong> <img src="https://images.lusongsong.com/upload/1492-1.jpg" alt="国外免费CDN加速及防护:CloudFlare注册使用教程 主机 网站安全 网站运营 站长 建站教程 第1张" title="国外免费CDN加速及防护:CloudFlare注册使用教程 主机 网站安全 网站运营 站长 建站教程 第1张"> cloudflare 注册教程 <strong>2，”add websites”添加网站域名，这里不要带 www</strong> <img src="https://images.lusongsong.com/upload/1492-2.jpg" alt="国外免费CDN加速及防护:CloudFlare注册使用教程 主机 网站安全 网站运营 站长 建站教程 第2张" title="国外免费CDN加速及防护:CloudFlare注册使用教程 主机 网站安全 网站运营 站长 建站教程 第2张"> <strong>3, cloudflare 扫描网站后或自动扫描出 dns 解析条目，可以再额外增加和删除解析。嫌麻烦的就直接点击”continue”</strong> <img src="https://images.lusongsong.com/upload/1492-3.jpg" alt="国外免费CDN加速及防护:CloudFlare注册使用教程 主机 网站安全 网站运营 站长 建站教程 第3张" title="国外免费CDN加速及防护:CloudFlare注册使用教程 主机 网站安全 网站运营 站长 建站教程 第3张"> <strong>4，选择”free plan”，使用免费版本的 cloudflare</strong> <img src="https://images.lusongsong.com/upload/1492-4.jpg" alt="国外免费CDN加速及防护:CloudFlare注册使用教程 主机 网站安全 网站运营 站长 建站教程 第4张" title="国外免费CDN加速及防护:CloudFlare注册使用教程 主机 网站安全 网站运营 站长 建站教程 第4张"> <strong>5，修改 dns 服务</strong>器 <img src="https://images.lusongsong.com/upload/1492-5.jpg" alt="国外免费CDN加速及防护:CloudFlare注册使用教程 主机 网站安全 网站运营 站长 建站教程 第5张" title="国外免费CDN加速及防护:CloudFlare注册使用教程 主机 网站安全 网站运营 站长 建站教程 第5张"> 如我现在使用的是万网域名，我的域名解析服务器是”dns9.hichina.com”,现在需要将服务器修改为 cloudflare 服务器。 需要到<a target="_blank" rel="noopener" href="https://lusongsong.com/blog/post/305.html">万网后台去修改</a>，这里需要注意的是：不是增加或者修改解析条目，而是修改解析服务器。所以在万网后台选择的是”管理”而不是”解析” <img src="https://images.lusongsong.com/upload/1492-6.jpg" alt="国外免费CDN加速及防护:CloudFlare注册使用教程 主机 网站安全 网站运营 站长 建站教程 第6张" title="国外免费CDN加速及防护:CloudFlare注册使用教程 主机 网站安全 网站运营 站长 建站教程 第6张"> <img src="https://images.lusongsong.com/upload/1492-7.jpg" alt="国外免费CDN加速及防护:CloudFlare注册使用教程 主机 网站安全 网站运营 站长 建站教程 第7张" title="国外免费CDN加速及防护:CloudFlare注册使用教程 主机 网站安全 网站运营 站长 建站教程 第7张"> <strong>6，cloudflare 域名解析服务器</strong> 修改解析服务器后大约需要几分钟就能生效。 解析成功后，会显示”status:active” 据网站行业权威人士数据，世界上 90%以上的网站很容易遭受攻击。我们小站更是轻而易举的就会被黑，未雨绸缪防范于未然是每个站长必须考虑的事情，除非你不想把网站做大做强做持久。cloudflare 防止攻击的一个方式就是隐藏网站真实 ip 地址。 在安装 cloudflare 以后仍然遭受攻击，页面经常会出现 508 错误，一个很大的原因就是网站 ip 已经暴露。 这里提醒下大家，如果你网站未做任何防护请行动起来，如果你也要使用 cloudflare，，请先安装软件后再更换服务器，而不是更换服务器后再安装防护软件。也只有做好了防范工作，我们的网站才能长治久安。 原文地址：<a target="_blank" rel="noopener" href="https://lusongsong.com/reed/1492.html">https://lusongsong.com/reed/1492.html</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">QiaoJianFeng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://q-jf.cn/2019/08/14/e5-9b-bd-e5-a4-96cloudflare-e5-85-8d-e8-b4-b9cdn-e5-8a-a0-e9-80-9f-e5-8f-8a-e9-98-b2-e6-8a-a4-e6-b3-a8-e5-86-8c-e4-bd-bf-e7-94-a8-e6-95-99-e7-a8-8b/">https://q-jf.cn/2019/08/14/e5-9b-bd-e5-a4-96cloudflare-e5-85-8d-e8-b4-b9cdn-e5-8a-a0-e9-80-9f-e5-8f-8a-e9-98-b2-e6-8a-a4-e6-b3-a8-e5-86-8c-e4-bd-bf-e7-94-a8-e6-95-99-e7-a8-8b/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://q-jf.cn" target="_blank">QIAO@博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CDN/">CDN</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/08/21/e9-a6-96-e6-b6-82-e7-ae-80-e7-ba-a6seo-e6-a8-a1-e6-9d-bf-ef-bc-8c-e5-8e-bb-e9-a6-96-e9-a1-b5-e5-b9-bf-e5-91-8a-e8-84-9a-e6-9c-ac/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">首涂简约SEO模板，去首页广告脚本</div></div></a></div><div class="next-post pull-right"><a href="/2019/08/09/e6-89-8b-e6-91-b8-e6-89-8b-e6-95-99-e4-bd-a0-e6-92-b8-e4-b8-80-e4-b8-aa-e8-84-9a-e6-89-8b-e6-9e-b6/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">手摸手教你撸一个脚手架</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">QiaoJianFeng</div><div class="author-info__description">QIAO是一个以Web前端开发为主的学习,进阶,交流,分享资源的博客。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/01/14/vue-router%E6%BA%90%E7%A0%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B/" title="vue-router源码了解一下"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue-router源码了解一下"/></a><div class="content"><a class="title" href="/2020/01/14/vue-router%E6%BA%90%E7%A0%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B/" title="vue-router源码了解一下">vue-router源码了解一下</a><time datetime="2020-01-14T10:02:34.000Z" title="发表于 2020-01-14 18:02:34">2020-01-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/01/13/git%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C/" title="git日常操作"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="git日常操作"/></a><div class="content"><a class="title" href="/2020/01/13/git%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C/" title="git日常操作">git日常操作</a><time datetime="2020-01-13T03:24:51.000Z" title="发表于 2020-01-13 11:24:51">2020-01-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/01/08/%E9%AB%98%E6%B8%85%E5%9C%A8%E7%BA%BF%E7%9B%B4%E6%92%AD-1/" title="敢死队2-HDTC中英字在线观看"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="敢死队2-HDTC中英字在线观看"/></a><div class="content"><a class="title" href="/2020/01/08/%E9%AB%98%E6%B8%85%E5%9C%A8%E7%BA%BF%E7%9B%B4%E6%92%AD-1/" title="敢死队2-HDTC中英字在线观看">敢死队2-HDTC中英字在线观看</a><time datetime="2020-01-08T03:48:19.000Z" title="发表于 2020-01-08 11:48:19">2020-01-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/12/30/%E4%BA%86%E8%A7%A3%E4%B8%80%E4%BA%9BHTTP%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" title="了解一些HTTP协议相关知识"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="了解一些HTTP协议相关知识"/></a><div class="content"><a class="title" href="/2019/12/30/%E4%BA%86%E8%A7%A3%E4%B8%80%E4%BA%9BHTTP%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" title="了解一些HTTP协议相关知识">了解一些HTTP协议相关知识</a><time datetime="2019-12-30T08:49:42.000Z" title="发表于 2019-12-30 16:49:42">2019-12-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/11/22/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E6%9B%B4%E6%96%B0%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%8E%B0/" title="你能简单谈谈什么是 vue 的响应式更新？"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="你能简单谈谈什么是 vue 的响应式更新？"/></a><div class="content"><a class="title" href="/2019/11/22/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E6%9B%B4%E6%96%B0%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%8E%B0/" title="你能简单谈谈什么是 vue 的响应式更新？">你能简单谈谈什么是 vue 的响应式更新？</a><time datetime="2019-11-22T06:42:57.000Z" title="发表于 2019-11-22 14:42:57">2019-11-22</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By QiaoJianFeng</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

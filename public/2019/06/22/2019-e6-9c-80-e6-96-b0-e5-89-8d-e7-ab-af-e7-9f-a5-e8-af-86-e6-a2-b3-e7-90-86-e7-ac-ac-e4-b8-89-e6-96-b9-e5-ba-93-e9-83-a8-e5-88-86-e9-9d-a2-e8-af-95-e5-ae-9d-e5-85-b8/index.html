@@ -1,0 +1,415 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2019最新前端知识梳理(第三方库部分)-面试宝典 | QIAO@博客</title><meta name="keywords" content="面试题,类库"><meta name="author" content="QiaoJianFeng"><meta name="copyright" content="QiaoJianFeng"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="四、jQuery1 你觉得 jQuery 或 zepto 源码有哪些写的好的地方 jquery 源码封装在一个匿名函数的自执行环境中，有助于防止变量的全局污染，然后通过传入 window 对象参数，可以使 window 对象作为局部变量使用，好处是当 jquery 中访问 window 对象的时候，就不用将作用域链退回到顶层作用域了，从而可以更快的访问 window 对象。同样，传入 undefi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019最新前端知识梳理(第三方库部分)-面试宝典">
+<meta property="og:url" content="https://q-jf.cn/2019/06/22/2019-e6-9c-80-e6-96-b0-e5-89-8d-e7-ab-af-e7-9f-a5-e8-af-86-e6-a2-b3-e7-90-86-e7-ac-ac-e4-b8-89-e6-96-b9-e5-ba-93-e9-83-a8-e5-88-86-e9-9d-a2-e8-af-95-e5-ae-9d-e5-85-b8/index.html">
+<meta property="og:site_name" content="QIAO@博客">
+<meta property="og:description" content="四、jQuery1 你觉得 jQuery 或 zepto 源码有哪些写的好的地方 jquery 源码封装在一个匿名函数的自执行环境中，有助于防止变量的全局污染，然后通过传入 window 对象参数，可以使 window 对象作为局部变量使用，好处是当 jquery 中访问 window 对象的时候，就不用将作用域链退回到顶层作用域了，从而可以更快的访问 window 对象。同样，传入 undefi">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2019-06-22T09:22:58.000Z">
+<meta property="article:modified_time" content="2019-09-12T02:59:53.939Z">
+<meta property="article:author" content="QiaoJianFeng">
+<meta property="article:tag" content="面试题">
+<meta property="article:tag" content="类库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://q-jf.cn/2019/06/22/2019-e6-9c-80-e6-96-b0-e5-89-8d-e7-ab-af-e7-9f-a5-e8-af-86-e6-a2-b3-e7-90-86-e7-ac-ac-e4-b8-89-e6-96-b9-e5-ba-93-e9-83-a8-e5-88-86-e9-9d-a2-e8-af-95-e5-ae-9d-e5-85-b8/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2019-09-12 10:59:53'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">QIAO@博客</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">2019最新前端知识梳理(第三方库部分)-面试宝典</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-06-22T09:22:58.000Z" title="发表于 2019-06-22 17:22:58">2019-06-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2019-09-12T02:59:53.939Z" title="更新于 2019-09-12 10:59:53">2019-09-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95%E9%A2%98%E7%B1%BB/">面试题类</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="2019最新前端知识梳理(第三方库部分)-面试宝典"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="四、jQuery"><a href="#四、jQuery" class="headerlink" title="四、jQuery"></a>四、jQuery</h2><h3 id="1-你觉得-jQuery-或-zepto-源码有哪些写的好的地方"><a href="#1-你觉得-jQuery-或-zepto-源码有哪些写的好的地方" class="headerlink" title="1 你觉得 jQuery 或 zepto 源码有哪些写的好的地方"></a>1 你觉得 jQuery 或 zepto 源码有哪些写的好的地方</h3><ul>
+<li>jquery 源码封装在一个匿名函数的自执行环境中，有助于防止变量的全局污染，然后通过传入 window 对象参数，可以使 window 对象作为局部变量使用，好处是当 jquery 中访问 window 对象的时候，就不用将作用域链退回到顶层作用域了，从而可以更快的访问 window 对象。同样，传入 undefined 参数，可以缩短查找 undefined 时的作用域链</li>
+</ul>
+<p>(function( window, undefined ) {</p>
+<p>//用一个函数域包起来，就是所谓的沙箱</p>
+<p>//在这里边 var 定义的变量，属于这个函数域内的局部变量，避免污染全局</p>
+<p>//把当前沙箱需要的外部变量通过函数参数引入进来</p>
+<p>//只要保证参数对内提供的接口的一致性，你还可以随意替换传进来的这个参数</p>
+<p>window.jQuery = window.$ = jQuery;</p>
+<p>})( window );</p>
+<ul>
+<li>jquery 将一些原型属性和方法封装在了 jquery.prototype 中，为了缩短名称，又赋值给了 jquery.fn，这是很形象的写法</li>
+<li>有一些数组或对象的方法经常能使用到，jQuery 将其保存为局部变量以提高访问速度</li>
+<li>jquery 实现的链式调用可以节约代码，所返回的都是同一个对象，可以提高代码效率</li>
+</ul>
+<h3 id="2-jQuery-的实现原理"><a href="#2-jQuery-的实现原理" class="headerlink" title="2 jQuery 的实现原理"></a>2 jQuery 的实现原理</h3><ul>
+<li><code>(function(window, undefined) &#123;&#125;)(window);</code></li>
+<li><code>jQuery</code>  利用  <code>JS</code>  函数作用域的特性，采用立即调用表达式包裹了自身，解决命名空间和变量污染问题</li>
+<li><code>window.jQuery = window.$ = jQuery;</code></li>
+<li>在闭包当中将 jQuery 和 $ 绑定到 window 上，从而将 jQuery 和 $ 暴露为全局变量</li>
+</ul>
+<h3 id="3-jQuery-fn-的-init-方法返回的-this-指的是什么对象"><a href="#3-jQuery-fn-的-init-方法返回的-this-指的是什么对象" class="headerlink" title="3 jQuery.fn  的  init  方法返回的  this  指的是什么对象"></a>3 <code>jQuery.fn</code>  的  <code>init</code>  方法返回的  <code>this</code>  指的是什么对象</h3><ul>
+<li>jQuery.fn 的 init 方法 返回的 this 就是 jQuery 对象</li>
+<li>用户使用 jQuery() 或 $() 即可初始化 jQuery 对象，不需要动态的去调用 init 方法</li>
+</ul>
+<h3 id="4-jQuery-extend-与-jQuery-fn-extend-的区别"><a href="#4-jQuery-extend-与-jQuery-fn-extend-的区别" class="headerlink" title="4 jQuery.extend 与 jQuery.fn.extend 的区别"></a>4 jQuery.extend 与 jQuery.fn.extend 的区别</h3><ul>
+<li><code>$.fn.extend()</code>  和  <code>$.extend()</code>  是  <code>jQuery</code>  为扩展插件提拱了两个方法</li>
+<li><code>$.extend(object)</code>; // 为 jQuery 添加“静态方法”（工具方法）</li>
+</ul>
+<p>$.extend({　　min: function(a, b) { return a &lt; b ? a : b; },　　max: function(a, b) { return a &gt; b ? a : b; }});$.min(2,3); //  2$.max(4,5); //  5</p>
+<ul>
+<li>$.extend([true,] targetObject, object1[, object2]); // 对 targt 对象进行扩展</li>
+</ul>
+<p>var settings = {validate:false, limit:5};var options = {validate:true, name:”bar”};$.extend(settings, options);  //  注意：不支持第一个参数传  false// settings == {validate:true, limit:5, name:”bar”}</p>
+<ul>
+<li><code>$.fn.extend(json)</code>; // 为 jQuery 添加“成员函数”（实例方法）</li>
+</ul>
+<p>$.fn.extend({<br>   alertValue: function() {<br>      $(this).click(function(){<br>        alert($(this).val());<br>      });<br>   }});$(“email”).alertValue();</p>
+<h3 id="5-jQuery-的属性拷贝-extend-的实现原理是什么，如何实现深拷贝"><a href="#5-jQuery-的属性拷贝-extend-的实现原理是什么，如何实现深拷贝" class="headerlink" title="5 jQuery 的属性拷贝(extend)的实现原理是什么，如何实现深拷贝"></a>5 jQuery 的属性拷贝(extend)的实现原理是什么，如何实现深拷贝</h3><ul>
+<li>浅拷贝（只复制一份原始对象的引用） <code>var newObject = $.extend(&#123;&#125;, oldObject);</code></li>
+<li>深拷贝（对原始对象属性所引用的对象进行进行递归拷贝） <code>var newObject = $.extend(true, &#123;&#125;, oldObject);</code></li>
+</ul>
+<h3 id="6-jQuery-的队列是如何实现的"><a href="#6-jQuery-的队列是如何实现的" class="headerlink" title="6 jQuery 的队列是如何实现的"></a>6 jQuery 的队列是如何实现的</h3><ul>
+<li>jQuery 核心中有一组队列控制方法，由  <code>queue()/dequeue()/clearQueue()</code>  三个方法组成。</li>
+<li>主要应用于  <code>animate()</code>，<code>ajax</code>，其他要按时间顺序执行的事件中</li>
+</ul>
+<p>var func1 = function(){alert(‘事件 1’);}var func2 = function(){alert(‘事件 2’);}var func3 = function(){alert(‘事件 3’);}var func4 = function(){alert(‘事件 4’);}//  入栈队列事件$(‘box’).queue(“queue1”, func1);  // push func1 to queue1$(‘box’).queue(“queue1”, func2);  // push func2 to queue1//  替换队列事件$(‘box’).queue(“queue1”, []);  // delete queue1 with empty array$(‘box’).queue(“queue1”, [func3, func4]);  // replace queue1//  获取队列事件（返回一个函数数组）$(‘box’).queue(“queue1”);  // [func3(), func4()]// 出栈队列事件并执行$(‘box’).dequeue(“queue1”); // return func3 and do func3$(‘box’).dequeue(“queue1”); // return func4 and do func4// 清空整个队列$(‘box’).clearQueue(“queue1”); // delete queue1 with clearQueue</p>
+<h3 id="7-jQuery-中的-bind-live-delegate-on-的区别"><a href="#7-jQuery-中的-bind-live-delegate-on-的区别" class="headerlink" title="7 jQuery 中的 bind(), live(), delegate(), on()的区别"></a>7 jQuery 中的 bind(), live(), delegate(), on()的区别</h3><ul>
+<li><code>bind()</code>  直接绑定在目标元素上</li>
+<li><code>live()</code>  通过冒泡传播事件，默认<code>document</code>上，支持动态数据</li>
+<li><code>delegate()</code>  更精确的小范围使用事件代理，性能优于 live</li>
+<li><code>on()</code>  是最新的<code>1.9</code>版本整合了之前的三种方式的新事件绑定机制</li>
+</ul>
+<h3 id="8-是否知道自定义事件"><a href="#8-是否知道自定义事件" class="headerlink" title="8 是否知道自定义事件"></a>8 是否知道自定义事件</h3><ul>
+<li>事件即“发布/订阅”模式，自定义事件即“消息发布”，事件的监听即“订阅订阅”</li>
+<li>JS 原生支持自定义事件，示例：</li>
+</ul>
+<p>document.createEvent(type); //  创建事件<br>  event.initEvent(eventType, canBubble, prevent); //  初始化事件<br>  target.addEventListener(‘dataavailable’, handler, false); //  监听事件<br>  target.dispatchEvent(e);  //  触发事件</p>
+<ul>
+<li>jQuery 里的<code>fire</code>  函数用于调用<code>jQuery</code>自定义事件列表中的事件</li>
+</ul>
+<h3 id="9-jQuery-通过哪个方法和-Sizzle-选择器结合的"><a href="#9-jQuery-通过哪个方法和-Sizzle-选择器结合的" class="headerlink" title="9 jQuery 通过哪个方法和 Sizzle 选择器结合的"></a>9 jQuery 通过哪个方法和 Sizzle 选择器结合的</h3><ul>
+<li><code>Sizzle</code>  选择器采取  <code>Right To Left</code>  的匹配模式，先搜寻所有匹配标签，再判断它的父节点</li>
+<li><code>jQuery</code>  通过  <code>$(selecter).find(selecter);</code>  和  <code>Sizzle</code>  选择器结合</li>
+</ul>
+<h3 id="10-jQuery-中如何将数组转化为-JSON-字符串，然后再转化回来"><a href="#10-jQuery-中如何将数组转化为-JSON-字符串，然后再转化回来" class="headerlink" title="10 jQuery 中如何将数组转化为 JSON 字符串，然后再转化回来"></a>10 jQuery 中如何将数组转化为 JSON 字符串，然后再转化回来</h3><p>//  通过原生  JSON.stringify/JSON.parse  扩展  jQuery  实现<br> $.array2json = function(array) {<br>    return JSON.stringify(array);<br> }</p>
+<p>$.json2array = function(array) {<br>    // $.parseJSON(array); // 3.0  开始，已过时<br>    return JSON.parse(array);<br> }</p>
+<p>//  调用<br> var json = $.array2json([‘a’, ‘b’, ‘c’]);<br> var array = $.json2array(json);</p>
+<h3 id="11-jQuery-一个对象可以同时绑定多个事件，这是如何实现的"><a href="#11-jQuery-一个对象可以同时绑定多个事件，这是如何实现的" class="headerlink" title="11 jQuery 一个对象可以同时绑定多个事件，这是如何实现的"></a>11 jQuery 一个对象可以同时绑定多个事件，这是如何实现的</h3><p>$(“btn”).on(“mouseover mouseout”, func);</p>
+<p>$(“btn”).on({<br>      mouseover: func1,<br>      mouseout: func2,<br>      click: func3  });</p>
+<h3 id="12-针对-jQuery-的优化方法"><a href="#12-针对-jQuery-的优化方法" class="headerlink" title="12 针对 jQuery 的优化方法"></a>12 针对 jQuery 的优化方法</h3><ul>
+<li>缓存频繁操作<code>DOM</code>对象</li>
+<li>尽量使用<code>id</code>选择器代替<code>class</code>选择器</li>
+<li>总是从<code>id</code>选择器来继承</li>
+<li>尽量使用链式操作</li>
+<li>使用时间委托  <code>on</code>绑定事件</li>
+<li>采用<code>jQuery</code>的内部函数<code>data()</code>来存储数据</li>
+<li>使用最新版本的  <code>jQuery</code></li>
+</ul>
+<h3 id="13-jQuery-的-slideUp-动画，当鼠标快速连续触发-动画会滞后反复执行，该如何处理呢"><a href="#13-jQuery-的-slideUp-动画，当鼠标快速连续触发-动画会滞后反复执行，该如何处理呢" class="headerlink" title="13 jQuery 的 slideUp 动画，当鼠标快速连续触发, 动画会滞后反复执行，该如何处理呢"></a>13 jQuery 的 slideUp 动画，当鼠标快速连续触发, 动画会滞后反复执行，该如何处理呢</h3><ul>
+<li>在触发元素上的事件设置为延迟处理：使用  <code>JS</code>  原生  <code>setTimeout</code>  方法</li>
+<li>在触发元素的事件时预先停止所有的动画，再执行相应的动画事件：<code>$(&#39;.tab&#39;).stop().slideUp();</code></li>
+</ul>
+<h3 id="14-jQuery-UI-如何自定义组件"><a href="#14-jQuery-UI-如何自定义组件" class="headerlink" title="14 jQuery UI 如何自定义组件"></a>14 jQuery UI 如何自定义组件</h3><ul>
+<li>通过向  <code>$.widget()</code>  传递组件名称和一个原型对象来完成</li>
+<li><code>$.widget(&quot;ns.widgetName&quot;, [baseWidget], widgetPrototype);</code></li>
+</ul>
+<h3 id="15-jQuery-与-jQuery-UI、jQuery-Mobile-区别"><a href="#15-jQuery-与-jQuery-UI、jQuery-Mobile-区别" class="headerlink" title="15 jQuery 与 jQuery UI、jQuery Mobile 区别"></a>15 jQuery 与 jQuery UI、jQuery Mobile 区别</h3><ul>
+<li><code>jQuery</code>  是  <code>JS</code>  库，兼容各种 PC 浏览器，主要用作更方便地处理  <code>DOM</code>、事件、动画、<code>AJAX</code></li>
+<li><code>jQuery UI</code>  是建立在  <code>jQuery</code>  库上的一组用户界面交互、特效、小部件及主题</li>
+<li><code>jQuery Mobile</code>  以  <code>jQuery</code>  为基础，用于创建“移动 Web 应用”的框架</li>
+</ul>
+<h3 id="16-jQuery-和-Zepto-的区别？-各自的使用场景"><a href="#16-jQuery-和-Zepto-的区别？-各自的使用场景" class="headerlink" title="16 jQuery 和 Zepto 的区别？ 各自的使用场景"></a>16 jQuery 和 Zepto 的区别？ 各自的使用场景</h3><ul>
+<li><code>jQuery</code>  主要目标是<code>PC</code>的网页中，兼容全部主流浏览器。在移动设备方面，单独推出 `jQuery Mobile</li>
+<li><code>Zepto</code>从一开始就定<code>位移动设备，相对更轻量级。它的</code>API <code>基本兼容</code>jQuery`，但对 PC 浏览器兼容不理想</li>
+</ul>
+<h3 id="17-jQuery-对象的特点"><a href="#17-jQuery-对象的特点" class="headerlink" title="17 jQuery 对象的特点"></a>17 jQuery 对象的特点</h3><ul>
+<li>只有  <code>JQuery</code>对象才能使用  <code>JQuery</code>  方法</li>
+<li><code>JQuery</code>  对象是一个数组对象</li>
+</ul>
+<h2 id="五、Bootstrap"><a href="#五、Bootstrap" class="headerlink" title="五、Bootstrap"></a>五、Bootstrap</h2><h3 id="1-什么是-Bootstrap？以及为什么要使用-Bootstrap？"><a href="#1-什么是-Bootstrap？以及为什么要使用-Bootstrap？" class="headerlink" title="1 什么是 Bootstrap？以及为什么要使用 Bootstrap？"></a>1 什么是 Bootstrap？以及为什么要使用 Bootstrap？</h3><blockquote>
+<p><code>Bootstrap</code>  是一个用于快速开发  <code>Web</code>应用程序和网站的前端框架。<code>Bootstrap</code>是基于  <code>HTML</code>、<code>CSS</code>、<code>JAVASCRIPT</code>  的</p>
+</blockquote>
+<ul>
+<li><code>Bootstrap</code>具有移动设备优先、浏览器支持良好、容易上手、响应式设计等优点，所以<code>Bootstrap</code>被广泛应用</li>
+</ul>
+<h3 id="2-使用-Bootstrap-时，要声明的文档类型是什么？以及为什么要这样声明？"><a href="#2-使用-Bootstrap-时，要声明的文档类型是什么？以及为什么要这样声明？" class="headerlink" title="2 使用 Bootstrap 时，要声明的文档类型是什么？以及为什么要这样声明？"></a>2 使用 Bootstrap 时，要声明的文档类型是什么？以及为什么要这样声明？</h3><ul>
+<li>使用<code>Bootstrap</code>时，需要使用  <code>HTML5</code>  文档类型（<code>Doctype</code>）。<code>&lt;!DOCTYPE html&gt;</code></li>
+<li>因为<code>Bootstrap</code>使用了一些  <code>HTML5</code>  元素和  <code>CSS</code>  属性，如果在  <code>Bootstrap</code>创建的网页开头不使用  <code>HTML5</code>  的文档类型（<code>Doctype</code>），可能会面临一些浏览器显示不一致的问题，甚至可能面临一些特定情境下的不一致，以致于代码不能通过  <code>W3C</code>  标准的验证</li>
+</ul>
+<h3 id="3-什么是-Bootstrap-网格系统"><a href="#3-什么是-Bootstrap-网格系统" class="headerlink" title="3 什么是 Bootstrap 网格系统"></a>3 什么是 Bootstrap 网格系统</h3><blockquote>
+<p><code>Bootstrap</code>  包含了一个响应式的、移动设备优先的、不固定的网格系统，可以随着设备或视口大小的增加而适当地扩展到  <code>12</code>  列。它包含了用于简单的布局选项的预定义类，也包含了用于生成更多语义布局的功能强大的混合类</p>
+</blockquote>
+<ul>
+<li>响应式网格系统随着屏幕或视口（<code>viewport</code>）尺寸的增加，系统会自动分为最多<code>12</code>列。</li>
+</ul>
+<h3 id="4-Bootstrap-网格系统（Grid-System）的工作原理"><a href="#4-Bootstrap-网格系统（Grid-System）的工作原理" class="headerlink" title="4 Bootstrap 网格系统（Grid System）的工作原理"></a>4 Bootstrap 网格系统（Grid System）的工作原理</h3><ul>
+<li>（1）行必须放置在  <code>.container class</code>  内，以便获得适当的对齐（<code>alignment</code>）和内边距（<code>padding</code>）。</li>
+<li>（2）使用行来创建列的水平组。</li>
+<li>（3）内容应该放置在列内，且唯有列可以是行的直接子元素。</li>
+<li>（4）预定义的网格类，比如  <code>.row</code>  和  <code>.col-xs-4</code>，可用于快速创建网格布局。<code>LESS</code>  混合类可用于更多语义布局。</li>
+<li>（5）列通过内边距（<code>padding</code>）来创建列内容之间的间隙。该内边距是通过  <code>.rows</code>  上的外边距（<code>margin</code>）取负，表示第一列和最后一列的行偏移。</li>
+<li>（6）网格系统是通过指定您想要横跨的十二个可用的列来创建的。例如，要创建三个相等的列，则使用三个  <code>.col-xs-4</code></li>
+</ul>
+<h3 id="5-对于各类尺寸的设备，Bootstrap-设置的-class-前缀分别是什么"><a href="#5-对于各类尺寸的设备，Bootstrap-设置的-class-前缀分别是什么" class="headerlink" title="5 对于各类尺寸的设备，Bootstrap 设置的 class 前缀分别是什么"></a>5 对于各类尺寸的设备，Bootstrap 设置的 class 前缀分别是什么</h3><ul>
+<li>超小设备手机（<code>&lt;768px</code>）：<code>.col-xs-*</code></li>
+<li>小型设备平板电脑（<code>&gt;=768px</code>）：<code>.col-sm-*</code></li>
+<li>中型设备台式电脑（<code>&gt;=992px</code>）：<code>.col-md-*</code></li>
+<li>大型设备台式电脑（<code>&gt;=1200px</code>）：<code>.col-lg-*</code></li>
+</ul>
+<h3 id="6-Bootstrap-网格系统列与列之间的间隙宽度是多少"><a href="#6-Bootstrap-网格系统列与列之间的间隙宽度是多少" class="headerlink" title="6 Bootstrap 网格系统列与列之间的间隙宽度是多少"></a>6 Bootstrap 网格系统列与列之间的间隙宽度是多少</h3><blockquote>
+<p>间隙宽度为<code>30px</code>（一个列的每边分别是<code>15px</code>）</p>
+</blockquote>
+<h3 id="7-如果需要在一个标题的旁边创建副标题，可以怎样操作"><a href="#7-如果需要在一个标题的旁边创建副标题，可以怎样操作" class="headerlink" title="7 如果需要在一个标题的旁边创建副标题，可以怎样操作"></a>7 如果需要在一个标题的旁边创建副标题，可以怎样操作</h3><blockquote>
+<p>在元素两旁添加<code>&lt;small&gt;</code>，或者添加<code>.small</code>的<code>class</code></p>
+</blockquote>
+<h3 id="8-用-Bootstrap，如何设置文字的对齐方式？"><a href="#8-用-Bootstrap，如何设置文字的对齐方式？" class="headerlink" title="8 用 Bootstrap，如何设置文字的对齐方式？"></a>8 用 Bootstrap，如何设置文字的对齐方式？</h3><ul>
+<li><code>class=&quot;text-center&quot;</code>  设置居中文本</li>
+<li><code>class=&quot;text-right&quot;</code>  设置向右对齐文本</li>
+<li><code>class=&quot;text-left&quot;</code>  设置向左对齐文本</li>
+</ul>
+<h3 id="9-Bootstrap-如何设置响应式表格？"><a href="#9-Bootstrap-如何设置响应式表格？" class="headerlink" title="9 Bootstrap 如何设置响应式表格？"></a>9 Bootstrap 如何设置响应式表格？</h3><blockquote>
+<p>增加<code>class=&quot;table-responsive&quot;</code></p>
+</blockquote>
+<h3 id="10-使用-Bootstrap-创建垂直表单的基本步骤？"><a href="#10-使用-Bootstrap-创建垂直表单的基本步骤？" class="headerlink" title="10 使用 Bootstrap 创建垂直表单的基本步骤？"></a>10 使用 Bootstrap 创建垂直表单的基本步骤？</h3><ul>
+<li>（1）向父<code>&lt;form&gt;</code>元素添加<code>role=&quot;form&quot;</code>；</li>
+<li>（2）把标签和控件放在一个带有<code>class=&quot;form-group&quot;</code>的<code>&lt;div&gt;</code>中，这是获取最佳间距所必需的；</li>
+<li>（3）向所有的文本元素<code>&lt;input&gt;</code>、<code>&lt;textarea&gt;</code>、<code>&lt;select&gt;</code>添加<code>class=&quot;form-control&quot;</code></li>
+</ul>
+<h3 id="11-使用-Bootstrap-创建水平表单的基本步骤？"><a href="#11-使用-Bootstrap-创建水平表单的基本步骤？" class="headerlink" title="11 使用 Bootstrap 创建水平表单的基本步骤？"></a>11 使用 Bootstrap 创建水平表单的基本步骤？</h3><ul>
+<li>（1）向父<code>&lt;form&gt;</code>元素添加<code>class=&quot;form-horizontal&quot;</code>；</li>
+<li>（2）把标签和控件放在一个带有<code>class=&quot;form-group&quot;</code>的<code>&lt;div&gt;</code>中；</li>
+<li>（3）向标签添加<code>class=&quot;control-label&quot;</code>。</li>
+</ul>
+<h3 id="12-使用-Bootstrap-如何创建表单控件的帮助文本？"><a href="#12-使用-Bootstrap-如何创建表单控件的帮助文本？" class="headerlink" title="12 使用 Bootstrap 如何创建表单控件的帮助文本？"></a>12 使用 Bootstrap 如何创建表单控件的帮助文本？</h3><blockquote>
+<p>增加<code>class=&quot;help-block&quot;</code>的<code>span</code>标签或<code>p</code>标签。</p>
+</blockquote>
+<h3 id="13-使用-Bootstrap-激活或禁用按钮要如何操作？"><a href="#13-使用-Bootstrap-激活或禁用按钮要如何操作？" class="headerlink" title="13 使用 Bootstrap 激活或禁用按钮要如何操作？"></a>13 使用 Bootstrap 激活或禁用按钮要如何操作？</h3><ul>
+<li>激活按钮：给按钮增加<code>.active</code>的<code>class</code></li>
+<li>禁用按钮：给按钮增加<code>disabled=&quot;disabled&quot;</code>的属性</li>
+</ul>
+<h3 id="14-Bootstrap-有哪些关于的-class？"><a href="#14-Bootstrap-有哪些关于的-class？" class="headerlink" title="14 Bootstrap 有哪些关于的 class？"></a>14 Bootstrap 有哪些关于的 class？</h3><ul>
+<li>（1）<code>.img-rounded</code>  为图片添加圆角</li>
+<li>（2）<code>.img-circle</code>  将图片变为圆形</li>
+<li>（3）<code>.img-thumbnail</code>  缩略图功能</li>
+<li>（4）<code>.img-responsive</code>  图片响应式 (将很好地扩展到父元素)</li>
+</ul>
+<h3 id="15-Bootstrap-中有关元素浮动及清除浮动的-class？"><a href="#15-Bootstrap-中有关元素浮动及清除浮动的-class？" class="headerlink" title="15 Bootstrap 中有关元素浮动及清除浮动的 class？"></a>15 Bootstrap 中有关元素浮动及清除浮动的 class？</h3><ul>
+<li>（1）<code>class=&quot;pull-left&quot;</code>  元素浮动到左边</li>
+<li>（2）<code>class=&quot;pull-right&quot;</code>  元素浮动到右边</li>
+<li>（3）<code>class=&quot;clearfix&quot;</code>  清除浮动</li>
+</ul>
+<h3 id="16-除了屏幕阅读器外，其他设备上隐藏元素的-class？"><a href="#16-除了屏幕阅读器外，其他设备上隐藏元素的-class？" class="headerlink" title="16 除了屏幕阅读器外，其他设备上隐藏元素的 class？"></a>16 除了屏幕阅读器外，其他设备上隐藏元素的 class？</h3><blockquote>
+<p>`class=”sr-only”``</p>
+</blockquote>
+<h3 id="17-Bootstrap-如何制作下拉菜单？"><a href="#17-Bootstrap-如何制作下拉菜单？" class="headerlink" title="17 Bootstrap 如何制作下拉菜单？"></a>17 Bootstrap 如何制作下拉菜单？</h3><ul>
+<li>（1）将下拉菜单包裹在<code>class=&quot;dropdown&quot;</code>的<code>&lt;div&gt;</code>中；</li>
+<li>（2）在触发下拉菜单的按钮中添加：<code>class=&quot;btn dropdown-toggle&quot; id=&quot;dropdownMenu1&quot; data-toggle=&quot;dropdown&quot;</code></li>
+<li>（3）在包裹下拉菜单的 ul 中添加：<code>class=&quot;dropdown-menu&quot; role=&quot;menu&quot; aria-labelledby=&quot;dropdownMenu1&quot;</code></li>
+<li>（4）在下拉菜单的列表项中添加：<code>role=&quot;presentation&quot;</code>。其中，下拉菜单的标题要添加<code>class=&quot;dropdown-header&quot;</code>，选项部分要添加<code>tabindex=&quot;-1&quot;</code>。</li>
+</ul>
+<h3 id="18-Bootstrap-如何制作按钮组？以及水平按钮组和垂直按钮组的优先级？"><a href="#18-Bootstrap-如何制作按钮组？以及水平按钮组和垂直按钮组的优先级？" class="headerlink" title="18 Bootstrap 如何制作按钮组？以及水平按钮组和垂直按钮组的优先级？"></a>18 Bootstrap 如何制作按钮组？以及水平按钮组和垂直按钮组的优先级？</h3><ul>
+<li>（1）用<code>class=&quot;btn-group&quot;</code>的<code>&lt;div&gt;</code>去包裹按钮组；<code>class=&quot;btn-group-vertical&quot;</code>可设置垂直按钮组。</li>
+<li>（2）<code>btn-group</code>的优先级高于<code>btn-group-vertical</code>的优先级。</li>
+</ul>
+<h3 id="19-Bootstrap-如何设置按钮的下拉菜单？"><a href="#19-Bootstrap-如何设置按钮的下拉菜单？" class="headerlink" title="19 Bootstrap 如何设置按钮的下拉菜单？"></a>19 Bootstrap 如何设置按钮的下拉菜单？</h3><blockquote>
+<p>在一个  <code>.btn-group</code>  中放置按钮和下拉菜单即可。</p>
+</blockquote>
+<h3 id="20-Bootstrap-中的输入框组如何制作？"><a href="#20-Bootstrap-中的输入框组如何制作？" class="headerlink" title="20 Bootstrap 中的输入框组如何制作？"></a>20 Bootstrap 中的输入框组如何制作？</h3><ul>
+<li>（1）把前缀或者后缀元素放在一个带有<code>class=&quot;input-group&quot;</code>中的<code>&lt;div&gt;</code>中</li>
+<li>（2）在该<code>&lt;div&gt;</code>内，在<code>class=&quot;input-group-addon&quot;</code>的<code>&lt;span&gt;</code>里面放置额外的内容；</li>
+<li>（3）把<code>&lt;span&gt;</code>放在<code>&lt;input&gt;</code>元素的前面或后面。</li>
+</ul>
+<h3 id="21-Bootstrap-中的导航都有哪些？"><a href="#21-Bootstrap-中的导航都有哪些？" class="headerlink" title="21 Bootstrap 中的导航都有哪些？"></a>21 Bootstrap 中的导航都有哪些？</h3><ul>
+<li>（1）导航元素：有<code>class=&quot;nav nav-tabs&quot;</code>的标签页导航，还有<code>class=&quot;nav nav-pills&quot;</code>的胶囊式标签页导航；</li>
+<li>（2）导航栏：<code>class=&quot;navbar navbar-default&quot; role=&quot;navigation&quot;</code>；</li>
+<li>（3）面包屑导航：<code>class=&quot;breadcrumb&quot;</code></li>
+</ul>
+<h3 id="22-Bootstrap-中设置分页的-class？"><a href="#22-Bootstrap-中设置分页的-class？" class="headerlink" title="22 Bootstrap 中设置分页的 class？"></a>22 Bootstrap 中设置分页的 class？</h3><ul>
+<li>默认的分页：<code>class=&quot;pagination&quot;</code></li>
+<li>默认的翻页：<code>class=&quot;pager&quot;</code></li>
+</ul>
+<h3 id="23-Bootstrap-中显示标签的-class？"><a href="#23-Bootstrap-中显示标签的-class？" class="headerlink" title="23 Bootstrap 中显示标签的 class？"></a>23 Bootstrap 中显示标签的 class？</h3><blockquote>
+<p><code>class=&quot;label&quot;</code></p>
+</blockquote>
+<h3 id="24-Bootstrap-中如何制作徽章？"><a href="#24-Bootstrap-中如何制作徽章？" class="headerlink" title="24 Bootstrap 中如何制作徽章？"></a>24 Bootstrap 中如何制作徽章？</h3><blockquote>
+<p><code>&lt;span class=&quot;badge&quot;&gt;26&lt;/span&gt;</code></p>
+</blockquote>
+<h3 id="25-Bootstrap-中超大屏幕的作用是什么？"><a href="#25-Bootstrap-中超大屏幕的作用是什么？" class="headerlink" title="25 Bootstrap 中超大屏幕的作用是什么？"></a>25 Bootstrap 中超大屏幕的作用是什么？</h3><blockquote>
+<p>设置<code>class=&quot;jumbotron&quot;</code>可以制作超大屏幕，该组件可以增加标题的大小并增加更多的外边距</p>
+</blockquote>
+<h2 id="六、微信小程序"><a href="#六、微信小程序" class="headerlink" title="六、微信小程序"></a>六、微信小程序</h2><h3 id="1-微信小程序有几个文件"><a href="#1-微信小程序有几个文件" class="headerlink" title="1 微信小程序有几个文件"></a>1 微信小程序有几个文件</h3><ul>
+<li><code>WXSS (WeiXin Style Sheets)</code>是一套样式语言，用于描述  <code>WXML</code>  的组件样式， <code>js</code>  逻辑处理，网络请求<code>json</code>小程序设置，如页面注册，页面标题及  <code>tabBar</code>。</li>
+<li><code>app.json</code>  必须要有这个文件，如果没有这个文件，项目无法运行，因为微信框架把这个作为配置文件入口，整个小程序的全局配置。包括页面注册，网络设置，以及小程序的<code>window</code>  背景色，配置导航条样式，配置默认标题。</li>
+<li><code>app.js</code>  必须要有这个文件，没有也是会报错！但是这个文件创建一下就行 什么都不需要写以后我们可以在这个文件中监听并处理小程序的生命周期函数、声明全局变量。</li>
+<li><code>app.wxss</code>  配置全局  <code>css</code></li>
+</ul>
+<h3 id="2-微信小程序怎样跟事件传值"><a href="#2-微信小程序怎样跟事件传值" class="headerlink" title="2 微信小程序怎样跟事件传值"></a>2 微信小程序怎样跟事件传值</h3><blockquote>
+<p>给  <code>HTML</code>  元素添加  <code>data-*</code>属性来传递我们需要的值，然后通过  <code>e.currentTarget.dataset</code>  或<code>onload</code>的<code>param</code>参数获取。但  <code>data -</code>  名称不能有大写字母和不可以存放对象</p>
+</blockquote>
+<h3 id="3-小程序的-wxss-和-css-有哪些不一样的地方？"><a href="#3-小程序的-wxss-和-css-有哪些不一样的地方？" class="headerlink" title="3 小程序的 wxss 和 css 有哪些不一样的地方？"></a>3 小程序的 wxss 和 css 有哪些不一样的地方？</h3><ul>
+<li><code>wxss</code>的图片引入需使用外链地址</li>
+<li>没有  <code>Body</code>；样式可直接使用  <code>import</code>  导入</li>
+</ul>
+<h3 id="4-小程序关联微信公众号如何确定用户的唯一性"><a href="#4-小程序关联微信公众号如何确定用户的唯一性" class="headerlink" title="4 小程序关联微信公众号如何确定用户的唯一性"></a>4 小程序关联微信公众号如何确定用户的唯一性</h3><blockquote>
+<p>使用  <code>wx.getUserInfo</code>  方法  <code>withCredentials</code>  为  <code>true</code>  时 可获取  <code>encryptedData</code>，里面有  <code>union_id</code>。后端需要进行对称解密</p>
+</blockquote>
+<h3 id="5-微信小程序与-vue-区别"><a href="#5-微信小程序与-vue-区别" class="headerlink" title="5 微信小程序与 vue 区别"></a>5 微信小程序与 vue 区别</h3><ul>
+<li>生命周期不一样，微信小程序生命周期比较简单</li>
+<li>数据绑定也不同，微信小程序数据绑定需要使用<code>&#123; &#123;&#125;&#125;</code>，<code>vue</code>  直接<code>:</code>就可以</li>
+<li>显示与隐藏元素，<code>vue</code>中，使用  <code>v-if</code>  和  <code>v-show</code>  控制元素的显示和隐藏，小程序中，使用<code>wx-if</code>  和<code>hidden</code>  控制元素的显示和隐藏</li>
+<li>事件处理不同，小程序中，全用  <code>bindtap(bind+event)</code>，或者  <code>catchtap(catch+event)</code>  绑定事件,<code>vue：</code>使用  <code>v-on:event</code>  绑定事件，或者使用<code>@event</code>  绑定事件</li>
+<li>数据双向绑定也不也不一样在  <code>vue</code>中,只需要再表单元素上加上  <code>v-model</code>,然后再绑定  <code>data</code>中对应的一个值，当表单元素内容发生变化时，<code>data</code>中对应的值也会相应改变，这是  <code>vue</code>非常 nice 的一点。微信小程序必须获取到表单元素，改变的值，然后再把值赋给一个  <code>data</code>中声明的变量。</li>
+</ul>
+<h2 id="七、webpack-相关"><a href="#七、webpack-相关" class="headerlink" title="七、webpack 相关"></a>七、webpack 相关</h2><h3 id="1-打包体积-优化思路"><a href="#1-打包体积-优化思路" class="headerlink" title="1 打包体积 优化思路"></a>1 打包体积 优化思路</h3><ul>
+<li>提取第三方库或通过引用外部文件的方式引入第三方库</li>
+<li>代码压缩插件<code>UglifyJsPlugin</code></li>
+<li>服务器启用 gzip 压缩</li>
+<li>按需加载资源文件  <code>require.ensure</code></li>
+<li>优化<code>devtool</code>中的<code>source-map</code></li>
+<li>剥离<code>css</code>文件，单独打包</li>
+<li>去除不必要插件，通常就是开发环境与生产环境用同一套配置文件导致</li>
+</ul>
+<h3 id="2-打包效率"><a href="#2-打包效率" class="headerlink" title="2 打包效率"></a>2 打包效率</h3><ul>
+<li>开发环境采用增量构建，启用热更新</li>
+<li>开发环境不做无意义的工作如提取<code>css</code>计算文件 hash 等</li>
+<li>配置<code>devtool</code></li>
+<li>选择合适的<code>loader</code></li>
+<li>个别<code>loader</code>开启<code>cache</code>  如<code>babel-loader</code></li>
+<li>第三方库采用引入方式</li>
+<li>提取公共代码</li>
+<li>优化构建时的搜索路径 指明需要构建目录及不需要构建目录</li>
+<li>模块化引入需要的部分</li>
+</ul>
+<h3 id="3-Loader"><a href="#3-Loader" class="headerlink" title="3 Loader"></a>3 Loader</h3><p>编写一个 loader</p>
+<blockquote>
+<p><code>loader</code>就是一个<code>node</code>模块，它输出了一个函数。当某种资源需要用这个<code>loader</code>转换时，这个函数会被调用。并且，这个函数可以通过提供给它的<code>this</code>上下文访问<code>Loader API</code>。 <code>reverse-txt-loader</code></p>
+</blockquote>
+<p>//  定义 module.exports = function(src) {<br>  //src 是原文件内容（abcde），下面对内容进行处理，这里是反转<br>  var result = src.split(‘’).reverse().join(‘’);<br>  //返回 JavaScript 源码，必须是 String 或者 Buffer<br>  return `module.exports = ‘${result}’`;}//使用{<br>    test: /\.txt$/,<br>use: [<br>{<br>‘./path/reverse-txt-loader’<br>}<br>]},</p>
+<h3 id="4-说一下-webpack-的一些-plugin，怎么使用-webpack-对项目进行优化"><a href="#4-说一下-webpack-的一些-plugin，怎么使用-webpack-对项目进行优化" class="headerlink" title="4 说一下 webpack 的一些 plugin，怎么使用 webpack 对项目进行优化"></a>4 说一下 webpack 的一些 plugin，怎么使用 webpack 对项目进行优化</h3><p>构建优化</p>
+<ul>
+<li>减少编译体积  <code>ContextReplacementPugin</code>、<code>IgnorePlugin</code>、<code>babel-plugin-import</code>、<code>babel-plugin-transform-runtime</code></li>
+<li>并行编译  <code>happypack</code>、<code>thread-loader</code>、<code>uglifyjsWebpackPlugin</code>开启并行</li>
+<li>缓存  <code>cache-loader</code>、<code>hard-source-webpack-plugin</code>、<code>uglifyjsWebpackPlugin</code>开启缓存、<code>babel-loader</code>开启缓存</li>
+<li>预编译  <code>dllWebpackPlugin &amp;&amp; DllReferencePlugin</code>、<code>auto-dll-webapck-plugin</code></li>
+</ul>
+<p>性能优化</p>
+<ul>
+<li>减少编译体积  <code>Tree-shaking</code>、<code>Scope Hositing</code></li>
+<li><code>hash</code>缓存  <code>webpack-md5-plugin</code></li>
+<li>拆包  <code>splitChunksPlugin</code>、<code>import()</code>、<code>require.ensure</code></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">QiaoJianFeng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://q-jf.cn/2019/06/22/2019-e6-9c-80-e6-96-b0-e5-89-8d-e7-ab-af-e7-9f-a5-e8-af-86-e6-a2-b3-e7-90-86-e7-ac-ac-e4-b8-89-e6-96-b9-e5-ba-93-e9-83-a8-e5-88-86-e9-9d-a2-e8-af-95-e5-ae-9d-e5-85-b8/">https://q-jf.cn/2019/06/22/2019-e6-9c-80-e6-96-b0-e5-89-8d-e7-ab-af-e7-9f-a5-e8-af-86-e6-a2-b3-e7-90-86-e7-ac-ac-e4-b8-89-e6-96-b9-e5-ba-93-e9-83-a8-e5-88-86-e9-9d-a2-e8-af-95-e5-ae-9d-e5-85-b8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://q-jf.cn" target="_blank">QIAO@博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a><a class="post-meta__tags" href="/tags/%E7%B1%BB%E5%BA%93/">类库</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/06/22/2019-e6-9c-80-e6-96-b0-e5-89-8d-e7-ab-af-e7-9f-a5-e8-af-86-e6-a2-b3-e7-90-86-e5-91-a8-e8-be-b9-e9-83-a8-e5-88-86-e9-9d-a2-e8-af-95-e5-ae-9d-e5-85-b8/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">2019最新前端知识梳理(周边部分)-面试宝典</div></div></a></div><div class="next-post pull-right"><a href="/2019/06/22/2019-e6-9c-80-e6-96-b0-e5-89-8d-e7-ab-af-e7-9f-a5-e8-af-86-e6-a2-b3-e7-90-86javascript-e9-83-a8-e5-88-86-e9-9d-a2-e8-af-95-e5-ae-9d-e5-85-b8/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2019最新前端知识梳理(JavaScript部分)-面试宝典</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2019/06/22/2019-e6-9c-80-e6-96-b0-e5-89-8d-e7-ab-af-e7-9f-a5-e8-af-86-e6-a2-b3-e7-90-86-e5-91-a8-e8-be-b9-e9-83-a8-e5-88-86-e9-9d-a2-e8-af-95-e5-ae-9d-e5-85-b8/" title="2019最新前端知识梳理(周边部分)-面试宝典"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-06-22</div><div class="title">2019最新前端知识梳理(周边部分)-面试宝典</div></div></a></div><div><a href="/2019/06/22/2019-e6-9c-80-e6-96-b0-e5-89-8d-e7-ab-af-e7-9f-a5-e8-af-86-e6-a2-b3-e7-90-86css-e9-83-a8-e5-88-86-e9-9d-a2-e8-af-95-e5-ae-9d-e5-85-b8/" title="2019最新前端知识梳理(CSS部分)-面试宝典"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-06-22</div><div class="title">2019最新前端知识梳理(CSS部分)-面试宝典</div></div></a></div><div><a href="/2019/06/22/2019-e6-9c-80-e6-96-b0-e5-89-8d-e7-ab-af-e7-9f-a5-e8-af-86-e6-a2-b3-e7-90-86-e5-9f-ba-e7-a1-80-e9-83-a8-e5-88-86-e9-9d-a2-e8-af-95-e5-ae-9d-e5-85-b8/" title="2019最新前端知识梳理(基础部分)-面试宝典"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-06-22</div><div class="title">2019最新前端知识梳理(基础部分)-面试宝典</div></div></a></div><div><a href="/2019/06/22/2019-e6-9c-80-e6-96-b0-e5-89-8d-e7-ab-af-e7-9f-a5-e8-af-86-e6-a2-b3-e7-90-86javascript-e9-83-a8-e5-88-86-e9-9d-a2-e8-af-95-e5-ae-9d-e5-85-b8/" title="2019最新前端知识梳理(JavaScript部分)-面试宝典"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-06-22</div><div class="title">2019最新前端知识梳理(JavaScript部分)-面试宝典</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">QiaoJianFeng</div><div class="author-info__description">QIAO是一个以Web前端开发为主的学习,进阶,交流,分享资源的博客。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81jQuery"><span class="toc-number">1.</span> <span class="toc-text">四、jQuery</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%A0%E8%A7%89%E5%BE%97-jQuery-%E6%88%96-zepto-%E6%BA%90%E7%A0%81%E6%9C%89%E5%93%AA%E4%BA%9B%E5%86%99%E7%9A%84%E5%A5%BD%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="toc-number">1.1.</span> <span class="toc-text">1 你觉得 jQuery 或 zepto 源码有哪些写的好的地方</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-jQuery-%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">2 jQuery 的实现原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-jQuery-fn-%E7%9A%84-init-%E6%96%B9%E6%B3%95%E8%BF%94%E5%9B%9E%E7%9A%84-this-%E6%8C%87%E7%9A%84%E6%98%AF%E4%BB%80%E4%B9%88%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.3.</span> <span class="toc-text">3 jQuery.fn  的  init  方法返回的  this  指的是什么对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-jQuery-extend-%E4%B8%8E-jQuery-fn-extend-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.4.</span> <span class="toc-text">4 jQuery.extend 与 jQuery.fn.extend 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-jQuery-%E7%9A%84%E5%B1%9E%E6%80%A7%E6%8B%B7%E8%B4%9D-extend-%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%B7%B1%E6%8B%B7%E8%B4%9D"><span class="toc-number">1.5.</span> <span class="toc-text">5 jQuery 的属性拷贝(extend)的实现原理是什么，如何实现深拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-jQuery-%E7%9A%84%E9%98%9F%E5%88%97%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84"><span class="toc-number">1.6.</span> <span class="toc-text">6 jQuery 的队列是如何实现的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-jQuery-%E4%B8%AD%E7%9A%84-bind-live-delegate-on-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.7.</span> <span class="toc-text">7 jQuery 中的 bind(), live(), delegate(), on()的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E6%98%AF%E5%90%A6%E7%9F%A5%E9%81%93%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.8.</span> <span class="toc-text">8 是否知道自定义事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-jQuery-%E9%80%9A%E8%BF%87%E5%93%AA%E4%B8%AA%E6%96%B9%E6%B3%95%E5%92%8C-Sizzle-%E9%80%89%E6%8B%A9%E5%99%A8%E7%BB%93%E5%90%88%E7%9A%84"><span class="toc-number">1.9.</span> <span class="toc-text">9 jQuery 通过哪个方法和 Sizzle 选择器结合的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-jQuery-%E4%B8%AD%E5%A6%82%E4%BD%95%E5%B0%86%E6%95%B0%E7%BB%84%E8%BD%AC%E5%8C%96%E4%B8%BA-JSON-%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%8C%E7%84%B6%E5%90%8E%E5%86%8D%E8%BD%AC%E5%8C%96%E5%9B%9E%E6%9D%A5"><span class="toc-number">1.10.</span> <span class="toc-text">10 jQuery 中如何将数组转化为 JSON 字符串，然后再转化回来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-jQuery-%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E5%8F%AF%E4%BB%A5%E5%90%8C%E6%97%B6%E7%BB%91%E5%AE%9A%E5%A4%9A%E4%B8%AA%E4%BA%8B%E4%BB%B6%EF%BC%8C%E8%BF%99%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84"><span class="toc-number">1.11.</span> <span class="toc-text">11 jQuery 一个对象可以同时绑定多个事件，这是如何实现的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E9%92%88%E5%AF%B9-jQuery-%E7%9A%84%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95"><span class="toc-number">1.12.</span> <span class="toc-text">12 针对 jQuery 的优化方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-jQuery-%E7%9A%84-slideUp-%E5%8A%A8%E7%94%BB%EF%BC%8C%E5%BD%93%E9%BC%A0%E6%A0%87%E5%BF%AB%E9%80%9F%E8%BF%9E%E7%BB%AD%E8%A7%A6%E5%8F%91-%E5%8A%A8%E7%94%BB%E4%BC%9A%E6%BB%9E%E5%90%8E%E5%8F%8D%E5%A4%8D%E6%89%A7%E8%A1%8C%EF%BC%8C%E8%AF%A5%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%91%A2"><span class="toc-number">1.13.</span> <span class="toc-text">13 jQuery 的 slideUp 动画，当鼠标快速连续触发, 动画会滞后反复执行，该如何处理呢</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-jQuery-UI-%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6"><span class="toc-number">1.14.</span> <span class="toc-text">14 jQuery UI 如何自定义组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-jQuery-%E4%B8%8E-jQuery-UI%E3%80%81jQuery-Mobile-%E5%8C%BA%E5%88%AB"><span class="toc-number">1.15.</span> <span class="toc-text">15 jQuery 与 jQuery UI、jQuery Mobile 区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-jQuery-%E5%92%8C-Zepto-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F-%E5%90%84%E8%87%AA%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.16.</span> <span class="toc-text">16 jQuery 和 Zepto 的区别？ 各自的使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-jQuery-%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.17.</span> <span class="toc-text">17 jQuery 对象的特点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81Bootstrap"><span class="toc-number">2.</span> <span class="toc-text">五、Bootstrap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF-Bootstrap%EF%BC%9F%E4%BB%A5%E5%8F%8A%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8-Bootstrap%EF%BC%9F"><span class="toc-number">2.1.</span> <span class="toc-text">1 什么是 Bootstrap？以及为什么要使用 Bootstrap？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-Bootstrap-%E6%97%B6%EF%BC%8C%E8%A6%81%E5%A3%B0%E6%98%8E%E7%9A%84%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E4%BB%A5%E5%8F%8A%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%BF%99%E6%A0%B7%E5%A3%B0%E6%98%8E%EF%BC%9F"><span class="toc-number">2.2.</span> <span class="toc-text">2 使用 Bootstrap 时，要声明的文档类型是什么？以及为什么要这样声明？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BB%80%E4%B9%88%E6%98%AF-Bootstrap-%E7%BD%91%E6%A0%BC%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.</span> <span class="toc-text">3 什么是 Bootstrap 网格系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Bootstrap-%E7%BD%91%E6%A0%BC%E7%B3%BB%E7%BB%9F%EF%BC%88Grid-System%EF%BC%89%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">2.4.</span> <span class="toc-text">4 Bootstrap 网格系统（Grid System）的工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%AF%B9%E4%BA%8E%E5%90%84%E7%B1%BB%E5%B0%BA%E5%AF%B8%E7%9A%84%E8%AE%BE%E5%A4%87%EF%BC%8CBootstrap-%E8%AE%BE%E7%BD%AE%E7%9A%84-class-%E5%89%8D%E7%BC%80%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">2.5.</span> <span class="toc-text">5 对于各类尺寸的设备，Bootstrap 设置的 class 前缀分别是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Bootstrap-%E7%BD%91%E6%A0%BC%E7%B3%BB%E7%BB%9F%E5%88%97%E4%B8%8E%E5%88%97%E4%B9%8B%E9%97%B4%E7%9A%84%E9%97%B4%E9%9A%99%E5%AE%BD%E5%BA%A6%E6%98%AF%E5%A4%9A%E5%B0%91"><span class="toc-number">2.6.</span> <span class="toc-text">6 Bootstrap 网格系统列与列之间的间隙宽度是多少</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%A6%82%E6%9E%9C%E9%9C%80%E8%A6%81%E5%9C%A8%E4%B8%80%E4%B8%AA%E6%A0%87%E9%A2%98%E7%9A%84%E6%97%81%E8%BE%B9%E5%88%9B%E5%BB%BA%E5%89%AF%E6%A0%87%E9%A2%98%EF%BC%8C%E5%8F%AF%E4%BB%A5%E6%80%8E%E6%A0%B7%E6%93%8D%E4%BD%9C"><span class="toc-number">2.7.</span> <span class="toc-text">7 如果需要在一个标题的旁边创建副标题，可以怎样操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E7%94%A8-Bootstrap%EF%BC%8C%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E6%96%87%E5%AD%97%E7%9A%84%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="toc-number">2.8.</span> <span class="toc-text">8 用 Bootstrap，如何设置文字的对齐方式？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-Bootstrap-%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%93%8D%E5%BA%94%E5%BC%8F%E8%A1%A8%E6%A0%BC%EF%BC%9F"><span class="toc-number">2.9.</span> <span class="toc-text">9 Bootstrap 如何设置响应式表格？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E4%BD%BF%E7%94%A8-Bootstrap-%E5%88%9B%E5%BB%BA%E5%9E%82%E7%9B%B4%E8%A1%A8%E5%8D%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4%EF%BC%9F"><span class="toc-number">2.10.</span> <span class="toc-text">10 使用 Bootstrap 创建垂直表单的基本步骤？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E4%BD%BF%E7%94%A8-Bootstrap-%E5%88%9B%E5%BB%BA%E6%B0%B4%E5%B9%B3%E8%A1%A8%E5%8D%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4%EF%BC%9F"><span class="toc-number">2.11.</span> <span class="toc-text">11 使用 Bootstrap 创建水平表单的基本步骤？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E4%BD%BF%E7%94%A8-Bootstrap-%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E8%A1%A8%E5%8D%95%E6%8E%A7%E4%BB%B6%E7%9A%84%E5%B8%AE%E5%8A%A9%E6%96%87%E6%9C%AC%EF%BC%9F"><span class="toc-number">2.12.</span> <span class="toc-text">12 使用 Bootstrap 如何创建表单控件的帮助文本？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E4%BD%BF%E7%94%A8-Bootstrap-%E6%BF%80%E6%B4%BB%E6%88%96%E7%A6%81%E7%94%A8%E6%8C%89%E9%92%AE%E8%A6%81%E5%A6%82%E4%BD%95%E6%93%8D%E4%BD%9C%EF%BC%9F"><span class="toc-number">2.13.</span> <span class="toc-text">13 使用 Bootstrap 激活或禁用按钮要如何操作？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-Bootstrap-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%85%B3%E4%BA%8E%E7%9A%84-class%EF%BC%9F"><span class="toc-number">2.14.</span> <span class="toc-text">14 Bootstrap 有哪些关于的 class？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-Bootstrap-%E4%B8%AD%E6%9C%89%E5%85%B3%E5%85%83%E7%B4%A0%E6%B5%AE%E5%8A%A8%E5%8F%8A%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8%E7%9A%84-class%EF%BC%9F"><span class="toc-number">2.15.</span> <span class="toc-text">15 Bootstrap 中有关元素浮动及清除浮动的 class？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-%E9%99%A4%E4%BA%86%E5%B1%8F%E5%B9%95%E9%98%85%E8%AF%BB%E5%99%A8%E5%A4%96%EF%BC%8C%E5%85%B6%E4%BB%96%E8%AE%BE%E5%A4%87%E4%B8%8A%E9%9A%90%E8%97%8F%E5%85%83%E7%B4%A0%E7%9A%84-class%EF%BC%9F"><span class="toc-number">2.16.</span> <span class="toc-text">16 除了屏幕阅读器外，其他设备上隐藏元素的 class？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-Bootstrap-%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95%EF%BC%9F"><span class="toc-number">2.17.</span> <span class="toc-text">17 Bootstrap 如何制作下拉菜单？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-Bootstrap-%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E6%8C%89%E9%92%AE%E7%BB%84%EF%BC%9F%E4%BB%A5%E5%8F%8A%E6%B0%B4%E5%B9%B3%E6%8C%89%E9%92%AE%E7%BB%84%E5%92%8C%E5%9E%82%E7%9B%B4%E6%8C%89%E9%92%AE%E7%BB%84%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7%EF%BC%9F"><span class="toc-number">2.18.</span> <span class="toc-text">18 Bootstrap 如何制作按钮组？以及水平按钮组和垂直按钮组的优先级？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19-Bootstrap-%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E6%8C%89%E9%92%AE%E7%9A%84%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95%EF%BC%9F"><span class="toc-number">2.19.</span> <span class="toc-text">19 Bootstrap 如何设置按钮的下拉菜单？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-Bootstrap-%E4%B8%AD%E7%9A%84%E8%BE%93%E5%85%A5%E6%A1%86%E7%BB%84%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%EF%BC%9F"><span class="toc-number">2.20.</span> <span class="toc-text">20 Bootstrap 中的输入框组如何制作？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#21-Bootstrap-%E4%B8%AD%E7%9A%84%E5%AF%BC%E8%88%AA%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-number">2.21.</span> <span class="toc-text">21 Bootstrap 中的导航都有哪些？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-Bootstrap-%E4%B8%AD%E8%AE%BE%E7%BD%AE%E5%88%86%E9%A1%B5%E7%9A%84-class%EF%BC%9F"><span class="toc-number">2.22.</span> <span class="toc-text">22 Bootstrap 中设置分页的 class？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23-Bootstrap-%E4%B8%AD%E6%98%BE%E7%A4%BA%E6%A0%87%E7%AD%BE%E7%9A%84-class%EF%BC%9F"><span class="toc-number">2.23.</span> <span class="toc-text">23 Bootstrap 中显示标签的 class？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24-Bootstrap-%E4%B8%AD%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E5%BE%BD%E7%AB%A0%EF%BC%9F"><span class="toc-number">2.24.</span> <span class="toc-text">24 Bootstrap 中如何制作徽章？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#25-Bootstrap-%E4%B8%AD%E8%B6%85%E5%A4%A7%E5%B1%8F%E5%B9%95%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">2.25.</span> <span class="toc-text">25 Bootstrap 中超大屏幕的作用是什么？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F"><span class="toc-number">3.</span> <span class="toc-text">六、微信小程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%9C%89%E5%87%A0%E4%B8%AA%E6%96%87%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">1 微信小程序有几个文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%80%8E%E6%A0%B7%E8%B7%9F%E4%BA%8B%E4%BB%B6%E4%BC%A0%E5%80%BC"><span class="toc-number">3.2.</span> <span class="toc-text">2 微信小程序怎样跟事件传值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84-wxss-%E5%92%8C-css-%E6%9C%89%E5%93%AA%E4%BA%9B%E4%B8%8D%E4%B8%80%E6%A0%B7%E7%9A%84%E5%9C%B0%E6%96%B9%EF%BC%9F"><span class="toc-number">3.3.</span> <span class="toc-text">3 小程序的 wxss 和 css 有哪些不一样的地方？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%85%B3%E8%81%94%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%A6%82%E4%BD%95%E7%A1%AE%E5%AE%9A%E7%94%A8%E6%88%B7%E7%9A%84%E5%94%AF%E4%B8%80%E6%80%A7"><span class="toc-number">3.4.</span> <span class="toc-text">4 小程序关联微信公众号如何确定用户的唯一性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%8E-vue-%E5%8C%BA%E5%88%AB"><span class="toc-number">3.5.</span> <span class="toc-text">5 微信小程序与 vue 区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81webpack-%E7%9B%B8%E5%85%B3"><span class="toc-number">4.</span> <span class="toc-text">七、webpack 相关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%89%93%E5%8C%85%E4%BD%93%E7%A7%AF-%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF"><span class="toc-number">4.1.</span> <span class="toc-text">1 打包体积 优化思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%89%93%E5%8C%85%E6%95%88%E7%8E%87"><span class="toc-number">4.2.</span> <span class="toc-text">2 打包效率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Loader"><span class="toc-number">4.3.</span> <span class="toc-text">3 Loader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%AF%B4%E4%B8%80%E4%B8%8B-webpack-%E7%9A%84%E4%B8%80%E4%BA%9B-plugin%EF%BC%8C%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8-webpack-%E5%AF%B9%E9%A1%B9%E7%9B%AE%E8%BF%9B%E8%A1%8C%E4%BC%98%E5%8C%96"><span class="toc-number">4.4.</span> <span class="toc-text">4 说一下 webpack 的一些 plugin，怎么使用 webpack 对项目进行优化</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/01/14/vue-router%E6%BA%90%E7%A0%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B/" title="vue-router源码了解一下"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue-router源码了解一下"/></a><div class="content"><a class="title" href="/2020/01/14/vue-router%E6%BA%90%E7%A0%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B/" title="vue-router源码了解一下">vue-router源码了解一下</a><time datetime="2020-01-14T10:02:34.000Z" title="发表于 2020-01-14 18:02:34">2020-01-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/01/13/git%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C/" title="git日常操作"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="git日常操作"/></a><div class="content"><a class="title" href="/2020/01/13/git%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C/" title="git日常操作">git日常操作</a><time datetime="2020-01-13T03:24:51.000Z" title="发表于 2020-01-13 11:24:51">2020-01-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/01/08/%E9%AB%98%E6%B8%85%E5%9C%A8%E7%BA%BF%E7%9B%B4%E6%92%AD-1/" title="敢死队2-HDTC中英字在线观看"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="敢死队2-HDTC中英字在线观看"/></a><div class="content"><a class="title" href="/2020/01/08/%E9%AB%98%E6%B8%85%E5%9C%A8%E7%BA%BF%E7%9B%B4%E6%92%AD-1/" title="敢死队2-HDTC中英字在线观看">敢死队2-HDTC中英字在线观看</a><time datetime="2020-01-08T03:48:19.000Z" title="发表于 2020-01-08 11:48:19">2020-01-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/12/30/%E4%BA%86%E8%A7%A3%E4%B8%80%E4%BA%9BHTTP%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" title="了解一些HTTP协议相关知识"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="了解一些HTTP协议相关知识"/></a><div class="content"><a class="title" href="/2019/12/30/%E4%BA%86%E8%A7%A3%E4%B8%80%E4%BA%9BHTTP%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" title="了解一些HTTP协议相关知识">了解一些HTTP协议相关知识</a><time datetime="2019-12-30T08:49:42.000Z" title="发表于 2019-12-30 16:49:42">2019-12-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/11/22/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E6%9B%B4%E6%96%B0%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%8E%B0/" title="你能简单谈谈什么是 vue 的响应式更新？"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="你能简单谈谈什么是 vue 的响应式更新？"/></a><div class="content"><a class="title" href="/2019/11/22/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E6%9B%B4%E6%96%B0%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%8E%B0/" title="你能简单谈谈什么是 vue 的响应式更新？">你能简单谈谈什么是 vue 的响应式更新？</a><time datetime="2019-11-22T06:42:57.000Z" title="发表于 2019-11-22 14:42:57">2019-11-22</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By QiaoJianFeng</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Git学习再入门-基础篇 | QIAO@博客</title><meta name="keywords" content="Git"><meta name="author" content="QiaoJianFeng"><meta name="copyright" content="QiaoJianFeng"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Git和GitHub有啥关系？  答：Git是版本控制工具，GitHub是基于Git工具流的一个项目托管平台  顺便提一下这里只温习一下Git的相关知识，关于SVN（集中式管理系统）这里不做对比也不去做详细的描述。具体了解两者的区别可以去这里：https:&#x2F;&#x2F;www.shiyanlou.com&#x2F;questions&#x2F;2999&#x2F;   常用配置–system #系统级别–global #用户全局–lo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git学习再入门-基础篇">
+<meta property="og:url" content="https://q-jf.cn/2019/07/05/git-e5-ad-a6-e4-b9-a0-e5-86-8d-e5-85-a5-e9-97-a8-e5-9f-ba-e7-a1-80-e7-af-87/index.html">
+<meta property="og:site_name" content="QIAO@博客">
+<meta property="og:description" content="Git和GitHub有啥关系？  答：Git是版本控制工具，GitHub是基于Git工具流的一个项目托管平台  顺便提一下这里只温习一下Git的相关知识，关于SVN（集中式管理系统）这里不做对比也不去做详细的描述。具体了解两者的区别可以去这里：https:&#x2F;&#x2F;www.shiyanlou.com&#x2F;questions&#x2F;2999&#x2F;   常用配置–system #系统级别–global #用户全局–lo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2019-07-05T10:14:06.000Z">
+<meta property="article:modified_time" content="2019-09-10T07:46:08.740Z">
+<meta property="article:author" content="QiaoJianFeng">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://q-jf.cn/2019/07/05/git-e5-ad-a6-e4-b9-a0-e5-86-8d-e5-85-a5-e9-97-a8-e5-9f-ba-e7-a1-80-e7-af-87/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2019-09-10 15:46:08'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">QIAO@博客</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Git学习再入门-基础篇</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-07-05T10:14:06.000Z" title="发表于 2019-07-05 18:14:06">2019-07-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2019-09-10T07:46:08.740Z" title="更新于 2019-09-10 15:46:08">2019-09-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Git学习再入门-基础篇"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>Git和GitHub有啥关系？</p>
+</blockquote>
+<p>答：Git是版本控制工具，GitHub是基于Git工具流的一个项目托管平台 <img src="https://upload-images.jianshu.io/upload_images/226662-6e184a8462131352.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/583/format/webp"> 顺便提一下这里只温习一下Git的相关知识，关于SVN（集中式管理系统）这里不做对比也不去做详细的描述。具体了解两者的区别可以去这里：<a target="_blank" rel="noopener" href="https://www.shiyanlou.com/questions/2999/">https://www.shiyanlou.com/questions/2999/  </a></p>
+<h2 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h2><p>–system #系统级别<br>–global #用户全局<br>–local #单独一个项目<br>git config –global user.name “xxxx” #用户名<br>git config –global user.email “<a href="mailto:&#x78;&#x78;&#x78;&#120;&#x40;&#x78;&#x78;&#x78;&#x2e;&#x63;&#111;&#109;">&#x78;&#x78;&#x78;&#120;&#x40;&#x78;&#x78;&#x78;&#x2e;&#x63;&#111;&#109;</a>“ #邮箱<br>git config –global core.editor vim #编辑器<br>git config –global alias.st status #按这种方法，配置别名<br>git config -l #列举所有配置</p>
+<h2 id="文件直接比较差异Diff"><a href="#文件直接比较差异Diff" class="headerlink" title="文件直接比较差异Diff"></a>文件直接比较差异Diff</h2><p>git diff git diff <file> #比较工作区与暂存区文件的差异<br>git diff –cached   # 比较暂存区和版本库差异</p>
+<p>git diff &lt;$id1&gt; &lt;$id2&gt;   # 比较两次提交之间的差异<br>git diff <branch1>..<branch2> # 在两个分支之间比较分支<br>git branch -r #查看远程分支<br>git branch new_branch_name #新建一个分支<br>git branch –merged #查看已经被合并到当前分支的分支<br>git branch –no-merged #查看未被合并到当前分支的分支</p>
+<p>git checkout branch_name #切换分支<br>git checkout -b branch_name #创建分支并切换</p>
+<p>git branch -d branch_name #删除分支<br>git branch -D branch_name #强制删除分支<br>git push origin :branch-name #删除远程分支（先在本地删除该分支），原理是把一个空分支push到server上，相当于删除该分支。</p>
+<p>#从远程clone一个项目，虽然远程上该项目是有分支的，但clone下来后发现只有master分支，解决：<br>git checkout -b not_master_branch  origin/not_master_branch #本地创建一个分支，指向对应的远程分支<br>git pull origin not_master_branch #将远程的not_master_branch分支pull下来<br>git push origin not_master_branch #将修改后的not_master_branch分支push到远程的not_master_branch </p>
+<h2 id="Git中3种状态的一些操作"><a href="#Git中3种状态的一些操作" class="headerlink" title="Git中3种状态的一些操作"></a>Git中3种状态的一些操作</h2><p>#将工作区的修改提交到暂存区<br>git add <file><br>git add .<br>#——————————————</p>
+<p>#将暂存区的内容提交到版本库<br>git commit <file><br>git commit .<br>git commit -a #包括git add/ git rm /git commint 这三个操作，所有一般在操作工作区的时候，直接删除了文件，而不是使用git rm的，最后提交是可以用这个，如下<br>              #git commit -am “提交信息”<br>git commit -amend #修改最后一次提交的信息</p>
+<p>#——————————————</p>
+<p># 抛弃工作区修改(使用当前暂存区的内容状态去覆盖工作区，从而达到抛弃工作区修改的作用)<br>git checkout <file><br>git checkout .  </p>
+<p>#——————————————<br>#改变暂存区的修改（其实是重置HEAD，将指定版本库的内容状态去覆盖暂存区，从而达到暂存区的改变）<br>git reset <file>  #从暂存区恢复到工作区（不指定版本id，则默认为最后一次提交的版本id）<br>git reset .  #从暂存区恢复到工作区<br>git reset $id # 恢复到指定的提交版本，该$id之后的版本提交都恢复到工作区<br>git reset –hard $id #恢复到指定的提交版本，该$id之后的版本提交全部会被抛弃，将不出现在工作区</p>
+<p>#注：如果不小心使用了错误的HEAD重置，会发现HEAD指向了重置的版本id，该版本之后的版本提交都不见了，使用git log也无法找到，那么怎么恢复呢？使用下面两个命令<br>git reflog show master | head #会显示所有的版本记录<br>git reset –hard $id #重新重置，至于–hard，请根据你时候将改变的内容放到工作区还是直接抛弃进行选择</p>
+<p>#——————————————<br>#恢复某次提交（其实是某提提交的回滚操作，不影响其他的提交，所产生的效果创建一个新版本提交去回滚将指定的提交删除，包括产生的差异文件不会出现在工作区，而是直接被抛弃）<br>git revert &lt;$id&gt;<br>git revert HEAD<br>#这里有一个很好的讲解revert与reset的差异：git reset 是把HEAD向后移动了一下，而git revert是HEAD继续前进，只是新的commit的内容和要revert的内容正好相反，能够抵消要被revert的内容。</p>
+<p>#——————————————<br>#删除文件的几种方法（貌似Git2.0后有了变化）<br>#第一种直接在工作区删除<br>rm your_file #直接在工作区删除文件<br>git add -u . #将有改动的都提交到暂存区（包括修改的，删除的等操作），貌似git2.0 不加 -u 参数也可以<br>git commint -m “message” #提交版本库</p>
+<p>#第二种方法直接在工作区删除<br>rm your_file #直接在工作区删除文件<br>git commit -am “message” #这个在前面提过，直接可以提交版本库，-a会包括包括git add/ git rm /git commint 这三个操作</p>
+<p>#第三种方法使用git rm<br>git rm <file> #不仅在工作区将文件删除，同时将该删除操作提交到暂存区<br>git commint -m “message” #提交版本库</p>
+<p>#关于git rm的其他补充<br>git rm –cached <file> #从暂存区中除去该文件，git将不再跟踪该文件的变更，但仍然在工作区内，在需要.gitignore时经常用到</p>
+<h2 id="Tag"><a href="#Tag" class="headerlink" title="Tag"></a>Tag</h2><p>git tag v1.0.0 [SHA]<br>#打一个轻量级的tag，只是一个commit的指向引用,[SHA]是可选择值（某个commit的SHA），指定为哪个commit打tag，如果没写则直接为最后一个commit打tag</p>
+<p>git tag -a v1.0.0 -m “你的附注信息” [SHA]<br>#一个带附注信息的tag，不是一个简单的引用，而是单独的一个对象，[SHA]是可选择值（某个commit的SHA），指定为哪个commit打tag，如果没写则直接为最后一个commit打tag</p>
+<p>git tag #列出所有的tag<br>git show v1.0.0  #打印指定tag的信息<br>git tag -d v1.0.0 #删除本地指定tag<br>git push origin :refs/tags/v1.0.0 #删除远程tag</p>
+<h2 id="远程"><a href="#远程" class="headerlink" title="远程"></a>远程</h2><p>git remote -v                    # 查看远程服务器地址和仓库名称<br>git remote show origin           # 查看远程服务器仓库状态<br>git remote add origin git@github:robbin/robbin_site.git         # 添加远程仓库地址<br>git remote set-url origin <a href="mailto:&#103;&#x69;&#x74;&#64;&#x67;&#105;&#x74;&#x68;&#x75;&#98;&#x2e;&#x63;&#111;&#x6d;">&#103;&#x69;&#x74;&#64;&#x67;&#105;&#x74;&#x68;&#x75;&#98;&#x2e;&#x63;&#111;&#x6d;</a>:robbin/robbin #修改远程地址<br>git remote rm #删除远程创库地址</p>
+<h2 id="从远程拉取内容-提交内容到远程"><a href="#从远程拉取内容-提交内容到远程" class="headerlink" title="从远程拉取内容,提交内容到远程"></a>从远程拉取内容,提交内容到远程</h2><p>git pull #=git fetch + git merge<br>git fetch #拉取<br>git merge #合并</p>
+<p>git push                         # push所有分支<br>git push origin master           # 将本地主分支推到远程主分支<br>git push -u origin master        # 将本地主分支推到远程(如无远程主分支则创建，用于初始化远程仓库)<br>git push origin <local_branch>   # 创建远程分支， origin是远程仓库名<br>git push origin &lt;local_branch&gt;:&lt;remote_branch&gt;  # 创建远程分支<br>git push origin :<remote_branch>  #先删除本地分支(git br -d <branch>)，然后再push删除远程分支</p>
+<h2 id="暂存管理"><a href="#暂存管理" class="headerlink" title="暂存管理"></a>暂存管理</h2><p>git stash #将工作区做的修改暂存到一个git栈中<br>git stash list #查看栈中所有暂存<br>git stash apply &lt;暂存编号&gt; #回复对应编号暂存到工作区，如果不指定编号为栈顶的，注意：这些暂存还在栈中<br>git stash pop #将栈顶的暂存，恢复到工作区，并从栈中弹出<br>git stash clear #清空暂存栈</p>
+<h2 id="创建远程库"><a href="#创建远程库" class="headerlink" title="创建远程库"></a>创建远程库</h2><p>git clone –bare git_url_path #clone的时候，将其创建成远程创库<br>git –bare init #初始化项目的时候，创建成远程创库</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">QiaoJianFeng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://q-jf.cn/2019/07/05/git-e5-ad-a6-e4-b9-a0-e5-86-8d-e5-85-a5-e9-97-a8-e5-9f-ba-e7-a1-80-e7-af-87/">https://q-jf.cn/2019/07/05/git-e5-ad-a6-e4-b9-a0-e5-86-8d-e5-85-a5-e9-97-a8-e5-9f-ba-e7-a1-80-e7-af-87/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://q-jf.cn" target="_blank">QIAO@博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Git/">Git</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/07/05/git-e5-ad-a6-e4-b9-a0-e5-86-8d-e5-85-a5-e9-97-a8-e5-91-bd-e4-bb-a4-e6-b8-85-e5-8d-95/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Git学习再入门-命令清单</div></div></a></div><div class="next-post pull-right"><a href="/2019/07/05/wordpress-e7-99-be-e5-ba-a6-e7-86-8a-e6-8e-8c-e5-8f-b7-e5-8e-9f-e5-88-9b-e6-8e-a8-e9-80-81-e6-8f-92-e4-bb-b6-ef-bc-9afanly-submit-e4-b8-8b-e8-bd-bd/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">WordPress 百度熊掌号原创推送插件：Fanly Submit下载</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2019/07/05/git-e5-ad-a6-e4-b9-a0-e5-86-8d-e5-85-a5-e9-97-a8-e5-91-bd-e4-bb-a4-e6-b8-85-e5-8d-95/" title="Git学习再入门-命令清单"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-07-05</div><div class="title">Git学习再入门-命令清单</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">QiaoJianFeng</div><div class="author-info__description">QIAO是一个以Web前端开发为主的学习,进阶,交流,分享资源的博客。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">常用配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9B%B4%E6%8E%A5%E6%AF%94%E8%BE%83%E5%B7%AE%E5%BC%82Diff"><span class="toc-number">2.</span> <span class="toc-text">文件直接比较差异Diff</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git%E4%B8%AD3%E7%A7%8D%E7%8A%B6%E6%80%81%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">Git中3种状态的一些操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tag"><span class="toc-number">4.</span> <span class="toc-text">Tag</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B"><span class="toc-number">5.</span> <span class="toc-text">远程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E8%BF%9C%E7%A8%8B%E6%8B%89%E5%8F%96%E5%86%85%E5%AE%B9-%E6%8F%90%E4%BA%A4%E5%86%85%E5%AE%B9%E5%88%B0%E8%BF%9C%E7%A8%8B"><span class="toc-number">6.</span> <span class="toc-text">从远程拉取内容,提交内容到远程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9A%82%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-number">7.</span> <span class="toc-text">暂存管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%BF%9C%E7%A8%8B%E5%BA%93"><span class="toc-number">8.</span> <span class="toc-text">创建远程库</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/01/14/vue-router%E6%BA%90%E7%A0%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B/" title="vue-router源码了解一下"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue-router源码了解一下"/></a><div class="content"><a class="title" href="/2020/01/14/vue-router%E6%BA%90%E7%A0%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B/" title="vue-router源码了解一下">vue-router源码了解一下</a><time datetime="2020-01-14T10:02:34.000Z" title="发表于 2020-01-14 18:02:34">2020-01-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/01/13/git%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C/" title="git日常操作"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="git日常操作"/></a><div class="content"><a class="title" href="/2020/01/13/git%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C/" title="git日常操作">git日常操作</a><time datetime="2020-01-13T03:24:51.000Z" title="发表于 2020-01-13 11:24:51">2020-01-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/01/08/%E9%AB%98%E6%B8%85%E5%9C%A8%E7%BA%BF%E7%9B%B4%E6%92%AD-1/" title="敢死队2-HDTC中英字在线观看"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="敢死队2-HDTC中英字在线观看"/></a><div class="content"><a class="title" href="/2020/01/08/%E9%AB%98%E6%B8%85%E5%9C%A8%E7%BA%BF%E7%9B%B4%E6%92%AD-1/" title="敢死队2-HDTC中英字在线观看">敢死队2-HDTC中英字在线观看</a><time datetime="2020-01-08T03:48:19.000Z" title="发表于 2020-01-08 11:48:19">2020-01-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/12/30/%E4%BA%86%E8%A7%A3%E4%B8%80%E4%BA%9BHTTP%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" title="了解一些HTTP协议相关知识"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="了解一些HTTP协议相关知识"/></a><div class="content"><a class="title" href="/2019/12/30/%E4%BA%86%E8%A7%A3%E4%B8%80%E4%BA%9BHTTP%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" title="了解一些HTTP协议相关知识">了解一些HTTP协议相关知识</a><time datetime="2019-12-30T08:49:42.000Z" title="发表于 2019-12-30 16:49:42">2019-12-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/11/22/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E6%9B%B4%E6%96%B0%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%8E%B0/" title="你能简单谈谈什么是 vue 的响应式更新？"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="你能简单谈谈什么是 vue 的响应式更新？"/></a><div class="content"><a class="title" href="/2019/11/22/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E6%9B%B4%E6%96%B0%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%8E%B0/" title="你能简单谈谈什么是 vue 的响应式更新？">你能简单谈谈什么是 vue 的响应式更新？</a><time datetime="2019-11-22T06:42:57.000Z" title="发表于 2019-11-22 14:42:57">2019-11-22</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By QiaoJianFeng</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

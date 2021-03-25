@@ -1,0 +1,457 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JavaScript 错误机制处理 | QIAO@博客</title><meta name="keywords" content="前端，JavaScript"><meta name="author" content="QiaoJianFeng"><meta name="copyright" content="QiaoJianFeng"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Error 实例对象JavaScript 解析或运行时，一旦发生错误，引擎就会抛出一个错误对象。JavaScript 原生提供Error构造函数，所有抛出的错误都是这个构造函数的实例。 var err &#x3D; new Error(&#39;出错了&#39;); err.message &#x2F;&#x2F; &quot;出错了&quot;  上面代码中，我们调用Error构造函数，生成一个实例对象err。Error构造">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 错误机制处理">
+<meta property="og:url" content="https://q-jf.cn/2019/07/18/javascript-e9-94-99-e8-af-af-e6-9c-ba-e5-88-b6-e5-a4-84-e7-90-86/index.html">
+<meta property="og:site_name" content="QIAO@博客">
+<meta property="og:description" content="Error 实例对象JavaScript 解析或运行时，一旦发生错误，引擎就会抛出一个错误对象。JavaScript 原生提供Error构造函数，所有抛出的错误都是这个构造函数的实例。 var err &#x3D; new Error(&#39;出错了&#39;); err.message &#x2F;&#x2F; &quot;出错了&quot;  上面代码中，我们调用Error构造函数，生成一个实例对象err。Error构造">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2019-07-18T08:00:45.000Z">
+<meta property="article:modified_time" content="2019-09-10T07:46:08.740Z">
+<meta property="article:author" content="QiaoJianFeng">
+<meta property="article:tag" content="前端，JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://q-jf.cn/2019/07/18/javascript-e9-94-99-e8-af-af-e6-9c-ba-e5-88-b6-e5-a4-84-e7-90-86/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2019-09-10 15:46:08'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">QIAO@博客</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JavaScript 错误机制处理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-07-18T08:00:45.000Z" title="发表于 2019-07-18 16:00:45">2019-07-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2019-09-10T07:46:08.740Z" title="更新于 2019-09-10 15:46:08">2019-09-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JavaScript 错误机制处理"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Error-实例对象"><a href="#Error-实例对象" class="headerlink" title="Error 实例对象"></a>Error 实例对象</h2><p>JavaScript 解析或运行时，一旦发生错误，引擎就会抛出一个错误对象。JavaScript 原生提供<code>Error</code>构造函数，所有抛出的错误都是这个构造函数的实例。</p>
+<pre><code>var err = new Error(&#39;出错了&#39;);
+err.message // &quot;出错了&quot;
+</code></pre>
+<p>上面代码中，我们调用<code>Error</code>构造函数，生成一个实例对象<code>err</code>。<code>Error</code>构造函数接受一个参数，表示错误提示，可以从实例的<code>message</code>属性读到这个参数。抛出<code>Error</code>实例对象以后，整个程序就中断在发生错误的地方，不再往下执行。 JavaScript 语言标准只提到，<code>Error</code>实例对象必须有<code>message</code>属性，表示出错时的提示信息，没有提到其他属性。大多数 JavaScript 引擎，对<code>Error</code>实例还提供<code>name</code>和<code>stack</code>属性，分别表示错误的名称和错误的堆栈，但它们是非标准的，不是每种实现都有。</p>
+<ul>
+<li>  <strong>message</strong>：错误提示信息</li>
+<li>  <strong>name</strong>：错误名称（非标准属性）</li>
+<li>  <strong>stack</strong>：错误的堆栈（非标准属性）</li>
+</ul>
+<p>使用<code>name</code>和<code>message</code>这两个属性，可以对发生什么错误有一个大概的了解。</p>
+<pre><code>if (error.name) &#123;
+  console.log(error.name + &#39;: &#39; + error.message);
+&#125;
+</code></pre>
+<p><code>stack</code>属性用来查看错误发生时的堆栈。</p>
+<pre><code>function throwit() &#123;
+  throw new Error(&#39;&#39;);
+&#125;
+
+function catchit() &#123;
+  try &#123;
+    throwit();
+  &#125; catch(e) &#123;
+    console.log(e.stack); // print stack trace
+  &#125;
+&#125;
+
+catchit()
+// Error
+//    at throwit (~/examples/throwcatch.js:9:11)
+//    at catchit (~/examples/throwcatch.js:3:9)
+//    at repl:1:5
+</code></pre>
+<p>上面代码中，错误堆栈的最内层是<code>throwit</code>函数，然后是<code>catchit</code>函数，最后是函数的运行环境。</p>
+<h2 id="原生错误类型"><a href="#原生错误类型" class="headerlink" title="原生错误类型"></a>原生错误类型</h2><p><code>Error</code>实例对象是最一般的错误类型，在它的基础上，JavaScript 还定义了其他6种错误对象。也就是说，存在<code>Error</code>的6个派生对象。</p>
+<h3 id="SyntaxError-对象"><a href="#SyntaxError-对象" class="headerlink" title="SyntaxError 对象"></a>SyntaxError 对象</h3><p><code>SyntaxError</code>对象是解析代码时发生的语法错误。</p>
+<pre><code>// 变量名错误
+var 1a;
+// Uncaught SyntaxError: Invalid or unexpected token
+
+// 缺少括号
+console.log &#39;hello&#39;);
+// Uncaught SyntaxError: Unexpected string
+</code></pre>
+<p>上面代码的错误，都是在语法解析阶段就可以发现，所以会抛出<code>SyntaxError</code>。第一个错误提示是“token 非法”，第二个错误提示是“字符串不符合要求”。</p>
+<h3 id="ReferenceError-对象"><a href="#ReferenceError-对象" class="headerlink" title="ReferenceError 对象"></a>ReferenceError 对象</h3><p><code>ReferenceError</code>对象是引用一个不存在的变量时发生的错误。</p>
+<pre><code>// 使用一个不存在的变量
+unknownVariable
+// Uncaught ReferenceError: unknownVariable is not defined
+</code></pre>
+<p>另一种触发场景是，将一个值分配给无法分配的对象，比如对函数的运行结果或者<code>this</code>赋值。</p>
+<pre><code>// 等号左侧不是变量
+console.log() = 1
+// Uncaught ReferenceError: Invalid left-hand side in assignment
+
+// this 对象不能手动赋值
+this = 1
+// ReferenceError: Invalid left-hand side in assignment
+</code></pre>
+<p>上面代码对函数<code>console.log</code>的运行结果和<code>this</code>赋值，结果都引发了<code>ReferenceError</code>错误。</p>
+<h3 id="RangeError-对象"><a href="#RangeError-对象" class="headerlink" title="RangeError 对象"></a>RangeError 对象</h3><p><code>RangeError</code>对象是一个值超出有效范围时发生的错误。主要有几种情况，一是数组长度为负数，二是<code>Number</code>对象的方法参数超出范围，以及函数堆栈超过最大值。</p>
+<pre><code>// 数组长度不得为负数
+new Array(-1)
+// Uncaught RangeError: Invalid array length
+</code></pre>
+<h3 id="TypeError-对象"><a href="#TypeError-对象" class="headerlink" title="TypeError 对象"></a>TypeError 对象</h3><p><code>TypeError</code>对象是变量或参数不是预期类型时发生的错误。比如，对字符串、布尔值、数值等原始类型的值使用<code>new</code>命令，就会抛出这种错误，因为<code>new</code>命令的参数应该是一个构造函数。</p>
+<pre><code>new 123
+// Uncaught TypeError: number is not a func
+
+var obj = &#123;&#125;;
+obj.unknownMethod()
+// Uncaught TypeError: obj.unknownMethod is not a function
+</code></pre>
+<p>上面代码的第二种情况，调用对象不存在的方法，也会抛出<code>TypeError</code>错误，因为<code>obj.unknownMethod</code>的值是<code>undefined</code>，而不是一个函数。</p>
+<h3 id="URIError-对象"><a href="#URIError-对象" class="headerlink" title="URIError 对象"></a>URIError 对象</h3><p><code>URIError</code>对象是 URI 相关函数的参数不正确时抛出的错误，主要涉及<code>encodeURI()</code>、<code>decodeURI()</code>、<code>encodeURIComponent()</code>、<code>decodeURIComponent()</code>、<code>escape()</code>和<code>unescape()</code>这六个函数。</p>
+<pre><code>decodeURI(&#39;%2&#39;)
+// URIError: URI malformed
+</code></pre>
+<h3 id="EvalError-对象"><a href="#EvalError-对象" class="headerlink" title="EvalError 对象"></a>EvalError 对象</h3><p><code>eval</code>函数没有被正确执行时，会抛出<code>EvalError</code>错误。该错误类型已经不再使用了，只是为了保证与以前代码兼容，才继续保留。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>以上这6种派生错误，连同原始的<code>Error</code>对象，都是构造函数。开发者可以使用它们，手动生成错误对象的实例。这些构造函数都接受一个参数，代表错误提示信息（message）。</p>
+<pre><code>var err1 = new Error(&#39;出错了！&#39;);
+var err2 = new RangeError(&#39;出错了，变量超出有效范围！&#39;);
+var err3 = new TypeError(&#39;出错了，变量类型无效！&#39;);
+
+err1.message // &quot;出错了！&quot;
+err2.message // &quot;出错了，变量超出有效范围！&quot;
+err3.message // &quot;出错了，变量类型无效！&quot;
+</code></pre>
+<h2 id="自定义错误"><a href="#自定义错误" class="headerlink" title="自定义错误"></a>自定义错误</h2><p>除了 JavaScript 原生提供的七种错误对象，还可以定义自己的错误对象。</p>
+<pre><code>function UserError(message) &#123;
+  this.message = message || &#39;默认信息&#39;;
+  this.name = &#39;UserError&#39;;
+&#125;
+
+UserError.prototype = new Error();
+UserError.prototype.constructor = UserError;
+</code></pre>
+<p>上面代码自定义一个错误对象<code>UserError</code>，让它继承<code>Error</code>对象。然后，就可以生成这种自定义类型的错误了。</p>
+<pre><code>new UserError(&#39;这是自定义的错误！&#39;);
+</code></pre>
+<h2 id="throw-语句"><a href="#throw-语句" class="headerlink" title="throw 语句"></a>throw 语句</h2><p><code>throw</code>语句的作用是手动中断程序执行，抛出一个错误。</p>
+<pre><code>if (x &lt;= 0) &#123;
+  throw new Error(&#39;x 必须为正数&#39;);
+&#125;
+// Uncaught ReferenceError: x is not defined
+</code></pre>
+<p>上面代码中，如果变量<code>x</code>小于等于<code>0</code>，就手动抛出一个错误，告诉用户<code>x</code>的值不正确，整个程序就会在这里中断执行。可以看到，<code>throw</code>抛出的错误就是它的参数，这里是一个<code>Error</code>实例。 <code>throw</code>也可以抛出自定义错误。</p>
+<pre><code>function UserError(message) &#123;
+  this.message = message || &#39;默认信息&#39;;
+  this.name = &#39;UserError&#39;;
+&#125;
+
+throw new UserError(&#39;出错了！&#39;);
+// Uncaught UserError &#123;message: &quot;出错了！&quot;, name: &quot;UserError&quot;&#125;
+</code></pre>
+<p>上面代码中，<code>throw</code>抛出的是一个<code>UserError</code>实例。 实际上，<code>throw</code>可以抛出任何类型的值。也就是说，它的参数可以是任何值。</p>
+<pre><code>// 抛出一个字符串
+throw &#39;Error！&#39;;
+// Uncaught Error！
+
+// 抛出一个数值
+throw 42;
+// Uncaught 42
+
+// 抛出一个布尔值
+throw true;
+// Uncaught true
+
+// 抛出一个对象
+throw &#123;
+  toString: function () &#123;
+    return &#39;Error!&#39;;
+  &#125;
+&#125;;
+// Uncaught &#123;toString: ƒ&#125;
+</code></pre>
+<p>对于 JavaScript 引擎来说，遇到<code>throw</code>语句，程序就中止了。引擎会接收到<code>throw</code>抛出的信息，可能是一个错误实例，也可能是其他类型的值。</p>
+<h2 id="try…catch-结构"><a href="#try…catch-结构" class="headerlink" title="try…catch 结构"></a>try…catch 结构</h2><p>一旦发生错误，程序就中止执行了。JavaScript 提供了<code>try...catch</code>结构，允许对错误进行处理，选择是否往下执行。</p>
+<pre><code>try &#123;
+  throw new Error(&#39;出错了!&#39;);
+&#125; catch (e) &#123;
+  console.log(e.name + &quot;: &quot; + e.message);
+  console.log(e.stack);
+&#125;
+// Error: 出错了!
+//   at &lt;anonymous&gt;:3:9
+//   ...
+</code></pre>
+<p>上面代码中，<code>try</code>代码块抛出错误（上例用的是<code>throw</code>语句），JavaScript 引擎就立即把代码的执行，转到<code>catch</code>代码块，或者说错误被<code>catch</code>代码块捕获了。<code>catch</code>接受一个参数，表示<code>try</code>代码块抛出的值。 如果你不确定某些代码是否会报错，就可以把它们放在<code>try...catch</code>代码块之中，便于进一步对错误进行处理。</p>
+<pre><code>try &#123;
+  f();
+&#125; catch(e) &#123;
+  // 处理错误
+&#125;
+</code></pre>
+<p>上面代码中，如果函数<code>f</code>执行报错，就会进行<code>catch</code>代码块，接着对错误进行处理。 <code>catch</code>代码块捕获错误之后，程序不会中断，会按照正常流程继续执行下去。</p>
+<pre><code>try &#123;
+  throw &quot;出错了&quot;;
+&#125; catch (e) &#123;
+  console.log(111);
+&#125;
+console.log(222);
+// 111
+// 222
+</code></pre>
+<p>上面代码中，<code>try</code>代码块抛出的错误，被<code>catch</code>代码块捕获后，程序会继续向下执行。 <code>catch</code>代码块之中，还可以再抛出错误，甚至使用嵌套的<code>try...catch</code>结构。</p>
+<pre><code>var n = 100;
+
+try &#123;
+  throw n;
+&#125; catch (e) &#123;
+  if (e &lt;= 50) &#123;
+    // ...
+  &#125; else &#123;
+    throw e;
+  &#125;
+&#125;
+// Uncaught 100
+</code></pre>
+<p>上面代码中，<code>catch</code>代码之中又抛出了一个错误。 为了捕捉不同类型的错误，<code>catch</code>代码块之中可以加入判断语句。</p>
+<pre><code>try &#123;
+  foo.bar();
+&#125; catch (e) &#123;
+  if (e instanceof EvalError) &#123;
+    console.log(e.name + &quot;: &quot; + e.message);
+  &#125; else if (e instanceof RangeError) &#123;
+    console.log(e.name + &quot;: &quot; + e.message);
+  &#125;
+  // ...
+&#125;
+</code></pre>
+<p>上面代码中，<code>catch</code>捕获错误之后，会判断错误类型（<code>EvalError</code>还是<code>RangeError</code>），进行不同的处理。</p>
+<h2 id="finally-代码块"><a href="#finally-代码块" class="headerlink" title="finally 代码块"></a>finally 代码块</h2><p><code>try...catch</code>结构允许在最后添加一个<code>finally</code>代码块，表示不管是否出现错误，都必需在最后运行的语句。</p>
+<pre><code>function cleansUp() &#123;
+  try &#123;
+    throw new Error(&#39;出错了……&#39;);
+    console.log(&#39;此行不会执行&#39;);
+  &#125; finally &#123;
+    console.log(&#39;完成清理工作&#39;);
+  &#125;
+&#125;
+
+cleansUp()
+// 完成清理工作
+// Uncaught Error: 出错了……
+//    at cleansUp (&lt;anonymous&gt;:3:11)
+//    at &lt;anonymous&gt;:10:1
+</code></pre>
+<p>上面代码中，由于没有<code>catch</code>语句块，一旦发生错误，代码就会中断执行。中断执行之前，会先执行<code>finally</code>代码块，然后再向用户提示报错信息。</p>
+<pre><code>function idle(x) &#123;
+  try &#123;
+    console.log(x);
+    return &#39;result&#39;;
+  &#125; finally &#123;
+    console.log(&#39;FINALLY&#39;);
+  &#125;
+&#125;
+
+idle(&#39;hello&#39;)
+// hello
+// FINALLY
+</code></pre>
+<p>上面代码中，<code>try</code>代码块没有发生错误，而且里面还包括<code>return</code>语句，但是<code>finally</code>代码块依然会执行。而且，这个函数的返回值还是<code>result</code>。 下面的例子说明，<code>return</code>语句的执行是排在<code>finally</code>代码之前，只是等<code>finally</code>代码执行完毕后才返回。</p>
+<pre><code>var count = 0;
+function countUp() &#123;
+  try &#123;
+    return count;
+  &#125; finally &#123;
+    count++;
+  &#125;
+&#125;
+
+countUp()
+// 0
+count
+// 1
+</code></pre>
+<p>上面代码说明，<code>return</code>语句里面的<code>count</code>的值，是在<code>finally</code>代码块运行之前就获取了。 下面是<code>finally</code>代码块用法的典型场景。</p>
+<pre><code>openFile();
+
+try &#123;
+  writeFile(Data);
+&#125; catch(e) &#123;
+  handleError(e);
+&#125; finally &#123;
+  closeFile();
+&#125;
+</code></pre>
+<p>上面代码首先打开一个文件，然后在<code>try</code>代码块中写入文件，如果没有发生错误，则运行<code>finally</code>代码块关闭文件；一旦发生错误，则先使用<code>catch</code>代码块处理错误，再使用<code>finally</code>代码块关闭文件。 下面的例子充分反映了<code>try...catch...finally</code>这三者之间的执行顺序。</p>
+<pre><code>function f() &#123;
+  try &#123;
+    console.log(0);
+    throw &#39;bug&#39;;
+  &#125; catch(e) &#123;
+    console.log(1);
+    return true; // 这句原本会延迟到 finally 代码块结束再执行
+    console.log(2); // 不会运行
+  &#125; finally &#123;
+    console.log(3);
+    return false; // 这句会覆盖掉前面那句 return
+    console.log(4); // 不会运行
+  &#125;
+
+  console.log(5); // 不会运行
+&#125;
+
+var result = f();
+// 0
+// 1
+// 3
+
+result
+// false
+</code></pre>
+<p>上面代码中，<code>catch</code>代码块结束执行之前，会先执行<code>finally</code>代码块。 <code>catch</code>代码块之中，触发转入<code>finally</code>代码快的标志，不仅有<code>return</code>语句，还有<code>throw</code>语句。</p>
+<pre><code>function f() &#123;
+  try &#123;
+    throw &#39;出错了！&#39;;
+  &#125; catch(e) &#123;
+    console.log(&#39;捕捉到内部错误&#39;);
+    throw e; // 这句原本会等到finally结束再执行
+  &#125; finally &#123;
+    return false; // 直接返回
+  &#125;
+&#125;
+
+try &#123;
+  f();
+&#125; catch(e) &#123;
+  // 此处不会执行
+  console.log(&#39;caught outer &quot;bogus&quot;&#39;);
+&#125;
+
+//  捕捉到内部错误
+</code></pre>
+<p>上面代码中，进入<code>catch</code>代码块之后，一遇到<code>throw</code>语句，就会去执行<code>finally</code>代码块，其中有<code>return false</code>语句，因此就直接返回了，不再会回去执行<code>catch</code>代码块剩下的部分了。 <code>try</code>代码块内部，还可以再使用<code>try</code>代码块。</p>
+<pre><code>try &#123;
+  try &#123;
+    console.log(&#39;Hello world!&#39;); // 报错
+  &#125;
+  finally &#123;
+    console.log(&#39;Finally&#39;);
+  &#125;
+  console.log(&#39;Will I run?&#39;);
+&#125; catch(error) &#123;
+  console.error(error.message);
+&#125;
+// Finally
+// consle is not defined
+</code></pre>
+<p>上面代码中，<code>try</code>里面还有一个<code>try</code>。内层的<code>try</code>报错，这时会执行内层的<code>finally</code>代码块，然后抛出错误，被外层的<code>catch</code>捕获。</p>
+<h2 id="参考连接"><a href="#参考连接" class="headerlink" title="参考连接 # "></a>参考连接 # </h2><ul>
+<li>  Jani Hartikainen, <a target="_blank" rel="noopener" href="http://davidwalsh.name/fix-javascript-errors">JavaScript Errors and How to Fix Them</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">QiaoJianFeng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://q-jf.cn/2019/07/18/javascript-e9-94-99-e8-af-af-e6-9c-ba-e5-88-b6-e5-a4-84-e7-90-86/">https://q-jf.cn/2019/07/18/javascript-e9-94-99-e8-af-af-e6-9c-ba-e5-88-b6-e5-a4-84-e7-90-86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://q-jf.cn" target="_blank">QIAO@博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF%EF%BC%8CJavaScript/">前端，JavaScript</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/07/18/console-e5-af-b9-e8-b1-a1-e4-b8-8e-e6-8e-a7-e5-88-b6-e5-8f-b0-e8-af-a6-e8-a7-a3/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">console 对象与控制台详解</div></div></a></div><div class="next-post pull-right"><a href="/2019/07/12/e5-88-86-e6-9e-90-e5-be-ae-e4-bf-a1-e5-85-ac-e4-bc-97-e5-8f-b7-localstorage-e7-bc-93-e5-ad-98-e6-9c-ba-e5-88-b6/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">分析微信公众号-LocalStorage 缓存机制</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2019/06/22/e5-89-8d-e7-ab-af-e5-b0-8f-e7-99-bd-e5-85-a5-e9-97-a8-e4-b9-8b-e5-86-8d-e5-ad-a6javascript-e4-b8-80/" title="前端小白入门之再学JavaScript (一)"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-06-22</div><div class="title">前端小白入门之再学JavaScript (一)</div></div></a></div><div><a href="/2019/06/22/e5-89-8d-e7-ab-af-e5-b0-8f-e7-99-bd-e5-85-a5-e9-97-a8-e4-b9-8b-e5-86-8d-e5-ad-a6javascript-e4-ba-8c/" title="前端小白入门之再学JavaScript (二)"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-06-22</div><div class="title">前端小白入门之再学JavaScript (二)</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">QiaoJianFeng</div><div class="author-info__description">QIAO是一个以Web前端开发为主的学习,进阶,交流,分享资源的博客。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Error-%E5%AE%9E%E4%BE%8B%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.</span> <span class="toc-text">Error 实例对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%94%9F%E9%94%99%E8%AF%AF%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">原生错误类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SyntaxError-%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.1.</span> <span class="toc-text">SyntaxError 对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ReferenceError-%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.2.</span> <span class="toc-text">ReferenceError 对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RangeError-%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.3.</span> <span class="toc-text">RangeError 对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TypeError-%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.4.</span> <span class="toc-text">TypeError 对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#URIError-%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.5.</span> <span class="toc-text">URIError 对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EvalError-%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.6.</span> <span class="toc-text">EvalError 对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">2.7.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%94%99%E8%AF%AF"><span class="toc-number">3.</span> <span class="toc-text">自定义错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#throw-%E8%AF%AD%E5%8F%A5"><span class="toc-number">4.</span> <span class="toc-text">throw 语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#try%E2%80%A6catch-%E7%BB%93%E6%9E%84"><span class="toc-number">5.</span> <span class="toc-text">try…catch 结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#finally-%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">6.</span> <span class="toc-text">finally 代码块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%BF%9E%E6%8E%A5"><span class="toc-number">7.</span> <span class="toc-text">参考连接 # </span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/01/14/vue-router%E6%BA%90%E7%A0%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B/" title="vue-router源码了解一下"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue-router源码了解一下"/></a><div class="content"><a class="title" href="/2020/01/14/vue-router%E6%BA%90%E7%A0%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B/" title="vue-router源码了解一下">vue-router源码了解一下</a><time datetime="2020-01-14T10:02:34.000Z" title="发表于 2020-01-14 18:02:34">2020-01-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/01/13/git%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C/" title="git日常操作"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="git日常操作"/></a><div class="content"><a class="title" href="/2020/01/13/git%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C/" title="git日常操作">git日常操作</a><time datetime="2020-01-13T03:24:51.000Z" title="发表于 2020-01-13 11:24:51">2020-01-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/01/08/%E9%AB%98%E6%B8%85%E5%9C%A8%E7%BA%BF%E7%9B%B4%E6%92%AD-1/" title="敢死队2-HDTC中英字在线观看"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="敢死队2-HDTC中英字在线观看"/></a><div class="content"><a class="title" href="/2020/01/08/%E9%AB%98%E6%B8%85%E5%9C%A8%E7%BA%BF%E7%9B%B4%E6%92%AD-1/" title="敢死队2-HDTC中英字在线观看">敢死队2-HDTC中英字在线观看</a><time datetime="2020-01-08T03:48:19.000Z" title="发表于 2020-01-08 11:48:19">2020-01-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/12/30/%E4%BA%86%E8%A7%A3%E4%B8%80%E4%BA%9BHTTP%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" title="了解一些HTTP协议相关知识"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="了解一些HTTP协议相关知识"/></a><div class="content"><a class="title" href="/2019/12/30/%E4%BA%86%E8%A7%A3%E4%B8%80%E4%BA%9BHTTP%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" title="了解一些HTTP协议相关知识">了解一些HTTP协议相关知识</a><time datetime="2019-12-30T08:49:42.000Z" title="发表于 2019-12-30 16:49:42">2019-12-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/11/22/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E6%9B%B4%E6%96%B0%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%8E%B0/" title="你能简单谈谈什么是 vue 的响应式更新？"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="你能简单谈谈什么是 vue 的响应式更新？"/></a><div class="content"><a class="title" href="/2019/11/22/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E6%9B%B4%E6%96%B0%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%8E%B0/" title="你能简单谈谈什么是 vue 的响应式更新？">你能简单谈谈什么是 vue 的响应式更新？</a><time datetime="2019-11-22T06:42:57.000Z" title="发表于 2019-11-22 14:42:57">2019-11-22</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By QiaoJianFeng</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

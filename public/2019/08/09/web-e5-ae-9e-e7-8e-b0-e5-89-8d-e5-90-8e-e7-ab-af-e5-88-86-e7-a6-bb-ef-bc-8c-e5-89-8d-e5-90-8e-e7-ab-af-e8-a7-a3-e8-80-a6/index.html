@@ -1,0 +1,314 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Web 实现前后端分离，前后端解耦 | QIAO@博客</title><meta name="keywords" content="前端,全栈,Web,自学编程,学习分享,javascript,电影分享,模板资源"><meta name="author" content="QiaoJianFeng"><meta name="copyright" content="QiaoJianFeng"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="（给前端大全加星标，提升前端技能）  作者：山河远阔 blog.csdn.net&#x2F;weixin_37539378&#x2F;article&#x2F;details&#x2F;79956760  一、前言”前后端分离“已经成为互联网项目开发的业界标杆，通过Tomcat+Ngnix(也可以中间有个Node.js)，有效地进行解耦。并且前后端分离会为以后的大型分布式架构、弹性计算架构、微服务架构、多端化服务（多种客户端，例如：浏览">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web 实现前后端分离，前后端解耦">
+<meta property="og:url" content="https://q-jf.cn/2019/08/09/web-e5-ae-9e-e7-8e-b0-e5-89-8d-e5-90-8e-e7-ab-af-e5-88-86-e7-a6-bb-ef-bc-8c-e5-89-8d-e5-90-8e-e7-ab-af-e8-a7-a3-e8-80-a6/index.html">
+<meta property="og:site_name" content="QIAO@博客">
+<meta property="og:description" content="（给前端大全加星标，提升前端技能）  作者：山河远阔 blog.csdn.net&#x2F;weixin_37539378&#x2F;article&#x2F;details&#x2F;79956760  一、前言”前后端分离“已经成为互联网项目开发的业界标杆，通过Tomcat+Ngnix(也可以中间有个Node.js)，有效地进行解耦。并且前后端分离会为以后的大型分布式架构、弹性计算架构、微服务架构、多端化服务（多种客户端，例如：浏览">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2019-08-09T04:41:50.000Z">
+<meta property="article:modified_time" content="2019-09-10T07:46:08.741Z">
+<meta property="article:author" content="QiaoJianFeng">
+<meta property="article:tag" content="前端,全栈,Web,自学编程,学习分享,javascript,电影分享,模板资源">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://q-jf.cn/2019/08/09/web-e5-ae-9e-e7-8e-b0-e5-89-8d-e5-90-8e-e7-ab-af-e5-88-86-e7-a6-bb-ef-bc-8c-e5-89-8d-e5-90-8e-e7-ab-af-e8-a7-a3-e8-80-a6/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2019-09-10 15:46:08'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">QIAO@博客</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Web 实现前后端分离，前后端解耦</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-08-09T04:41:50.000Z" title="发表于 2019-08-09 12:41:50">2019-08-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2019-09-10T07:46:08.741Z" title="更新于 2019-09-10 15:46:08">2019-09-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Web 实现前后端分离，前后端解耦"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>（给前端大全加星标，提升前端技能）</p>
+<blockquote>
+<p>作者：山河远阔</p>
+<p>blog.csdn.net/weixin_37539378/article/details/79956760</p>
+</blockquote>
+<h3 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a><strong>一、前言</strong></h3><p>”前后端分离“已经成为互联网项目开发的业界标杆，通过Tomcat+Ngnix(也可以中间有个Node.js)，有效地进行解耦。并且前后端分离会为以后的大型分布式架构、弹性计算架构、微服务架构、多端化服务（多种客户端，例如：浏览器，车载终端，安卓，IOS等等）打下坚实的基础。</p>
+<p>前后端分离(解耦)的核心思想是：前端Html页面通过Ajax调用后端的RestFul API并使用Json数据进行交互。</p>
+<blockquote>
+<p>注：【在互联网架构中，web服务器：一般指像nginx，apache这类的服务器，他们一般只能解析静态资源。应用服务器：一般指像tomcat，jetty，resin这类的服务器可以解析动态资源也可以解析静态资源，但解析静态资源的能力没有web服务器好。】</p>
+</blockquote>
+<p>一般只有Web服务器才能被外网访问，应用服务器只能内网访问。</p>
+<h3 id="二、为什么前后端分离"><a href="#二、为什么前后端分离" class="headerlink" title="二、为什么前后端分离"></a><strong>二、为什么前后端分离</strong></h3><p>一般公司后端开发人员直接兼顾前端的工作，一边实现API接口，一边开发页面，两者互相切换着做，而且根据不同的url动态拼接页面，这也导致后台的开发压力大大增加。前后端工作分配不均。不仅仅开发效率慢，而且代码难以维护。</p>
+<p>而前后端分离的话，则可以很好的解决前后端分工不均的问题，将更多的交互逻辑分配给前端来处理，而后端则可以专注于其本职工作，比如提供API接口，进行权限控制以及进行运算工作。而前端开发人员则可以利用nodejs来搭建自己的本地服务器，直接在本地开发，然后通过一些插件来将api请求转发到后台，这样就可以完全模拟线上的场景，并且与后台解耦。前端可以独立完成与用户交互的整一个过程，两者都可以同时开工，不互相依赖，开发效率更快，而且分工比较均衡。</p>
+<h3 id="三、从MVC到前后端分离"><a href="#三、从MVC到前后端分离" class="headerlink" title="三、从MVC到前后端分离"></a><strong>三、从MVC到前后端分离</strong></h3><p>MVC 是一种经典的设计模式，全名为 Model-View-Controller，即 模型-视图-控制器。</p>
+<p>其中，模型 是用于封装数据的载体，例如，在 Java 中一般通过一个简单的 POJO（Plain Ordinary Java Object）来表示，其本质是一个普通的 Java Bean，包含一系列的成员变量及其 getter/setter 方法。对于 视图 而言，它更加偏重于展现，也就是说，视图决定了界面到底长什么样子，在 Java 中可通过 JSP 来充当视图，或者通过纯 HTML 的方式进行展现，而后者才是目前的主流。模型和视图需要通过 控制器 来进行粘合，例如，用户发送一个 HTTP 请求，此时该请求首先会进入控制器，然后控制器去获取数据并将其封装为模型，最后将模型传递到视图中进行展现。</p>
+<p>综上所述，MVC 的交互过程如下图所示：</p>
+<p><img src="https://www.v5ant.com/wp-content/uploads/2019/08/frc-f6191858287f4dbe8a6b273e2d096ec8.jpeg" alt="Web 实现前后端分离，前后端解耦"></p>
+<p>也就是说，我们输入的是 AJAX 请求，输出的是 JSON 数据，市面上有这样的技术来实现这个功能吗？答案是 REST。</p>
+<p>REST 全称是 Representational State Transfer（表述性状态转移），它是 Roy Fielding 博士在 2000 年写的一篇关于软件架构风格的论文，此文一出，威震四方！国内外许多知名互联网公司纷纷开始采用这种轻量级的 Web 服务，大家习惯将其称为 RESTful Web Services，或简称 REST 服务。</p>
+<p>如果将浏览器这一端视为前端，而服务器那一端视为后端的话，可以将以上改进后的 MVC 模式简化为以下前后端分离模式：</p>
+<p><img src="https://www.v5ant.com/wp-content/uploads/2019/08/frc-bb8908b8a92cec7af6280e7188ffb2d7.jpeg" alt="Web 实现前后端分离，前后端解耦"></p>
+<p>可见，有了 REST 服务，前端关注界面展现，后端关注业务逻辑，分工明确，职责清晰。</p>
+<h3 id="四、认识Rest架构"><a href="#四、认识Rest架构" class="headerlink" title="四、认识Rest架构"></a><strong>四、认识Rest架构</strong></h3><p>REST 本质上是使用 URL 来访问资源种方式。众所周知，URL 就是我们平常使用的请求地址了，其中包括两部分：请求方式 与 请求路径，比较常见的请求方式是 GET 与 POST，但在 REST 中又提出了几种其它类型的请求方式，汇总起来有六种：GET、POST、PUT、DELETE、HEAD、OPTIONS。</p>
+<p>尤其是前四种，正好与CRUD（Create-Retrieve-Update-Delete，增删改查）四种操作相对应，例如，GET（查）、POST（增）、PUT（改）、DELETE（删），这正是 REST 与 CRUD 的异曲同工之妙！需要强调的是，REST 是“面向资源”的，这里提到的资源，实际上就是我们常说的领域对象，在系统设计过程中，我们经常通过领域对象来进行数据建模。</p>
+<p>REST 是一个“无状态”的架构模式，因为在任何时候都可以由客户端发出请求到服务端，最终返回自己想要的数据，当前请求不会受到上次请求的影响。也就是说，服务端将内部资源发布 REST 服务，客户端通过 URL 来访问这些资源，这不就是 SOA 所提倡的“面向服务”的思想吗？所以，REST 也被人们看做是一种“轻量级”的 SOA 实现技术，因此在企业级应用与互联网应用中都得到了广泛应用。</p>
+<p><strong>下面我们举几个例子对 REST 请求进行简单描述：</strong></p>
+<p><img src="https://www.v5ant.com/wp-content/uploads/2019/08/frc-9bac505f92672a7e1db6f349a58ad531.jpeg" alt="Web 实现前后端分离，前后端解耦"></p>
+<p>可见，请求路径相同，但请求方式不同，所代表的业务操作也不同，例如，/advertiser/1 这个请求，带有 GET、PUT、DELETE 三种不同的请求方式，对应三种不同的业务操作。</p>
+<p>虽然 REST 看起来还是很简单的，实际上我们往往需要提供一个 REST 框架，让其实现前后端分离架构，让开发人员将精力集中在业务上，而并非那些具体的技术细节。</p>
+<h3 id="五、前后端分离意义大吗？"><a href="#五、前后端分离意义大吗？" class="headerlink" title="五、前后端分离意义大吗？"></a><strong>五、前后端分离意义大吗？</strong></h3><p>1、该网站前端变化远比后端变化频繁，则意义大。</p>
+<p>2、该网站尚处于原始开发模式，数据逻辑与表现逻辑混杂不清，则意义大。</p>
+<p>3、该网站前端团队和后端团队分属两个领导班子，技能点差异很大，则意义大。</p>
+<p>4、该网站前端效果绚丽/跨设备兼容要求高，则意义大。</p>
+<h3 id="六、术业有专攻（开发人员分离）"><a href="#六、术业有专攻（开发人员分离）" class="headerlink" title="六、术业有专攻（开发人员分离）"></a><strong>六、术业有专攻（开发人员分离）</strong></h3><p>以前的JavaWeb项目大多数都是java程序员又当爹又当妈，又搞前端（ajax/jquery/js/html/css等等），又搞后端（java/mysql/oracle等等）。</p>
+<p>随着时代的发展，渐渐的许多大中小公司开始把前后端的界限分的越来越明确，前端工程师只管前端的事情，后端工程师只管后端的事情。</p>
+<p>正所谓术业有专攻，一个人如果什么都会，那么他毕竟什么都不精。</p>
+<p>大中型公司需要专业人才，小公司需要全才，但是对于个人职业发展来说，我建议是分开。</p>
+<h3 id="对于后端java工程师："><a href="#对于后端java工程师：" class="headerlink" title="对于后端java工程师："></a><strong>对于后端java工程师：</strong></h3><p>把精力放在java基础，设计模式，jvm原理，spring+springmvc原理及源码，linux，mysql事务隔离与锁机制，mongodb，http/tcp，多线程，分布式架构（dubbo，dubbox，spring cloud），弹性计算架构，微服务架构（springboot+zookeeper+docker+jenkins），java性能优化，以及相关的项目管理等等。</p>
+<p>后端追求的是：三高（高并发，高可用，高性能），安全，存储，业务等等。</p>
+<h3 id="对于前端工程师："><a href="#对于前端工程师：" class="headerlink" title="对于前端工程师："></a><strong>对于前端工程师：</strong></h3><p>把精力放在html5，css3，jquery，angularjs，bootstrap，reactjs，vuejs，webpack，less/sass，gulp，nodejs，Google V8引擎，javascript多线程，模块化，面向切面编程，设计模式，浏览器兼容性，性能优化等等。</p>
+<p>前端追求的是：页面表现，速度流畅，兼容性，用户体验等等。</p>
+<h3 id="七、耦合时代"><a href="#七、耦合时代" class="headerlink" title="七、耦合时代"></a><strong>七、耦合时代</strong></h3><p>几曾何时，我们的JavaWeb项目都是使用了若干后台框架，springmvc/struts + spring + spring jdbc/hibernate/mybatis 等等。</p>
+<p>大多数项目在java后端都是分了三层，控制层（controller/action），业务层（service/manage），持久层（dao）。</p>
+<p>控制层负责接收参数，调用相关业务层，封装数据，以及路由&amp;渲染到jsp页面。</p>
+<p>然后jsp页面上使用各种标签（jstl/el/struts标签等）或者手写java表达式（&lt;%=%&gt;）将后台的数据展现出来，玩的是MVC那套思路。</p>
+<p>我们先看这种情况：需求定完了，代码写完了，测试测完了，然后呢？要发布了吧？</p>
+<p>你需要用maven或者eclipse等工具把你的代码打成一个war包，然后把这个war包发布到你的生产环境下的web容器（tomcat/jboss/weblogic/websphere/jetty/resin）里，对吧？</p>
+<p>发布完了之后，你要启动你的web容器，开始提供服务，这时候你通过配置域名，dns等等相关，你的网站就可以访问了（假设你是个网站）。</p>
+<p>那我们来看，你的前后端代码是不是全都在那个war包里？包括你的js，css，图片，各种第三方的库，对吧？</p>
+<p>好，下面在浏览器中输入你的网站域名（<a href="http://www.xxx.com），之后发生了什么？（这个问题也是很多公司的面试题）">www.xxx.com），之后发生了什么？（这个问题也是很多公司的面试题）</a></p>
+<p>我捡干的说了啊，基础不好的童鞋请自己去搜。</p>
+<p>浏览器在通过域名通过dns服务器找到你的服务器外网ip,将http请求发送到你的服务器，在tcp3次握手之后（http下面是tcp/ip），通过tcp协议开始传输数据，你的服务器得到请求后，开始提供服务，接收参数，之后返回你的应答给浏览器，浏览器再通过content-type来解析你返回的内容，呈现给用户。</p>
+<p>那么我们来看，我们先假设你的首页中有100张图片，此时，用户的看似一次http请求，其实并不是一次，用户在第一次访问的时候，浏览器中不会有缓存，你的100张图片，浏览器要连着请求100次http请求（有人会跟我说http长连短连的问题，不在这里讨论），你的服务器接收这些请求，都需要耗费内存去创建socket来玩tcp传输（消耗你服务器上的计算资源）。</p>
+<p>重点来了，这样的话，你的服务器的压力会非常大，因为页面中的所有请求都是只请求到你这台服务器上，如果1个人还好，如果10000个人并发访问呢（先不聊服务器集群，这里就说是单实例服务器），那你的服务器能扛住多少个tcp连接？你的带宽有多大？你的服务器的内存有多大？你的硬盘是高性能的吗？你能抗住多少IO？你给web服务器分的内存有多大？会不会宕机？</p>
+<p><strong>这就是为什么，越是大中型的web应用，他们越是要解耦。</strong></p>
+<p>理论上你可以把你的数据库+应用服务+消息队列+缓存+用户上传的文件+日志+等等都扔在一台服务器上，你也不用玩什么服务治理，也不用做什么性能监控，什么报警机制等等，就乱成一锅粥好了。</p>
+<p>但是这样就好像是你把鸡蛋都放在一个篮子里，隐患非常大。如果因为一个子应用的内存不稳定导致整个服务器内存溢出而hung住，那你的整个网站就挂掉了。</p>
+<p>如果出意外挂掉，而恰好这时你们的业务又处于井喷式发展高峰期，那么恭喜你，业务成功被技术卡住，很可能会流失大量用户，后果不堪设想。<br>注意：技术一定是要走在业务前面的，否则你将错过最佳的发展期。</p>
+<p>此外，你的应用全部都耦合在一起，相当于一个巨石，当服务端负载能力不足时，一般会使用负载均衡的方式，将服务器做成集群，这样其实你是在水平扩展一块块巨石，性能加速度会越来越低，要知道，本身负载就低的功能or模块是没有必要水平扩展的，在本文中的例子就是你的性能瓶颈不在前端，那干嘛要水平扩展前端呢？？？<br>还有发版部署上线的时候，我明明只改了后端的代码，为什么要前端也跟着发布呢？？？（引用：《架构探险-轻量级微服务架构》，黄勇）</p>
+<p>正常的互联网架构，是都要拆开的，你的web服务器集群，你的应用服务器集群+文件服务器集群+数据库服务器集群+消息队列集群+缓存集群等等。  </p>
+<p><strong>JSP的痛点</strong></p>
+<p>以前的javaWeb项目大多数使用jsp作为页面层展示数据给用户，因为流量不高，因此也没有那么苛刻的性能要求，但现在是大数据时代，对于互联网项目的性能要求是越来越高，因此原始的前后端耦合在一起的架构模式已经逐渐不能满足我们，因此我们需要需找一种解耦的方式，来大幅度提升我们的负载能力。</p>
+<p>1、动态资源和静态资源全部耦合在一起，服务器压力大，因为服务器会收到各种http请求，例如css的http请求，js的，图片的等等。</p>
+<p>一旦服务器出现状况，前后台一起玩完，用户体验极差。</p>
+<p>2、UI出好设计图后，前端工程师只负责将设计图切成html，需要由java工程师来将html套成jsp页面，出错率较高（因为页面中经常会出现大量的js代码），<br>修改问题时需要双方协同开发，效率低下。</p>
+<p>3、jsp必须要在支持java的web服务器里运行（例如tomcat，jetty，resin等），无法使用nginx等（nginx据说单实例http并发高达5w，这个优势要用上），<br>性能提不上来。</p>
+<p>4、第一次请求jsp，必须要在web服务器中编译成servlet，第一次运行会较慢。</p>
+<p>5.每次请求jsp都是访问servlet再用输出流输出的html页面，效率没有直接使用html高（是每次哟，亲~）。</p>
+<p>6、jsp内有较多标签和表达式，前端工程师在修改页面时会捉襟见肘，遇到很多痛点。</p>
+<p>7、如果jsp中的内容很多，页面响应会很慢，因为是同步加载。</p>
+<p>8、需要前端工程师使用java的ide（例如eclipse），以及需要配置各种后端的开发环境，你们有考虑过前端工程师的感受吗。</p>
+<p>基于上述的一些痛点，我们应该把整个项目的开发权重往前移，实现前后端真正的解耦！</p>
+<h3 id="开发模式"><a href="#开发模式" class="headerlink" title="开发模式"></a><strong>开发模式</strong></h3><p><strong>以前老的方式是：</strong></p>
+<ul>
+<li>产品经历/领导/客户提出需求</li>
+<li>UI做出设计图</li>
+<li>前端工程师做html页面</li>
+<li>后端工程师将html页面套成jsp页面（前后端强依赖，后端必须要等前端的html做好才能套jsp。如果html发生变更，就更痛了，开发效率低）</li>
+<li>集成出现问题</li>
+<li>前端返工</li>
+<li>后端返工</li>
+</ul>
+<p>二次集成</p>
+<p>集成成功</p>
+<p>交付</p>
+<p><strong>新的方式是：</strong></p>
+<ul>
+<li>产品经历/领导/客户提出需求</li>
+<li>UI做出设计图</li>
+<li>前后端约定接口&amp;数据&amp;参数</li>
+<li>前后端并行开发（无强依赖，可前后端并行开发，如果需求变更，只要接口&amp;参数不变，就不用两边都修改代码，开发效率高）</li>
+<li>前后端集成</li>
+<li>前端页面调整</li>
+<li>集成成功</li>
+<li>交付</li>
+</ul>
+<h3 id="请求方式"><a href="#请求方式" class="headerlink" title="请求方式"></a><strong>请求方式</strong></h3><p><strong>以前老的方式是：</strong></p>
+<ul>
+<li>客户端请求</li>
+<li>服务端的servlet或controller接收请求（后端控制路由与渲染页面，整个项目开发的权重大部分在后端）</li>
+<li>调用service,dao代码完成业务逻辑</li>
+<li>返回jsp</li>
+<li>jsp展现一些动态的代码</li>
+</ul>
+<p><strong>新的方式是：</strong></p>
+<ul>
+<li>浏览器发送请求</li>
+<li>直接到达html页面（前端控制路由与渲染页面，整个项目开发的权重前移）</li>
+<li>html页面负责调用服务端接口产生数据（通过ajax等等，后台返回json格式数据，json数据格式因为简洁高效而取代xml）</li>
+<li>填充html，展现动态效果，在页面上进行解析并操作DOM。</li>
+</ul>
+<p>（有兴趣的童鞋可以访问一下阿里巴巴等大型网站，然后按一下F12，监控一下你刷新一次页面，他的http是怎么玩的，大多数都是单独请求后台数据，使用json传输数据，而不是一个大而全的http请求把整个页面包括动+静全部返回过来）</p>
+<p><strong>总结一下新的方式的请求步骤：</strong></p>
+<p>大量并发浏览器请求—&gt;web服务器集群(nginx)—&gt;应用服务器集群(tomcat)—&gt;文件/数据库/缓存/消息队列服务器集群</p>
+<p>同时又可以玩分模块，还可以按业务拆成一个个的小集群，为后面的架构升级做准备。</p>
+<h3 id="前后分离的优势"><a href="#前后分离的优势" class="headerlink" title="前后分离的优势"></a><strong>前后分离的优势</strong></h3><p>1、可以实现真正的前后端解耦，前端服务器使用nginx。</p>
+<p>前端/WEB服务器放的是css，js，图片等等一系列静态资源（甚至你还可以css，js，图片等资源放到特定的文件服务器，例如阿里云的oss，并使用cdn加速），前端服务器负责控制页面引用&amp;跳转&amp;路由，前端页面异步调用后端的接口，后端/应用服务器使用tomcat（把tomcat想象成一个数据提供者），加快整体响应速度。</p>
+<blockquote>
+<p>这里需要使用一些前端工程化的框架比如nodejs，react，router，react，redux，webpack</p>
+</blockquote>
+<p>2、发现bug，可以快速定位是谁的问题，不会出现互相踢皮球的现象。</p>
+<p>页面逻辑，跳转错误，浏览器兼容性问题，脚本错误，页面样式等问题，全部由前端工程师来负责。</p>
+<p>接口数据出错，数据没有提交成功，应答超时等问题，全部由后端工程师来解决。</p>
+<p>双方互不干扰，前端与后端是相亲相爱的一家人。</p>
+<p>3、在大并发情况下，我可以同时水平扩展前后端服务器，比如淘宝的一个首页就需要2000+台前端服务器做集群来抗住日均多少亿+的日均pv。</p>
+<blockquote>
+<p>去参加阿里的技术峰会，听他们说他们的web容器都是自己写的，就算他单实例抗10万http并发，2000台是2亿http并发，并且他们还可以根据预知洪峰来无限拓展，很恐怖，就一个首页。。。</p>
+</blockquote>
+<p>4、减少后端服务器的并发/负载压力</p>
+<p>除了接口以外的其他所有http请求全部转移到前端nginx上，接口的请求调用tomcat，参考nginx反向代理tomcat。</p>
+<p>且除了第一次页面请求外，浏览器会大量调用本地缓存。</p>
+<p>5、即使后端服务暂时超时或者宕机了，前端页面也会正常访问，只不过数据刷不出来而已。</p>
+<p>6、也许你也需要有微信相关的轻应用，那样你的接口完全可以共用，如果也有app相关的服务，那么只要通过一些代码重构，也可以大量复用接口，提升效率。（多端应用）</p>
+<p>7、页面显示的东西再多也不怕，因为是异步加载。</p>
+<p>8、nginx支持页面热部署，不用重启服务器，前端升级更无缝。</p>
+<p>9、增加代码的维护性&amp;易读性（前后端耦在一起的代码读起来相当费劲）。</p>
+<p>10、提升开发效率，因为可以前后端并行开发，而不是像以前的强依赖。</p>
+<p>11、在nginx中部署证书，外网使用https访问，并且只开放443和80端口，其他端口一律关闭（防止黑客端口扫描），<br>内网使用http，性能和安全都有保障。</p>
+<p>12、前端大量的组件代码得以复用，组件化，提升开发效率，抽出来！</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h3><p>1、在开需求会议的时候，前后端工程师必须全部参加，并且需要制定好接口文档，后端工程师要写好测试用例（2个维度），不要让前端工程师充当你的专职测试，<br>推荐使用chrome的插件postman或soapui或jmeter，service层的测试用例拿junit写。ps：前端也可以玩单元测试吗？</p>
+<p>2、上述的接口并不是java里的interface，说白了调用接口就是调用你controler里的方法。</p>
+<p>3、加重了前端团队的工作量，减轻了后端团队的工作量，提高了性能和可扩展性。</p>
+<p>4、我们需要一些前端的框架来解决类似于页面嵌套，分页，页面跳转控制等功能。（上面提到的那些前端框架）。</p>
+<p>5、如果你的项目很小，或者是一个单纯的内网项目，那你大可放心，不用任何架构而言，但是如果你的项目是外网项目，呵呵哒。</p>
+<p>6、以前还有人在使用类似于velocity/freemarker等模板框架来生成静态页面，仁者见仁智者见智。</p>
+<p>7、这篇文章主要的目的是说jsp在大型外网java web项目中被淘汰掉，可没说jsp可以完全不学，对于一些学生朋友来说，jsp/servlet等相关的java web基础还是要掌握牢的，不然你以为springmvc这种框架是基于什么来写的？</p>
+<p>8、如果页面上有一些权限等等相关的校验，那么这些相关的数据也可以通过ajax从接口里拿。</p>
+<p>9、对于既可以前端做也可以后端做的逻辑，我建议是放到前端，为什么？</p>
+<p>因为你的逻辑需要计算资源进行计算，如果放到后端去run逻辑，则会消耗带宽&amp;内存&amp;cpu等等计算资源，你要记住一点就是：服务端的计算资源是有限的，而如果放到前端，使用的是客户端的计算资源，这样你的服务端负载就会下降（高并发场景）。</p>
+<blockquote>
+<p>类似于数据校验这种，前后端都需要做！</p>
+</blockquote>
+<p>10、前端需要有机制应对后端请求超时以及后端服务宕机的情况，友好的展示给用户。</p>
+<h2 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a><strong>扩展阅读</strong></h2><p>1、其实对于js，css，图片这类的静态资源可以考虑放到类似于阿里云的oss这类文件服务器上（如果是普通的服务器&amp;操作系统，存储在到达pb级的文件后，或者单个文件夹内的文件数量达到3-5万，io会有很严重的性能问题），再在oss上配cdn（全国子节点加速），这样你页面打开的速度像飞一样， 无论你在全国的哪个地方，并且你的nginx的负载会进一步降低。</p>
+<p>2、如果你要玩轻量级微服务架构，要使用nodejs做网关，用nodejs的好处还有利于seo优化，因为nginx只是向浏览器返回页面静态资源，而国内的搜索引擎爬虫只会抓取静态数据，不会解析页面中的js，这使得应用得不到良好的搜索引擎支持。同时因为nginx不会进行页面的组装渲染，需要把静态页面返回到浏览器，然后完成渲染工作，这加重了浏览器的渲染负担。</p>
+<p>浏览器发起的请求经过nginx进行分发，URL请求统一分发到nodejs，在nodejs中进行页面组装渲染；API请求则直接发送到后端服务器，完成响应。</p>
+<p>3、如果遇到跨域问题，spring4的CORS可以完美解决，但一般使用nginx反向代理都不会有跨域问题，除非你把前端服务和后端服务分成两个域名。<br>JSONP的方式也被淘汰掉了。</p>
+<p>4、如果想玩多端应用，注意要去掉tomcat原生的session机制，要使用token机制，使用缓存（因为是分布式系统），做单点，对于token机制的安全性问题，可以搜一下jwt。</p>
+<p>5、前端项目中可以加入mock测试（构造虚拟测试对象来模拟后端，可以独立开发和测试），后端需要有详细的测试用例，保证服务的可用性与稳定性。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>前后端分离并非仅仅只是一种开发模式，而是一种架构模式（前后端分离架构）。</p>
+<p>千万不要以为只有在撸代码的时候把前端和后端分开就是前后端分离了。需要区分前后端项目。前端项目与后端项目是两个项目，放在两个不同的服务器，需要独立部署，两个不同的工程，两个不同的代码库，不同的开发人员。</p>
+<p>前后端工程师需要约定交互接口，实现并行开发，开发结束后需要进行独立部署，前端通过ajax来调用http请求调用后端的restful api。</p>
+<p>前端只需要关注页面的样式与动态数据的解析&amp;渲染，而后端专注于具体业务逻辑。</p>
+<p><strong>推荐阅读</strong></p>
+<p>（点击标题可跳转阅读）</p>
+<p><a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&mid=2651556866&idx=2&sn=680dde6cb7c8c5ac56094aec3ba08f50&chksm=80255bc3b752d2d5c04036eb778b34599be1b218377632dc96fda3cc14aa82bbb6f9319841da&scene=21#wechat_redirect">通过阅读源码，提高你的 JS 水平</a>  </p>
+<p><a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&mid=2651556840&idx=1&sn=37d4554cd243d4f30f53ac06f2dfe109&chksm=80255c29b752d53f34e58c1676eb4ab169605be2b1f9d58fa5855938bdc0dca68eadbe9ca5a5&scene=21#wechat_redirect">深入理解 ESLint</a>  </p>
+<p><a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&mid=2651556854&idx=1&sn=4d1fc907d4844e39262c8ea559fe5a1d&chksm=80255c37b752d521ae03100d27b67d7912ffe0b5f1997f4c52a15e69bec164131cac15ea2247&scene=21#wechat_redirect">详解 ES 2018 新特性</a></p>
+<p>觉得本文对你有帮助？请分享给更多人</p>
+<p>关注「前端大全」加星标，提升前端技能</p>
+<p><img src="https://www.v5ant.com/wp-content/uploads/2019/08/frc-d6041b8e6c4ba2a422c4ed4a2ce1c6f3.jpeg" alt="Web 实现前后端分离，前后端解耦"></p>
+<p>好文章，我在看❤️</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">QiaoJianFeng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://q-jf.cn/2019/08/09/web-e5-ae-9e-e7-8e-b0-e5-89-8d-e5-90-8e-e7-ab-af-e5-88-86-e7-a6-bb-ef-bc-8c-e5-89-8d-e5-90-8e-e7-ab-af-e8-a7-a3-e8-80-a6/">https://q-jf.cn/2019/08/09/web-e5-ae-9e-e7-8e-b0-e5-89-8d-e5-90-8e-e7-ab-af-e5-88-86-e7-a6-bb-ef-bc-8c-e5-89-8d-e5-90-8e-e7-ab-af-e8-a7-a3-e8-80-a6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://q-jf.cn" target="_blank">QIAO@博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/08/09/e6-89-8b-e6-91-b8-e6-89-8b-e6-95-99-e4-bd-a0-e6-92-b8-e4-b8-80-e4-b8-aa-e8-84-9a-e6-89-8b-e6-9e-b6/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">手摸手教你撸一个脚手架</div></div></a></div><div class="next-post pull-right"><a href="/2019/07/29/e5-93-aa-e5-90-92-e4-b9-8b-e9-ad-94-e7-ab-a5-e9-99-8d-e4-b8-96-e9-ab-98-e6-b8-85-e5-9c-a8-e7-ba-bf-e6-92-ad-e6-94-be-hd-e9-ab-98-e6-b8-85/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">哪吒之魔童降世 高清在线播放-HD高清</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">QiaoJianFeng</div><div class="author-info__description">QIAO是一个以Web前端开发为主的学习,进阶,交流,分享资源的博客。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">一、前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB"><span class="toc-number">2.</span> <span class="toc-text">二、为什么前后端分离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BB%8EMVC%E5%88%B0%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB"><span class="toc-number">3.</span> <span class="toc-text">三、从MVC到前后端分离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%AE%A4%E8%AF%86Rest%E6%9E%B6%E6%9E%84"><span class="toc-number">4.</span> <span class="toc-text">四、认识Rest架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E6%84%8F%E4%B9%89%E5%A4%A7%E5%90%97%EF%BC%9F"><span class="toc-number">5.</span> <span class="toc-text">五、前后端分离意义大吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%9C%AF%E4%B8%9A%E6%9C%89%E4%B8%93%E6%94%BB%EF%BC%88%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E5%88%86%E7%A6%BB%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">六、术业有专攻（开发人员分离）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E5%90%8E%E7%AB%AFjava%E5%B7%A5%E7%A8%8B%E5%B8%88%EF%BC%9A"><span class="toc-number">7.</span> <span class="toc-text">对于后端java工程师：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88%EF%BC%9A"><span class="toc-number">8.</span> <span class="toc-text">对于前端工程师：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E8%80%A6%E5%90%88%E6%97%B6%E4%BB%A3"><span class="toc-number">9.</span> <span class="toc-text">七、耦合时代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F"><span class="toc-number">10.</span> <span class="toc-text">开发模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F"><span class="toc-number">11.</span> <span class="toc-text">请求方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E5%90%8E%E5%88%86%E7%A6%BB%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">12.</span> <span class="toc-text">前后分离的优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">13.</span> <span class="toc-text">注意事项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E9%98%85%E8%AF%BB"><span class="toc-number"></span> <span class="toc-text">扩展阅读</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/01/14/vue-router%E6%BA%90%E7%A0%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B/" title="vue-router源码了解一下"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue-router源码了解一下"/></a><div class="content"><a class="title" href="/2020/01/14/vue-router%E6%BA%90%E7%A0%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B/" title="vue-router源码了解一下">vue-router源码了解一下</a><time datetime="2020-01-14T10:02:34.000Z" title="发表于 2020-01-14 18:02:34">2020-01-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/01/13/git%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C/" title="git日常操作"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="git日常操作"/></a><div class="content"><a class="title" href="/2020/01/13/git%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C/" title="git日常操作">git日常操作</a><time datetime="2020-01-13T03:24:51.000Z" title="发表于 2020-01-13 11:24:51">2020-01-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/01/08/%E9%AB%98%E6%B8%85%E5%9C%A8%E7%BA%BF%E7%9B%B4%E6%92%AD-1/" title="敢死队2-HDTC中英字在线观看"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="敢死队2-HDTC中英字在线观看"/></a><div class="content"><a class="title" href="/2020/01/08/%E9%AB%98%E6%B8%85%E5%9C%A8%E7%BA%BF%E7%9B%B4%E6%92%AD-1/" title="敢死队2-HDTC中英字在线观看">敢死队2-HDTC中英字在线观看</a><time datetime="2020-01-08T03:48:19.000Z" title="发表于 2020-01-08 11:48:19">2020-01-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/12/30/%E4%BA%86%E8%A7%A3%E4%B8%80%E4%BA%9BHTTP%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" title="了解一些HTTP协议相关知识"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="了解一些HTTP协议相关知识"/></a><div class="content"><a class="title" href="/2019/12/30/%E4%BA%86%E8%A7%A3%E4%B8%80%E4%BA%9BHTTP%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" title="了解一些HTTP协议相关知识">了解一些HTTP协议相关知识</a><time datetime="2019-12-30T08:49:42.000Z" title="发表于 2019-12-30 16:49:42">2019-12-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/11/22/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E6%9B%B4%E6%96%B0%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%8E%B0/" title="你能简单谈谈什么是 vue 的响应式更新？"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="你能简单谈谈什么是 vue 的响应式更新？"/></a><div class="content"><a class="title" href="/2019/11/22/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E6%9B%B4%E6%96%B0%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%8E%B0/" title="你能简单谈谈什么是 vue 的响应式更新？">你能简单谈谈什么是 vue 的响应式更新？</a><time datetime="2019-11-22T06:42:57.000Z" title="发表于 2019-11-22 14:42:57">2019-11-22</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By QiaoJianFeng</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
