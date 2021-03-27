@@ -94,8 +94,7 @@ disable_top_img: false
 index_img: https://iknow-pic.cdn.bcebos.com/1c950a7b02087bf4afbf1846f6d3572c10dfcfca
 
 # If the banner of page not setting, it will show the top_img
-default_top_img: http://www.dnzhuti.com/uploads/allimg/171220/95-1G220154346.jpg
-# http://www.dnzhuti.com/uploads/allimg/171220/95-1G220154346.jpg
+default_top_img: /img/top.jpg
 # The banner image of archive page
 archive_img:
 # If the banner of tag page not setting, it will show the top_img
