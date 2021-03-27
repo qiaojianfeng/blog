@@ -17,7 +17,7 @@
                   img(data-lazy-src=url_for(item.avatar) onerror=`this.onerror=null;this.src='` + url_for(theme.error_img.flink) + `'` alt=item.name )
                 else
                   img(src=url_for(item.avatar) onerror=`this.onerror=null;this.src='` + url_for(theme.error_img.flink) + `'` alt=item.name )
-                span.flink-item-name= item.name 
+                span.flink-item-name= item.name
                 span.flink-item-desc(title=item.descr)= item.descr
     != page.content
 
