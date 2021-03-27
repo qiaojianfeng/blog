@@ -126,6 +126,16 @@ cover:
   position: both
   # When cover is not set, the default cover is displayed (當沒有設置cover時，默認的封面顯示)
   default_cover:
+    - https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg
+    - /img/1.jpg
+    - /img/2.jpg
+    - /img/3.jpg
+    - /img/4.jpg
+    - /img/5.jpg
+    - /img/6.jpg
+    - /img/7.jpg
+    - /img/8.jpg
+    - /img/9.jpg
     # - https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg
 
 # Replace Broken Images (替換無法顯示的圖片)
