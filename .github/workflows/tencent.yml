@@ -1,52 +1,60 @@
-# This workflow will build a docker container, publish and deploy it to Tencent Kubernetes Engine (TKE).
-#
-# To configure this workflow:
-#
-# 1. Ensure that your repository contains the necessary configuration for your Tencent Kubernetes Engine cluster, 
-#    including deployment.yml, kustomization.yml, service.yml, etc.
-#
-# 2. Set up secrets in your workspace: 
-#    - TENCENT_CLOUD_SECRET_ID with Tencent Cloud secret id
-#    - TENCENT_CLOUD_SECRET_KEY with Tencent Cloud secret key 
-#    - TENCENT_CLOUD_ACCOUNT_ID with Tencent Cloud account id
-#    - TKE_REGISTRY_PASSWORD with TKE registry password
-#
-# 3. Change the values for the TKE_IMAGE_URL, TKE_REGION, TKE_CLUSTER_ID and DEPLOYMENT_NAME environment variables (below).
 
-name: Tencent Kubernetes Engine 自动推送博客 
 
-on: 
-  push: 
-    branches: [master]
-#     types: [created]
 
-# Environment variables available to all jobs and steps in this workflow
-env:
-  TKE_IMAGE_URL: ccr.ccs.tencentyun.com/demo/mywebapp
-  TKE_REGION: ap-guangzhou
-  TKE_CLUSTER_ID: cls-mywebapp
-  DEPLOYMENT_NAME: tke-test
+
+
+
+
+
+
+
+
+
+
+
+name: GitHub Actions Build and Deploy tencent
+on:
+  push:
+    branches:
+      - master
 
 jobs:
-  setup-build-publish-deploy:
-    name: Setup, Build, Publish, and Deploy
+  build-and-deploy:
     runs-on: ubuntu-latest
-    environment: production
     steps:
-      # check out the repository
-      - name: Checkout    
-        uses: actions/checkout@v2    #这里使用了github官方提供的action,checkout项目到虚拟机上
 
-      - name: Install Dependencies
-        run: yarn
-      - name: Build
-        run: yarn build
+    - name: 1. git checkout...
+
+      uses: actions/checkout@v1
+
+    - name: 2. setup nodejs...
+
+      uses: actions/setup-node@v1
+
+    - name: 3. install hexo...
+
+      run: |
+        npm install
+
+    - name: 4. hexo generate public files...
+
+      run: |
+        hexo clean
+        hexo g
         
-      - name: deploy file to server
-        uses: wlixcc/SFTP-Deploy-Action@v1.0 
-        with:  
-          username: 'root'   #ssh user name
-          server: '${{ secrets.SERVER_IP }}' #引用之前创建好的secret
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} #引用之前创建好的secret
-          local_path: './public/*'  # 对应我们项目build的文件夹路径
-          remote_path: '/www/wwwroot/mv.v5ant.com'
+    # 部署到腾讯云    
+    - name: Tencent Cloud CLI Action
+      # You may pin to the exact commit or the version.
+      # uses: TencentCloud/cli-action@fe147b3c1dfc4cc436e4bd5ed044d22b210b49c3
+      uses: TencentCloud/cli-action@v1
+      with:
+    # Tencent cloud secret id. Should be referred to a encrypted environment variable
+          secret_id: 	skey-4g62mekb
+    # Tencent cloud secret key. Should be referred to a encrypted environment variable
+          secret_key: ${{ secrets.SSH_PRIVATE_KEY }}
+    # Tencent Cloud product region
+          region: 北京
+    # Tencent Cloud CLI commands. Mult commands seperate by `&&`
+#           commands: cd /www/
+    # Data format of command output. Available values are `json`, `table`, `text`. Default is `json`
+#           output_format: # optional
