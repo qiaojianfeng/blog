@@ -1,60 +1,47 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-name: GitHub Actions Build and Deploy tencent
+# deploy.yml
+name: deploy blog to tencent
 on:
   push:
     branches:
       - master
-
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
+      # 切换分支
+      - name: Checkout
+        uses: actions/checkout@master
+      # 下载 git submodule
+      - uses: srt32/git-actions@v0.0.3
+        with:
+          args: git submodule update --init --recursive
+      # 使用 node:10
+      - name: use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      # npm install
+      - name: npm install
+        run: |
+          npm install -g hexo-cli
+          npm install
+        env:
+          CI: true
+      # build
+      - name: hexo build
+        run: |
+          hexo clean
+          hexo generate
+        env:
+          CI: true
 
-    - name: 1. git checkout...
-
-      uses: actions/checkout@v1
-
-    - name: 2. setup nodejs...
-
-      uses: actions/setup-node@v1
-
-    - name: 3. install hexo...
-
-      run: |
-        npm install
-
-    - name: 4. hexo generate public files...
-
-      run: |
-        hexo clean
-        hexo g
-        
-    # 部署到腾讯云    
-    - name: Tencent Cloud CLI Action
-      # You may pin to the exact commit or the version.
-      # uses: TencentCloud/cli-action@fe147b3c1dfc4cc436e4bd5ed044d22b210b49c3
-      uses: TencentCloud/cli-action@v1
-      with:
-    # Tencent cloud secret id. Should be referred to a encrypted environment variable
-          secret_id: 	skey-4g62mekb
-    # Tencent cloud secret key. Should be referred to a encrypted environment variable
-          secret_key: ${{ secrets.SSH_PRIVATE_KEY }}
-    # Tencent Cloud product region
-          region: 北京
-    # Tencent Cloud CLI commands. Mult commands seperate by `&&`
-#           commands: cd /www/
-    # Data format of command output. Available values are `json`, `table`, `text`. Default is `json`
-#           output_format: # optional
+      # Deploy
+      - name: Deploy
+        uses: easingthemes/ssh-deploy@v2.0.7
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ARGS: '-avz --delete'
+          SOURCE: 'public/'
+          REMOTE_HOST: ${{ secrets.SERVER_IP }}
+          REMOTE_USER: root
+          TARGET: ${{ secrets.TARGET }}
