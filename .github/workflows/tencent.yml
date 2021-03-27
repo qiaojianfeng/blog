@@ -13,11 +13,12 @@
 #
 # 3. Change the values for the TKE_IMAGE_URL, TKE_REGION, TKE_CLUSTER_ID and DEPLOYMENT_NAME environment variables (below).
 
-name: Tencent Kubernetes Engine
+name: Tencent Kubernetes Engine 自动推送博客 
 
-on:
-  release:
-    types: [created]
+on: 
+  push: 
+    branches: [master]
+#     types: [created]
 
 # Environment variables available to all jobs and steps in this workflow
 env:
@@ -32,45 +33,20 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
+      # check out the repository
+      - name: Checkout    
+        uses: actions/checkout@v2    #这里使用了github官方提供的action,checkout项目到虚拟机上
 
-    - name: Checkout
-      uses: actions/checkout@v2
-      
-    # Build
-    - name: Build Docker image
-      run: |        
-        docker build -t ${TKE_IMAGE_URL}:${GITHUB_SHA} .
-
-    - name: Login TKE Registry
-      run: |
-        docker login -u ${{ secrets.TENCENT_CLOUD_ACCOUNT_ID }} -p ${{ secrets.TKE_REGISTRY_PASSWORD }} ${TKE_IMAGE_URL}
-
-    # Push the Docker image to TKE Registry
-    - name: Publish
-      run: |
-        docker push ${TKE_IMAGE_URL}:${GITHUB_SHA}
-
-    - name: Set up Kustomize
-      run: |
-        curl -o kustomize --location https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
-        chmod u+x ./kustomize
-
-    - name: Set up ~/.kube/config for connecting TKE cluster
-      uses: TencentCloud/tke-cluster-credential-action@v1
-      with:
-        secret_id: ${{ secrets.TENCENT_CLOUD_SECRET_ID }}
-        secret_key: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
-        tke_region: ${{ env.TKE_REGION }}
-        cluster_id: ${{ env.TKE_CLUSTER_ID }}
-    
-    - name: Switch to TKE context
-      run: |
-        kubectl config use-context ${TKE_CLUSTER_ID}-context-default
-
-    # Deploy the Docker image to the TKE cluster
-    - name: Deploy
-      run: |
-        ./kustomize edit set image ${TKE_IMAGE_URL}:${GITHUB_SHA}
-        ./kustomize build . | kubectl apply -f -
-        kubectl rollout status deployment/${DEPLOYMENT_NAME}
-        kubectl get services -o wide
+      - name: Install Dependencies
+        run: yarn
+      - name: Build
+        run: yarn build
+        
+      - name: deploy file to server
+        uses: wlixcc/SFTP-Deploy-Action@v1.0 
+        with:  
+          username: 'root'   #ssh user name
+          server: '${{ secrets.SERVER_IP }}' #引用之前创建好的secret
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} #引用之前创建好的secret
+          local_path: './public/*'  # 对应我们项目build的文件夹路径
+          remote_path: '/www/wwwroot/mv.v5ant.com'
