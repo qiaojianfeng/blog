@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: QIAO@博客
-subtitle: V5Ant
-description: QIAO是一个以Web前端开发为主的学习,进阶,交流,分享资源的博客。
+title: Promise
+subtitle: 一个懒人的博客
+description: 一个以Web前端开发为主的学习,进阶,交流,分享资源的博客。
 keywords: 前端,全栈,Web,自学编程,学习分享,javascript,电影分享,模板资源
 author: QiaoJianFeng
 language: zh-CN
@@ -27,7 +27,6 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
-
 # Writing
 new_post_name: :title.md # File name of new posts
 default_layout: post
@@ -43,14 +42,14 @@ highlight:
   line_number: true
   auto_detect: true
   tab_replace: 2
-  hljs: true
+  hljs: false
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
-  per_page: 5
+  per_page: 10
   order_by: -date
 
 # Category & Tag

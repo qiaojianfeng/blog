@@ -4,7 +4,7 @@ comments: true
 toc: true
 categories:
   - 大前端
-thumbnail: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3627583438,2255849752&fm=26&gp=0.jpg'
+cover: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3627583438,2255849752&fm=26&gp=0.jpg'
 date: 2020-01-14 18:02:34
 updated: 2020-01-14 18:02:34
 tags:
@@ -219,25 +219,25 @@ History.prototype.transitionTo = function transitionTo(location, onComplete, onA
   var route = this.router.match(location, this.current);
   this.confirmTransition(
     route,
-    function() {
+    function () {
       this$1.updateRoute(route);
       onComplete && onComplete(route);
       this$1.ensureURL();
       // fire ready cbs once
       if (!this$1.ready) {
         this$1.ready = true;
-        this$1.readyCbs.forEach(function(cb) {
+        this$1.readyCbs.forEach(function (cb) {
           cb(route);
         });
       }
     },
-    function(err) {
+    function (err) {
       if (onAbort) {
         onAbort(err);
       }
       if (err && !this$1.ready) {
         this$1.ready = true;
-        this$1.readyErrorCbs.forEach(function(cb) {
+        this$1.readyErrorCbs.forEach(function (cb) {
           cb(err);
         });
       }
@@ -248,7 +248,7 @@ History.prototype.updateRoute = function updateRoute(route) {
   var prev = this.current;
   this.current = route;
   this.cb && this.cb(route);
-  this.router.afterHooks.forEach(function(hook) {
+  this.router.afterHooks.forEach(function (hook) {
     hook && hook(route, prev);
   });
 };
@@ -283,7 +283,7 @@ export function install(Vue) {
         Vue.util.defineReactive(this, '_route', this._router.history.current);
       }
       registerInstance(this, this);
-    }
+    },
   });
 }
 ```
